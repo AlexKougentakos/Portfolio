@@ -65,9 +65,11 @@ a:hover
     text-decoration-color: rgb(181, 181, 181);
 }
 
-.logo
+.logo 
 {
-    font-size: 2rem;
+    position: relative;
+    width: 200px;  /* Adjust based on the maximum text width */
+    height: 50px;  /* Adjust based on your logo height */
 }
 
 .logo:hover
@@ -167,3 +169,205 @@ a:hover
 {
     transform: none;
 }
+
+@keyframes blink 
+{
+    50% { border-color: transparent; }
+}
+.logo span 
+{
+    color: black; /* or any contrasting color */
+    font-size: 24px; /* adjust as needed */
+    border-right: 2px solid black;
+    padding: 0 5px;
+    white-space: nowrap;
+    overflow: visible; /* changed from hidden to visible */
+    animation: blink 0.75s step-end infinite;
+}
+
+
+/* SECTIONS */
+
+section
+{
+    padding-top: 4vh;
+    height: 96vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+
+.section-container
+{
+    display: flex;
+}
+
+/* PROFILE SECTION */
+#profile
+{
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    height: 80vh;
+}
+
+.section__pic-container
+{
+    display: flex;
+    width: 400px;
+    height: 400px;
+    margin: auto 0;
+}
+
+.section__text
+{
+    align-self: center;
+    text-align: center;
+}
+
+.section__text p
+{   
+    font-weight: 600;
+}
+
+.section__text__p1
+{
+    text-align: center;
+}
+
+.section__text__p2
+{
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.title
+{
+    font-size: 3rem;
+    text-align: center;
+}
+
+#socials-container
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+/* ICONS */
+
+.icon
+{
+    cursor: pointer;
+    height: 2rem;
+}
+
+/* BUTTONS */
+
+.btn-container
+{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn
+{
+    font-weight: 600;
+    transition: all 300ms ease;
+    padding: 1rem;
+    width: 8rem;
+    border-radius: 2rem;
+}
+
+.btn-color-1, .btn-color-2
+{   
+    border: rgb(53, 53, 53) 0.1rem solid;
+}
+
+
+.btn-color-1:hover, .btn-color-2:hover
+{   
+    cursor: pointer;
+}
+
+.btn-color-1, .btn-color-2:hover
+{   
+    background: rgb(53, 53, 53);
+    color: white;
+}
+
+.btn-color-1:hover
+{
+    background-color: rgb(0, 0, 0);
+}
+
+.btn-color-2
+{
+    background: none;   
+}
+
+.btn-color-2:hover
+{
+    border: rgb(255, 255, 255) 0.1rem solid;
+}
+
+.btn-container
+{
+    gap: 1rem;
+}
+
+
+/* ABOUT SECTION */
+
+#about {
+    position: relative;
+  }
+  
+  .about-containers {
+    gap: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .about-details-container {
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .about-containers,
+  .about-details-container {
+    display: flex;
+  }
+  
+  .about-pic {
+    border-radius: 2rem;
+  }
+  
+  .arrow {
+    position: absolute;
+    right: -5rem;
+    bottom: 2.5rem;
+  }
+  
+  .details-container {
+    padding: 1.5rem;
+    flex: 1;
+    background: white;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+    border-color: rgb(163, 163, 163);
+    text-align: center;
+  }
+  
+  .section-container {
+    gap: 4rem;
+    height: 80%;
+  }
+  
+  .section__pic-container {
+    height: 400px;
+    width: 400px;
+    margin: auto 0;
+  }
