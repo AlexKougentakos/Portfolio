@@ -321,37 +321,44 @@ section
 
 /* ABOUT SECTION */
 
-#about {
+#about 
+{
     position: relative;
   }
   
-  .about-containers {
+  .about-containers 
+  {
     gap: 2rem;
     margin-bottom: 2rem;
     margin-top: 2rem;
   }
   
-  .about-details-container {
+  .about-details-container 
+  {
     justify-content: center;
     flex-direction: column;
   }
   
   .about-containers,
-  .about-details-container {
+  .about-details-container 
+  {
     display: flex;
   }
   
-  .about-pic {
+  .about-pic 
+  {
     border-radius: 2rem;
   }
   
-  .arrow {
+  .arrow 
+  {
     position: absolute;
     right: -5rem;
     bottom: 2.5rem;
   }
   
-  .details-container {
+  .details-container 
+  {
     padding: 1.5rem;
     flex: 1;
     background: white;
@@ -361,13 +368,74 @@ section
     text-align: center;
   }
   
-  .section-container {
+  .section-container 
+  {
     gap: 4rem;
-    height: 80%;
+    height: 65%;
   }
   
-  .section__pic-container {
+  .section__pic-container 
+  {
     height: 400px;
     width: 400px;
     margin: auto 0;
   }
+
+  /* PROJECTS */
+
+  #projects {
+    position: relative;
+  }
+  
+  .color-container 
+  {
+    border-color: rgb(163, 163, 163);
+    background: rgb(250, 250, 250);
+    max-width: 30%;
+    margin: auto;
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+  }
+  
+  .project-img 
+  {
+    border-radius: 2rem;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  
+  .project-img:hover 
+  {
+    transform: scale(1.02); /* Enlarges the image slightly on hover */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+  }
+  
+  .color-container:hover .project-img 
+  {
+    background-color: rgb(230, 230, 230); /* Darker background when image is hovered */
+  }
+  
+  .project-title 
+  {
+    margin: 1rem;
+    color: black;
+  }
+  
+  .tag-container 
+  {
+    display: flex;
+    justify-content: center; /* Centers the tags */
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 1rem;
+  }
+  
+  .project-tag 
+  {
+    background-color: rgb(190, 190, 190);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  

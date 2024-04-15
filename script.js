@@ -5,7 +5,9 @@ function toggleMenu()
     menu.classList.toggle("open");
     icon.classList.toggle("open");
 }
-document.addEventListener("DOMContentLoaded", function() {
+
+document.addEventListener("DOMContentLoaded", function() 
+{
     const logoSpans = document.querySelectorAll(".logo span"); // targets all spans under .logo
 
     function typeLogo(logoSpan) {
@@ -40,3 +42,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     logoSpans.forEach(span => typeLogo(span));
 });
+
+document.querySelectorAll('.project-img').forEach(item => {
+    const container = item.closest('.color-container');
+    const originalSrc = item.getAttribute('src');
+    const hoverSrc = item.getAttribute('data-hover');
+  
+    item.addEventListener('mouseenter', () => {
+      item.src = hoverSrc; // Change to GIF
+      container.style.backgroundColor = 'rgb(230, 230, 230)'; // Darker background
+    });
+  
+    item.addEventListener('mouseleave', () => {
+      item.src = originalSrc; // Revert to original image
+      container.style.backgroundColor = 'rgb(250, 250, 250)'; // Original background
+    });
+  });
+  
