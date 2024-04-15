@@ -41,6 +41,7 @@
         <div class="section__pic-container">
             <img src="./assets/profile-pic.png" alt="Alexandros Kougentakos profile picture">
         </div>
+
         <div class ="section__text">
             <p class="section__text__p1">Hello I'm </p>
             <h1 class="title">Alexandros</h1>
@@ -56,18 +57,20 @@
                     onclick="location.href='#contact'">Contact Me
                 </button>
             </div>
-            <img id="socials-container">
+              <img id="socials-container">
                 <img 
-                src="./assets/linkedin.png" 
-                alt="My LinkedIn profile" 
-                class="icon" onclick="location.href=
-                'https://www.linkedin.com/in/alexandros-kougentakos-05a873273'"/>
-                
-                <img 
-                src="./assets/github.png" 
-                alt="My GitHub profile" 
-                class="icon" onclick="location.href=
-                'https://github.com/AlexKougentakos'"/>
+                  src="./assets/linkedin.png" 
+                  alt="My LinkedIn profile" 
+                  class="icon" 
+                  onclick="window.open('https://www.linkedin.com/in/alexandros-kougentakos', '_blank')"
+                />
+              
+              <img 
+                  src="./assets/github.png" 
+                  alt="My GitHub profile" 
+                  class="icon" 
+                  onclick="window.open('https://github.com/AlexKougentakos', '_blank')"
+                />
             </div>
         </div>
 
@@ -107,12 +110,10 @@
             </div>
             <div class="text-container">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-                reprehenderit et laborum, rem, dolore eum quod voluptate
-                exercitationem nobis, nihil esse debitis maxime facere minus sint
-                delectus velit in eos quo officiis explicabo deleniti dignissimos.
-                Eligendi illum libero dolorum cum laboriosam corrupti quidem,
-                reiciendis ea magnam? Nulla, impedit fuga!
+                Hey there! I'm Alexandros, a game developer currently based in Belgium but always keen to move! 
+                I specialize in gameplay programming and AI in games, but I also wouldn’t mind engaging in engine
+                and graphics programming. I’m always on the lookout for new challenges and opportunities to
+                expand my skill set.
               </p>
             </div>
           </div>
@@ -126,32 +127,31 @@
       </section>
 
       <section id="projects">
-        <p class="section__text__p1">Browse My Recent</p>
+        <p class="section__text__p1">Browse My Favourite</p>
         <h1 class="title">Projects</h1>
 
-        <!-- ========== Start Section ========== -->
+        <!-- ========== Start Item ========== -->
         <div class="experience-details-container">          
           <div class="about-containers">
             <div class="details-container color-container">
               <div class="article-container">
                 <img
-                  src="./assets/project-1.png"
-                  data-hover="./assets/gif-test.gif"
-                  alt="Project 1"
-                  class="project-img"
-                  onclick="window.location.href='http://127.0.0.1:5500/procedural-dungeons/'"
-                />
+                    src="./assets/project-1.png"
+                    data-hover="./assets/gif-test.gif"
+                    alt="Project 1"
+                    class="project-img"
+                    onclick="window.open('https://github.com/AlexKougentakos/Procedural-Dungeon-Generator', '_blank')"
+                  />
               </div>
-              <h2 class="experience-sub-title project-title">Project One</h2>
+              <h2 class="experience-sub-title project-title">Procedural Dungeon Generator</h2>
               <div class="tag-container">
-                <span class="project-tag">HTML</span>
-                <span class="project-tag">CSS</span>
-                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">C++</span>
+                <span class="project-tag">SDL2</span>
               </div>
             </div>           
           </div>
         </div>                                              
-        <!-- ========== Start Section ========== -->
+        <!-- ========== End Item ========== -->
 
         <img
           src="./assets/arrow.png"
@@ -160,6 +160,46 @@
           onclick="location.href='./#contact'"
         />
       </section>
+
+      <section id="contact">
+        <p class="section__text__p1">Get in Touch</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+          <div class="contact-info-container">
+            <img
+              src="./assets/email.png"
+              alt="Email icon"
+              class="icon contact-icon email-icon"
+            />
+            <p><a href="mailto:alexkougedakos@gmail.com">alexkougedakos@gmail.com</a></p>
+          </div>
+          <div class="contact-info-container">
+            <img
+              src="./assets/linkedin.png"
+              alt="LinkedIn icon"
+              class="icon contact-icon"
+            />
+            <p>
+              <a href="https://www.linkedin.com/in/alexandros-kougentakos/" target="_blank">LinkedIn</a>
+            </p>
+            
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <nav>
+          <div class="nav-links-container">
+            <ul class="nav-links">
+              <li><a href="#about">About</a></li>
+              <!-- <li><a href="#experience">Experience</a></li> -->
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+        <p>Copyright &#169; 2024 Alexandros Kougentakos. All Rights Reserved.</p>
+      </footer>
     <script src="script.js"></script>
 </body>
 </html>

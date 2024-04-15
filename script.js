@@ -49,7 +49,7 @@ document.querySelectorAll('.project-img').forEach(item => {
     const hoverSrc = item.getAttribute('data-hover');
   
     item.addEventListener('mouseenter', () => {
-      item.src = hoverSrc; // Change to GIF
+      item.src = hoverSrc; // Change to GIF 
       container.style.backgroundColor = 'rgb(230, 230, 230)'; // Darker background
     });
   
@@ -58,4 +58,6 @@ document.querySelectorAll('.project-img').forEach(item => {
       container.style.backgroundColor = 'rgb(250, 250, 250)'; // Original background
     });
   });
+  
+
   
