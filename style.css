@@ -350,13 +350,6 @@ section
     border-radius: 2rem;
   }
   
-  .arrow 
-  {
-    position: absolute;
-    right: -5rem;
-    bottom: 2.5rem;
-  }
-  
   .details-container 
   {
     padding: 1.5rem;
@@ -391,10 +384,11 @@ section
   {
     border-color: rgb(163, 163, 163);
     background: rgb(250, 250, 250);
-    max-width: 30%;
     margin: auto;
-    transition: background-color 0.3s ease; /* Smooth transition for background color change */
-  }
+    transition: background-color 0.3s ease; /* Smooth transition for background color changes */
+    padding: 1rem; /* Add padding to ensure content does not touch the borders */
+}
+
   
   .project-img 
   {
@@ -417,11 +411,11 @@ section
     background-color: rgb(230, 230, 230); /* Darker background when image is hovered */
   }
   
-  .project-title 
-  {
-    margin: 1rem;
+  .project-title {
+    margin: 1rem 0; /* Ensure margin around the title for better spacing */
     color: black;
-  }
+    word-wrap: break-word; /* Ensure text wraps within the container */
+}
   
   .tag-container 
   {
@@ -439,6 +433,22 @@ section
     border-radius: 5px;
     font-size: 14px;
   }
+
+  .projects-container 
+  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Aligns items at the start of the container line */
+    align-items: flex-start; /* Aligns items at the top of the container */
+}
+
+    .experience-details-container 
+    {
+        flex: 1 0 500px; /* Allow growing but not shrinking below 300px */
+        max-width: 30%; /* Maximum width of each project container */
+        margin: 10px 10px 10px 0; /* Top, right, bottom, left margins */
+        box-sizing: border-box; /* Includes padding and border in width calculation */
+    }
 
   /* CONTACT */
 
@@ -492,7 +502,10 @@ footer {
     text-align: center;
   }
 
-  #popup {
+/* POPUP */
+
+  #popup 
+  {
     display: none;
     position: fixed;
     left: 50%;
@@ -505,7 +518,8 @@ footer {
     z-index: 1000;
 }
 
-.popup-overlay {
+.popup-overlay 
+{
     display: none;
     position: fixed;
     top: 0;
@@ -513,10 +527,12 @@ footer {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    z-index: 999; /* Ensure it's just below the popup */
+    z-index: 999;
+    transition: background-color 0.4s ease-in-out;
 }
 
-.popup {
+.popup 
+{
     display: none;
     position: fixed;
     left: 50%;
@@ -526,34 +542,59 @@ footer {
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 15px;
     z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
 }
 
-.popup-title {
+
+.popup-overlay 
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.popup-title 
+{
     width: 100%;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.popup-content {
+.popup-content 
+{
     display: flex;
-    height: 80%;
+    margin-bottom: 20px;
+    /* height: 80%; */
 }
 
-.popup-image {
+
+.popup-image 
+{
     width: 30%;
     height: auto;
     object-fit: contain;
+    margin: 0 20px; /* Space around image */
+    border-radius: 10px; /* Rounded corners for images */
 }
 
-.popup-description {
-    margin-left: 20px;
+.popup-description 
+{
     flex-grow: 1;
     overflow: auto;
+    margin: 0 20px; /* Space around text */
 }
 
-.popup-close-btn {
+.popup-close-btn 
+{
     position: absolute;
     top: 5px;
     right: 5px;
@@ -564,7 +605,9 @@ footer {
     color: black;
 }
 
-.popup-close-btn:hover {
+
+.popup-close-btn:hover 
+{
     color: grey;
     text-decoration: underline;
     text-underline-offset: 0.75rem;

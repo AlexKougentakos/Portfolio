@@ -68,14 +68,28 @@ document.querySelectorAll('.project-img').forEach(item => {
 });
 
 function openPopup() {
-    document.getElementById('popup').style.display = 'block';
-    document.getElementById('popupOverlay').style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Disable scrolling on the body
+    const popup = document.getElementById('popup');
+    const overlay = document.getElementById('popupOverlay');
+    popup.style.transition = 'opacity 0.4s ease-in-out'; // Set transition for opening
+    overlay.style.transition = 'background-color 0.4s ease-in-out'; // Consistent with CSS
+    popup.style.display = 'block';
+    overlay.style.display = 'block';
+    setTimeout(() => {
+        popup.style.opacity = 1;
+        overlay.style.opacity = 1;
+    }, 10);
 }
 
 function closePopup() {
-    document.getElementById('popup').style.display = 'none';
-    document.getElementById('popupOverlay').style.display = 'none';
-    document.body.style.overflow = 'auto'; // Re-enable scrolling on the body
+    const popup = document.getElementById('popup');
+    const overlay = document.getElementById('popupOverlay');
+    popup.style.transition = 'opacity 0.2s ease-in-out'; // Faster transition for closing
+    overlay.style.transition = 'background-color 0.2s ease-in-out'; // Faster transition for overlay
+    popup.style.opacity = 0;
+    overlay.style.opacity = 0;
+    setTimeout(() => {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+    }, 200); // Shorter time to match the new transition time
 }
 
