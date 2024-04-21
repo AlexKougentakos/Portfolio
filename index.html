@@ -124,205 +124,125 @@
         <p class="section__text__p1">Browse My Favourite</p>
         <h1 class="title">Projects</h1>
 
+        <div class="projects-navigation">
+          <button id="scrollLeft" class="scroll-btn left"><img src="./assets/arrow.png" alt="Scroll Left" style="transform: rotate(90deg);"></button>
+      
         <div class="projects-container">
           <!-- ========== Start Project Display Piece ========== -->
-          <div class="experience-details-container">          
-            <div class="about-containers">
-              <div class="details-container color-container">
-                <div class="article-container">
-                  <img
-                    src="./assets/project-1.png"
-                    data-hover="./assets/gif-test.gif"
-                    alt="Project 1"
-                    class="project-img"
-                    id="projectImage"
-                  />
-                </div>
-                <h2 class="experience-sub-title project-title">Procedural Dungeon Generator</h2>
-                <div class="tag-container">
-                  <span class="project-tag">C++</span>
-                  <span class="project-tag">SDL2</span>
-                </div>
-              </div>           
-            </div>
-          </div>
+          <div class="experience-details-container">
+              <div class="about-containers">
+                  <div class="details-container color-container">
+                      <div class="article-container">
+                          <img
+                              src="./assets/project-1.png"
+                              data-hover="./assets/gif-test.gif"
+                              alt="Project 1"
+                              class="project-img"
+                              data-target="popup1"
+                          />
+                      </div>
+                      <h2 class="experience-sub-title project-title">Procedural Dungeon Generator 1</h2>
+                      <div class="tag-container">
+                          <span class="project-tag">C++</span>
+                          <span class="project-tag">SDL2</span>
+                      </div>
+                  </div>
+              </div>
+              <!-- Corresponding Popup -->
+              <div class="popup-overlay" data-popup="popupOverlay1"></div>
+              <div class="popup" data-popup="popup1">
+                  <h1 class="popup-title">Procedural Dungeon Generator 1</h1>
+                  <div class="popup-content">
+                      <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
+                      <p class="popup-description">Detailed description of the project goes here...</p>
+                  </div>
+                  <div class="popup-content reversed">
+                      <p class="popup-description">Another detailed description. This text is now on the left, with the image on the right, offering a different perspective.</p>
+                      <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
+                  </div>
+                  <button class="popup-close-btn" onclick="closePopup(document.querySelector('[data-popup=\'popup1\']'), document.querySelector('[data-popup=\'popupOverlay1\']'))">X</button>
 
-              <!-- ========== Start Project Display Piece Pop-Up ========== -->
-              <div class="popup-overlay" id="popupOverlay"></div>
-              <div id="popup" class="popup">
-                <h1 class="popup-title">Procedural Dungeon Generator</h1>
-                <div class="popup-content">
-                    <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                    <p class="popup-description">Detailed description of the project goes here...</p>
-                </div>
-                <div class="popup-content reversed">
-                    <p class="popup-description">Another detailed description. This text is now on the left, with the image on the right, offering a different perspective.</p>
-                    <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                </div>
-                <button class="popup-close-btn" onclick="closePopup()">X</button>
-            </div>
-                  <!-- ========== End Project Display Piece Pop-Up ========== -->
+              </div>
+          </div>
+          <!-- ========== End Project Display Piece ========== -->
+
+          <!-- ========== Start Project Display Piece ========== -->
+          <div class="experience-details-container">
+              <div class="about-containers">
+                  <div class="details-container color-container">
+                      <div class="article-container">
+                          <img
+                              src="./assets/project-1.png"
+                              data-hover="./assets/gif-test.gif"
+                              alt="Project 2"
+                              class="project-img"
+                              data-target="popup2"
+                          />
+                      </div>
+                      <h2 class="experience-sub-title project-title">Procedural Dungeon Generator 2</h2>
+                      <div class="tag-container">
+                          <span class="project-tag">C++</span>
+                          <span class="project-tag">SDL2</span>
+                      </div>
+                  </div>
+              </div>
+              <!-- Corresponding Popup -->
+              <div class="popup-overlay" data-popup="popupOverlay2"></div>
+              <div class="popup" data-popup="popup2">
+                  <h1 class="popup-title">Procedural Dungeon Generator 2</h1>
+                  <div class="popup-content">
+                      <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
+                      <p class="popup-description">Detailed description of the project goes here...</p>
+                  </div>
+                  <div class="popup-content reversed">
+                      <p class="popup-description">Another detailed description. This text is now on the left, with the image on the right, offering a different perspective.</p>
+                      <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
+                  </div>
+                  <button class="popup-close-btn" onclick="closePopup(document.querySelector('[data-popup=\'popup2\']'), document.querySelector('[data-popup=\'popupOverlay2\']'))">X</button>
+              </div>
+          </div>
           <!-- ========== End Project Display Piece ========== -->
 
 
           <!-- ========== Start Project Display Piece ========== -->
-          <div class="experience-details-container">          
-            <div class="about-containers">
+          <div class="experience-details-container">
+          <div class="about-containers">
               <div class="details-container color-container">
-                <div class="article-container">
-                  <img
-                    src="./assets/project-1.png"
-                    data-hover="./assets/gif-test.gif"
-                    alt="Project 1"
-                    class="project-img"
-                    id="projectImage"
-                  />
-                </div>
-                <h2 class="experience-sub-title project-title">Procedural Dungeon Generator</h2>
-                <div class="tag-container">
-                  <span class="project-tag">C++</span>
-                  <span class="project-tag">SDL2</span>
-                </div>
-              </div>           
-            </div>
+                  <div class="article-container">
+                      <img
+                          src="./assets/project-1.png"
+                          data-hover="./assets/gif-test.gif"
+                          alt="Project 2"
+                          class="project-img"
+                          data-target="popup3"
+                      />
+                  </div>
+                  <h2 class="experience-sub-title project-title">Procedural Dungeon Generator 3</h2>
+                  <div class="tag-container">
+                      <span class="project-tag">C++</span>
+                      <span class="project-tag">SDL2</span>
+                  </div>
+              </div>
           </div>
-  
-              <!-- ========== Start Project Display Piece Pop-Up ========== -->
-              <div class="popup-overlay" id="popupOverlay"></div>
-              <div id="popup" class="popup">
-                <h1 class="popup-title">Procedural Dungeon Generator</h1>
-                <div class="popup-content">
-                    <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                    <p class="popup-description">Detailed description of the project goes here...</p>
-                </div>
-                <div class="popup-content reversed">
-                    <p class="popup-description">Another detailed description. This text is now on the left, with the image on the right, offering a different perspective.</p>
-                    <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                </div>
-                <button class="popup-close-btn" onclick="closePopup()">X</button>
-            </div>
-                  <!-- ========== End Project Display Piece Pop-Up ========== -->
-          <!-- ========== End Project Display Piece ========== -->
-
-
-                    <!-- ========== Start Project Display Piece ========== -->
-                    <div class="experience-details-container">          
-                      <div class="about-containers">
-                        <div class="details-container color-container">
-                          <div class="article-container">
-                            <img
-                              src="./assets/project-1.png"
-                              data-hover="./assets/gif-test.gif"
-                              alt="Project 1"
-                              class="project-img"
-                              id="projectImage"
-                            />
-                          </div>
-                          <h2 class="experience-sub-title project-title">Procedural Dungeon Generator</h2>
-                          <div class="tag-container">
-                            <span class="project-tag">C++</span>
-                            <span class="project-tag">SDL2</span>
-                          </div>
-                        </div>           
-                      </div>
-                    </div>
-            
-                        <!-- ========== Start Project Display Piece Pop-Up ========== -->
-                        <div class="popup-overlay" id="popupOverlay"></div>
-                        <div id="popup" class="popup">
-                          <h1 class="popup-title">Procedural Dungeon Generator</h1>
-                          <div class="popup-content">
-                              <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                              <p class="popup-description">Detailed description of the project goes here...</p>
-                          </div>
-                          <div class="popup-content reversed">
-                              <p class="popup-description">Another detailed description. This text is now on the left, with the image on the right, offering a different perspective.</p>
-                              <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                          </div>
-                          <button class="popup-close-btn" onclick="closePopup()">X</button>
-                      </div>
-                            <!-- ========== End Project Display Piece Pop-Up ========== -->
-                    <!-- ========== End Project Display Piece ========== -->
-
-                              <!-- ========== Start Project Display Piece ========== -->
-          <div class="experience-details-container">          
-            <div class="about-containers">
-              <div class="details-container color-container">
-                <div class="article-container">
-                  <img
-                    src="./assets/project-1.png"
-                    data-hover="./assets/gif-test.gif"
-                    alt="Project 1"
-                    class="project-img"
-                    id="projectImage"
-                  />
-                </div>
-                <h2 class="experience-sub-title project-title">Procedural Dungeon Generator</h2>
-                <div class="tag-container">
-                  <span class="project-tag">C++</span>
-                  <span class="project-tag">SDL2</span>
-                </div>
-              </div>           
-            </div>
+          <!-- Corresponding Popup -->
+          <div class="popup-overlay" data-popup="popupOverlay3"></div>
+          <div class="popup" data-popup="popup3">
+              <h1 class="popup-title">Procedural Dungeon Generator 3</h1>
+              <div class="popup-content">
+                  <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
+                  <p class="popup-description">Detailed description of the project goes here...</p>
+              </div>
+              <div class="popup-content reversed">
+                  <p class="popup-description">Another detailed description. This text is now on the left, with the image on the right, offering a different perspective.</p>
+                  <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
+              </div>
+              <button class="popup-close-btn" onclick="closePopup(document.querySelector('[data-popup=\'popup3\']'), document.querySelector('[data-popup=\'popupOverlay3\']'))">X</button>
           </div>
-  
-              <!-- ========== Start Project Display Piece Pop-Up ========== -->
-              <div class="popup-overlay" id="popupOverlay"></div>
-              <div id="popup" class="popup">
-                <h1 class="popup-title">Procedural Dungeon Generator</h1>
-                <div class="popup-content">
-                    <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                    <p class="popup-description">Detailed description of the project goes here...</p>
-                </div>
-                <div class="popup-content reversed">
-                    <p class="popup-description">Another detailed description. This text is now on the left, with the image on the right, offering a different perspective.</p>
-                    <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                </div>
-                <button class="popup-close-btn" onclick="closePopup()">X</button>
-            </div>
-                  <!-- ========== End Project Display Piece Pop-Up ========== -->
-          <!-- ========== End Project Display Piece ========== -->
-
-                    <!-- ========== Start Project Display Piece ========== -->
-                    <div class="experience-details-container">          
-                      <div class="about-containers">
-                        <div class="details-container color-container">
-                          <div class="article-container">
-                            <img
-                              src="./assets/project-1.png"
-                              data-hover="./assets/gif-test.gif"
-                              alt="Project 1"
-                              class="project-img"
-                              id="projectImage"
-                            />
-                          </div>
-                          <h2 class="experience-sub-title project-title">Procedural Dungeon Generator</h2>
-                          <div class="tag-container">
-                            <span class="project-tag">C++</span>
-                            <span class="project-tag">SDL2</span>
-                          </div>
-                        </div>           
-                      </div>
-                    </div>
-            
-                        <!-- ========== Start Project Display Piece Pop-Up ========== -->
-                        <div class="popup-overlay" id="popupOverlay"></div>
-                        <div id="popup" class="popup">
-                          <h1 class="popup-title">Procedural Dungeon Generator</h1>
-                          <div class="popup-content">
-                              <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                              <p class="popup-description">Detailed description of the project goes here...</p>
-                          </div>
-                          <div class="popup-content reversed">
-                              <p class="popup-description">Another detailed description. This text is now on the left, with the image on the right, offering a different perspective.</p>
-                              <img src="./assets/project-1.png" alt="Project Visual" class="popup-image">
-                          </div>
-                          <button class="popup-close-btn" onclick="closePopup()">X</button>
-                      </div>
-                            <!-- ========== End Project Display Piece Pop-Up ========== -->
-                    <!-- ========== End Project Display Piece ========== -->
-          
-        </div>
+      </div>
+      <!-- ========== End Project Display Piece ========== -->
+    </div>
+        
+        <button id="scrollRight" class="scroll-btn right"><img src="./assets/arrow.png" alt="Scroll Right" style="transform: rotate(-90deg);"></button>
       </section>
 
       <section id="contact">

@@ -43,35 +43,22 @@ document.addEventListener("DOMContentLoaded", function()
     logoSpans.forEach(span => typeLogo(span));
 });
 
-document.querySelectorAll('.project-img').forEach(item => {
-    const container = item.closest('.color-container');
-    const originalSrc = item.getAttribute('src');
-    const hoverSrc = item.getAttribute('data-hover');
+document.querySelector('.projects-container').addEventListener('click', function(event) {
+    // Check if the clicked element or its parent is a project image
+    let target = event.target;
+    if (target.classList.contains('project-img') || target.parentNode.classList.contains('project-img')) {
+        const popupId = target.dataset.target || target.parentNode.dataset.target;
+        const popup = document.querySelector(`[data-popup='${popupId}']`);
+        const overlay = document.querySelector(`[data-popup='popupOverlay${popupId.slice(-1)}']`);
 
-    // Handling mouse enter for hover effects
-    item.addEventListener('mouseenter', () => {
-        item.src = hoverSrc; // Change to GIF
-        container.style.backgroundColor = 'rgb(230, 230, 230)'; // Darker background
-    });
-
-    // Handling mouse leave
-    item.addEventListener('mouseleave', () => {
-        item.src = originalSrc; // Revert to original image
-        container.style.backgroundColor = 'rgb(250, 250, 250)'; // Original background
-    });
-
-    // Adding event listener for opening the popup
-    item.addEventListener('click', (event) => {
-        event.stopPropagation(); // Stop propagation to ensure it does not interfere with hover
-        openPopup(); // Call the openPopup function
-    });
+        if (popup && overlay) {
+            openPopup(popup, overlay); // Function to open the popup
+        }
+    }
 });
 
-function openPopup() {
-    const popup = document.getElementById('popup');
-    const overlay = document.getElementById('popupOverlay');
-    popup.style.transition = 'opacity 0.4s ease-in-out'; // Set transition for opening
-    overlay.style.transition = 'background-color 0.4s ease-in-out'; // Consistent with CSS
+function openPopup(popup, overlay) 
+{
     popup.style.display = 'block';
     overlay.style.display = 'block';
     setTimeout(() => {
@@ -80,16 +67,49 @@ function openPopup() {
     }, 10);
 }
 
-function closePopup() {
-    const popup = document.getElementById('popup');
-    const overlay = document.getElementById('popupOverlay');
-    popup.style.transition = 'opacity 0.2s ease-in-out'; // Faster transition for closing
-    overlay.style.transition = 'background-color 0.2s ease-in-out'; // Faster transition for overlay
+
+function closePopup(popup, overlay) {
     popup.style.opacity = 0;
     overlay.style.opacity = 0;
     setTimeout(() => {
         popup.style.display = 'none';
         overlay.style.display = 'none';
-    }, 200); // Shorter time to match the new transition time
+    }, 200);
 }
+
+window.addEventListener('load', function() {
+    var container = document.querySelector('.projects-container');
+    var content = container.innerHTML;
+    container.innerHTML += content; // Duplicate the content by appending it to itself
+});
+
+document.getElementById('scrollRight').addEventListener('click', function() {
+    var container = document.querySelector('.projects-container');
+    var items = container.querySelectorAll('.experience-details-container');
+    var itemWidth = items[0].offsetWidth + 20; // Including margin
+
+    // Scroll action
+    container.scrollBy({ left: itemWidth, behavior: 'smooth' });
+
+    // Delayed adjustment to reposition the first item to the end
+    setTimeout(() => {
+        var firstItem = container.removeChild(items[0]);
+        container.appendChild(firstItem);
+        container.scrollLeft -= itemWidth; // Adjust scroll position after the DOM manipulation
+    }, 350); // Ensure this matches the duration of the scroll effect
+});
+
+document.getElementById('scrollLeft').addEventListener('click', function() {
+    var container = document.querySelector('.projects-container');
+    var items = container.querySelectorAll('.experience-details-container');
+    var itemWidth = items[0].offsetWidth + 20; // Including margin
+
+    // Prepend last item to the start to make it visible immediately when scrolling left
+    var lastItem = container.removeChild(items[items.length - 1]);
+    container.insertBefore(lastItem, container.firstChild);
+    container.scrollLeft += itemWidth; // Adjust scroll position before the scroll action
+
+    // Scroll action
+    container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+});
 

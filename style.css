@@ -376,8 +376,11 @@ section
 
   /* PROJECTS */
 
-  #projects {
+  #projects 
+  {
     position: relative;
+    /* padding-bottom: 40px;  */
+
   }
   
   .color-container 
@@ -389,7 +392,6 @@ section
     padding: 1rem; /* Add padding to ensure content does not touch the borders */
 }
 
-  
   .project-img 
   {
     border-radius: 2rem;
@@ -434,33 +436,64 @@ section
     font-size: 14px;
   }
 
-  .projects-container 
-  {
+  .projects-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Aligns items at the start of the container line */
-    align-items: flex-start; /* Aligns items at the top of the container */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: center;
+    padding: 0;  /* Remove padding to maximize usable space */
+    margin: 0 20px;  /* Margin only to the left and right of the container for spacing from content */
+
+    -ms-overflow-style: none;  /* Internet Explorer and Edge */
+    scrollbar-width: none;  /* Firefox */
+    overflow-y: hidden;
 }
 
-    .experience-details-container 
-    {
-        flex: 1 0 500px; /* Allow growing but not shrinking below 300px */
-        max-width: 30%; /* Maximum width of each project container */
-        margin: 10px 10px 10px 0; /* Top, right, bottom, left margins */
-        box-sizing: border-box; /* Includes padding and border in width calculation */
-    }
+.projects-container::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, and Opera */
+}
+
+.experience-details-container {
+    flex: 0 0 calc((100% / 3) - 20px); /* Adjust width to accommodate exactly 3 items */
+    max-width: calc((100% / 3) - 20px); /* Matching max-width to flex-basis */
+    margin: 10px; /* Consistent margin of 10px on each side */
+    box-sizing: border-box; /* Padding and border are included in the width */
+}
+
+/* ARROWS */
+.projects-navigation {
+    display: flex;
+    align-items: center;  /* Align buttons with the project container */
+    position: relative;
+}
+
+.scroll-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;  /* Spacing from the projects container */
+}
+
+.scroll-btn img {
+    width: 30px;  /* Adjust size as needed */
+    height: 30px;  /* Adjust size as needed */
+}
 
   /* CONTACT */
-
-#contact 
-{
+  #contact 
+  {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 70vh;
+    min-height: 70vh;  /* Change from height to min-height to allow expansion if needed */
+    padding-bottom: 40px; /* Add padding to ensure separation from the footer */
   }
-  
-  .contact-info-upper-container {
+
+  .contact-info-upper-container 
+  {
     display: flex;
     justify-content: center;
     border-radius: 2rem;
@@ -471,7 +504,8 @@ section
     padding: 0.5rem;
   }
   
-  .contact-info-container {
+  .contact-info-container 
+  {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -479,26 +513,31 @@ section
     margin: 1rem;
   }
   
-  .contact-info-container p {
+  .contact-info-container p 
+  {
     font-size: larger;
   }
   
-  .contact-icon {
+  .contact-icon 
+  {
     cursor: default;
   }
   
-  .email-icon {
+  .email-icon 
+  {
     height: 2.5rem;
   }
 
   /* FOOTER SECTION */
 
-footer {
-    height: 26vh;
-    margin: 0 1rem;
-  }
+    footer 
+   {
+        height: 26vh;
+        margin: 0 1rem;
+   }
   
-  footer p {
+  footer p 
+  {
     text-align: center;
   }
 
