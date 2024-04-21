@@ -455,32 +455,46 @@ section
     display: none;  /* Chrome, Safari, and Opera */
 }
 
-.experience-details-container {
+.experience-details-container 
+{
     flex: 0 0 calc((100% / 3) - 20px); /* Adjust width to accommodate exactly 3 items */
     max-width: calc((100% / 3) - 20px); /* Matching max-width to flex-basis */
     margin: 10px; /* Consistent margin of 10px on each side */
     box-sizing: border-box; /* Padding and border are included in the width */
 }
 
-/* ARROWS */
-.projects-navigation {
-    display: flex;
-    align-items: center;  /* Align buttons with the project container */
-    position: relative;
-}
+        /* ARROWS */
+        .projects-navigation 
+        {
+            display: flex;
+            align-items: center;  /* Align buttons with the project container */
+            position: relative;
+        }
 
-.scroll-btn {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 10px;
-    margin: 0 5px;  /* Spacing from the projects container */
-}
+        .scroll-btn {
+            background-color: transparent; /* Default background */
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 40px; /* Ensures the width is the same as height */
+            height: 40px; /* Square dimension */
+            border-radius: 50%; /* Makes the button circular */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .scroll-btn:hover 
+        {
+            background-color: #e0e0e0; /* Light grey on hover */
+        }
 
-.scroll-btn img {
-    width: 30px;  /* Adjust size as needed */
-    height: 30px;  /* Adjust size as needed */
-}
+        
+
+        .scroll-btn img 
+        {
+            width: auto;  /* Adjust based on your icon size */
+            height: 100%;  /* Adjust based on your icon size */
+        }
 
   /* CONTACT */
   #contact 
