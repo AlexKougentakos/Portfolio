@@ -326,11 +326,11 @@ section
     position: relative;
   }
   
-  .about-containers 
+  .about-containers     
   {
     gap: 2rem;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
   
   .about-details-container 
@@ -434,21 +434,22 @@ section
     font-size: 14px;
   }
 
-  .projects-container 
-  {
+  .projects-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Aligns items at the start of the container line */
+    justify-content: center; /* Aligns items at the center of the container */
     align-items: flex-start; /* Aligns items at the top of the container */
+    gap: 0; /* Ensure there is no gap between flex items */
 }
 
-    .experience-details-container 
-    {
-        flex: 1 0 500px; /* Allow growing but not shrinking below 300px */
-        max-width: 30%; /* Maximum width of each project container */
-        margin: 10px 10px 10px 0; /* Top, right, bottom, left margins */
-        box-sizing: border-box; /* Includes padding and border in width calculation */
-    }
+
+.experience-details-container {
+    flex: 1 0 500px; /* Allow growing but not shrinking below 300px */
+    max-width: 30%; /* Maximum width of each project container */
+    margin: 0px 10px 0px 0; /* Adjust the bottom margin to reduce vertical gap */
+    box-sizing: border-box; /* Includes padding and border in width calculation */
+}
+
 
   /* CONTACT */
 

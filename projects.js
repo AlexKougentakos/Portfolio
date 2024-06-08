@@ -1,0 +1,76 @@
+const projects = [
+    {
+      title: 'Procedural Dungeon Generator',
+      image: './assets/project-1.png',
+      hoverImage: './assets/gif-test.gif',
+      tags: ['C++', 'SDL2']
+    },
+    {
+        title: 'Procedural Dungeon Generator',
+        image: './assets/project-1.png',
+        hoverImage: './assets/gif-test.gif',
+        tags: ['C++', 'SDL2']
+      },
+      {
+        title: 'Procedural Dungeon Generator',
+        image: './assets/project-1.png',
+        hoverImage: './assets/gif-test.gif',
+        tags: ['C++', 'SDL2']
+      },
+      {
+        title: 'Procedural Dungeon Generator',
+        image: './assets/project-1.png',
+        hoverImage: './assets/gif-test.gif',
+        tags: ['C++', 'SDL2']
+      },
+      {
+        title: 'Procedural Dungeon Generator',
+        image: './assets/project-1.png',
+        hoverImage: './assets/gif-test.gif',
+        tags: ['C++', 'SDL2']
+      },
+      {
+        title: 'Procedural Dungeon Generator',
+        image: './assets/project-1.png',
+        hoverImage: './assets/gif-test.gif',
+        tags: ['C++', 'SDL2']
+      },
+      {
+        title: 'Procedural Dungeon Generator',
+        image: './assets/project-1.png',
+        hoverImage: './assets/gif-test.gif',
+        tags: ['C++', 'SDL2']
+      },
+    // Add more projects here
+  ];
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const projectsContainer = document.getElementById('projectsContainer');
+    const projectTemplate = document.getElementById('projectTemplate').content;
+  
+    projects.forEach(project => {
+      const projectClone = document.importNode(projectTemplate, true);
+  
+      projectClone.querySelector('.project-img').src = project.image;
+      projectClone.querySelector('.project-img').setAttribute('data-hover', project.hoverImage);
+      projectClone.querySelector('.project-title').textContent = project.title;
+      projectClone.querySelector('.popup-title').textContent = project.title;
+      projectClone.querySelector('.popup .popup-image').src = project.image;
+      projectClone.querySelector('.popup .reversed .popup-image').src = project.image;
+  
+      const tagContainer = projectClone.querySelector('.tag-container');
+      project.tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'project-tag';
+        span.textContent = tag;
+        tagContainer.appendChild(span);
+      });
+  
+      projectsContainer.appendChild(projectClone);
+    });
+  
+    // Re-add hover and click effects for newly added content
+    addHoverEffects();
+    addClickEffects();
+  });
+  

@@ -1,13 +1,11 @@
-function toggleMenu()
-{
+function toggleMenu() {
     const menu = document.querySelector(".menu-links");
     const icon = document.querySelector(".hamburger-icon");
     menu.classList.toggle("open");
     icon.classList.toggle("open");
 }
 
-document.addEventListener("DOMContentLoaded", function() 
-{
+document.addEventListener("DOMContentLoaded", function() {
     const logoSpans = document.querySelectorAll(".logo span"); // targets all spans under .logo
 
     function typeLogo(logoSpan) {
@@ -41,31 +39,43 @@ document.addEventListener("DOMContentLoaded", function()
     }
 
     logoSpans.forEach(span => typeLogo(span));
+
+    // Initial call for existing static content
+    addHoverEffects();
+    addClickEffects();
 });
 
-document.querySelectorAll('.project-img').forEach(item => {
-    const container = item.closest('.color-container');
-    const originalSrc = item.getAttribute('src');
-    const hoverSrc = item.getAttribute('data-hover');
+function addHoverEffects() {
+    document.querySelectorAll('.project-img').forEach(item => {
+        const container = item.closest('.color-container');
+        const originalSrc = item.getAttribute('src');
+        const hoverSrc = item.getAttribute('data-hover');
 
-    // Handling mouse enter for hover effects
-    item.addEventListener('mouseenter', () => {
-        item.src = hoverSrc; // Change to GIF
-        container.style.backgroundColor = 'rgb(230, 230, 230)'; // Darker background
-    });
+        // Handling mouse enter for hover effects
+        item.addEventListener('mouseenter', () => {
+            item.src = hoverSrc; // Change to GIF
+            container.style.backgroundColor = 'rgb(230, 230, 230)'; // Darker background
+        });
 
-    // Handling mouse leave
-    item.addEventListener('mouseleave', () => {
-        item.src = originalSrc; // Revert to original image
-        container.style.backgroundColor = 'rgb(250, 250, 250)'; // Original background
-    });
+        // Handling mouse leave
+        item.addEventListener('mouseleave', () => {
+            item.src = originalSrc; // Revert to original image
+            container.style.backgroundColor = 'rgb(250, 250, 250)'; // Original background
+        });
 
-    // Adding event listener for opening the popup
-    item.addEventListener('click', (event) => {
-        event.stopPropagation(); // Stop propagation to ensure it does not interfere with hover
-        openPopup(); // Call the openPopup function
+        // Adding event listener for opening the popup
+        item.addEventListener('click', (event) => {
+            event.stopPropagation(); // Stop propagation to ensure it does not interfere with hover
+            openPopup(); // Call the openPopup function
+        });
     });
-});
+}
+
+function addClickEffects() {
+    document.querySelector('.popup-close-btn').addEventListener('click', function() {
+        closePopup();
+    });
+}
 
 function openPopup() {
     const popup = document.getElementById('popup');
@@ -92,4 +102,3 @@ function closePopup() {
         overlay.style.display = 'none';
     }, 200); // Shorter time to match the new transition time
 }
-
