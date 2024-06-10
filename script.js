@@ -64,17 +64,20 @@ function addHoverEffects() {
         });
 
         // Adding event listener for opening the popup
-        item.addEventListener('click', (event) => {
-            event.stopPropagation(); // Stop propagation to ensure it does not interfere with hover
-            openPopup(); // Call the openPopup function
-        });
+        // item.addEventListener('click', (event) => {
+        //     event.stopPropagation(); // Stop propagation to ensure it does not interfere with hover
+        //     openPopup(); // Call the openPopup function
+        // });
     });
 }
 
-function addClickEffects() {
-    document.querySelector('.popup-close-btn').addEventListener('click', function() {
-        closePopup();
-    });
+function addClickEffects() 
+{
+    // document.querySelector('.popup-close-btn').addEventListener('click', function() {
+    //     closePopup();
+    // });
+
+
 }
 
 function openPopup() {

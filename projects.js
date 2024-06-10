@@ -3,43 +3,50 @@ const projects = [
       title: 'Procedural Dungeon Generator',
       image: './assets/project-1.png',
       hoverImage: './assets/gif-test.gif',
-      tags: ['C++', 'SDL2']
+      tags: ['C++', 'SDL2'],
+      link: 'ProceduralDungeonGenerator.html' // where to go when clicked
     },
     {
         title: 'Procedural Dungeon Generator',
         image: './assets/project-1.png',
         hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'SDL2']
+        tags: ['C++', 'SDL2'],
+        link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' // where to go when clicked
       },
       {
         title: 'Procedural Dungeon Generator',
         image: './assets/project-1.png',
         hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'SDL2']
+        tags: ['C++', 'SDL2'],
+        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
         title: 'Procedural Dungeon Generator',
         image: './assets/project-1.png',
         hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'SDL2']
+        tags: ['C++', 'SDL2'],
+        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
         title: 'Procedural Dungeon Generator',
         image: './assets/project-1.png',
         hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'SDL2']
+        tags: ['C++', 'SDL2'],
+        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
         title: 'Procedural Dungeon Generator',
         image: './assets/project-1.png',
         hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'SDL2']
+        tags: ['C++', 'SDL2'],
+        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
         title: 'Procedural Dungeon Generator',
         image: './assets/project-1.png',
         hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'SDL2']
+        tags: ['C++', 'SDL2'],
+        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
     // Add more projects here
   ];
@@ -65,6 +72,16 @@ const projects = [
         span.textContent = tag;
         tagContainer.appendChild(span);
       });
+
+      projectClone.querySelector('.details-container').onclick = () => {
+        if (project.link.endsWith('.html')) {
+          // Open in the same window
+          window.location.href = project.link;
+        } else {
+          // Open in a new window
+          window.open(project.link, '_blank');
+        }
+      };
   
       projectsContainer.appendChild(projectClone);
     });
@@ -73,4 +90,3 @@ const projects = [
     addHoverEffects();
     addClickEffects();
   });
-  
