@@ -46,31 +46,24 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function addHoverEffects() {
-    document.querySelectorAll('.project-img').forEach(item => {
-        const container = item.closest('.color-container');
-        const originalSrc = item.getAttribute('src');
-        const hoverSrc = item.getAttribute('data-hover');
+    document.querySelectorAll('.details-container.color-container').forEach(container => {
+        const img = container.querySelector('.project-img');
+        const originalSrc = img.getAttribute('src');
+        const hoverSrc = img.getAttribute('data-hover');
 
         // Handling mouse enter for hover effects
-        item.addEventListener('mouseenter', () => {
-            item.src = hoverSrc; // Change to GIF
+        container.addEventListener('mouseenter', () => {
+            img.src = hoverSrc; // Change to GIF
             container.style.backgroundColor = 'rgb(230, 230, 230)'; // Darker background
         });
 
         // Handling mouse leave
-        item.addEventListener('mouseleave', () => {
-            item.src = originalSrc; // Revert to original image
-            container.style.backgroundColor = 'rgb(250, 250, 250)'; // Original background
+        container.addEventListener('mouseleave', () => {
+            img.src = originalSrc; // Revert to original image
+            container.style.backgroundColor = ''; // Remove inline style to revert to original background
         });
-
-        // Adding event listener for opening the popup
-        // item.addEventListener('click', (event) => {
-        //     event.stopPropagation(); // Stop propagation to ensure it does not interfere with hover
-        //     openPopup(); // Call the openPopup function
-        // });
     });
 }
-
 function addClickEffects() 
 {
     // document.querySelector('.popup-close-btn').addEventListener('click', function() {

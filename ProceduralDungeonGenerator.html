@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="project.css">
 </head>
 <body>
-    <div id="projects" style="height: 100%;">
-        <p class="go_back_text"> &lt; GO BACK </p>
-        <h1 class="title">Procedural Dungeon Generator</h1>
-    </div>
+  <div id="projects" style="height: 100%;">
+    <p class="go_back_text">
+        <a href="index.html#projects">&lt; GO BACK</a>
+    </p>
+    <h1 class="title">Procedural Dungeon Generator</h1>
+</div>
+      <div class="video-container">
+        <video class="video" width="960" height="540" controls>
+          <source src="./assets/demo.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-    <video class="video" width="960" height="540" controls>
-        <source src="./assets/demo.webm" type="video/webm">
-        Your browser does not support the video tag.
-      </video>
 
       <div class="btn-container">
         <button 
@@ -29,7 +33,7 @@
         </button>
         <button 
             class="btn btn-color-1" 
-            onclick="location.href='#contact'">
+            onclick="window.open('https://github.com/AlexKougentakos/Procedural-Dungeon-Generator', '_blank')">
           <span class="btn-content">
             <img src="./assets/github-white.png" alt="Icon" class="btn-icon">
             Github Link
@@ -38,11 +42,16 @@
       </div>
       
       <section>
-        <p class="title2-header">What I</p>
-        <h1 class="title2">Learned</h1>
-      </section>
-      
-      
-      
+          <p class="title2-header">What I</p>
+          <h1 class="title2">Learned</h1>
+  
+          <p class="title3">
+              Taking an algorithm from paper to code
+          </p>
+          <p class="paragraph">
+            I had to learn how to research a problem and implement the suggested algorithms in code. 
+            This project was my first interaction with this workflow and it was a great learning experience.
+          </p>
+        </section>
 </body>
 </html>

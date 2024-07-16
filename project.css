@@ -23,28 +23,40 @@ p
 }
 
 /* TITLE */
-.go_back_text
-{
+.go_back_text {
     text-align: center;
     font-size: 1.5rem;
 }
 
-.title
-{
+.go_back_text a {
+    color: #777; /* Lighter color */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.3s, text-decoration 0.3s; /* Smooth transition for hover effect */
+}
+
+.go_back_text a:hover {
+    color: #444; /* Darker on hover for better contrast */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.title {
     font-size: 3rem;
     text-align: center;
 }
 
 /* VIDEO */
 
-.video 
-{
-    display: block;
-    margin: 0 auto;
+.video-container {
+    width: 100%;
+    max-width: 800px; /* Adjust this value as needed */
+    margin: 2rem auto 0;
+}
+.video {
+    width: 100%;
+    height: auto;
     border-radius: 15px;
-    margin-top: 2rem;
-  }
-
+    display: block;
+}
 
   /* BUTTONS */
 
@@ -145,10 +157,31 @@ p
     margin-top: 5rem;
     margin-bottom: -5px;
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .title2
 {
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
+}
+
+.title3
+{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+/* PARAGRAPHS */
+
+.paragraph {
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 1.6; /* Improves readability */
+    max-width: 800px; /* Limits the width of the paragraph */
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -72,8 +72,12 @@ const projects = [
         span.textContent = tag;
         tagContainer.appendChild(span);
       });
-
-      projectClone.querySelector('.details-container').onclick = () => {
+  
+      // Modify this part to only add click event to the image
+      const projectImg = projectClone.querySelector('.project-img');
+      projectImg.style.cursor = 'pointer'; // Add pointer cursor to indicate clickable
+      projectImg.onclick = (event) => {
+        event.stopPropagation(); // Prevent event from bubbling up to parent elements
         if (project.link.endsWith('.html')) {
           // Open in the same window
           window.location.href = project.link;
@@ -90,3 +94,4 @@ const projects = [
     addHoverEffects();
     addClickEffects();
   });
+  
