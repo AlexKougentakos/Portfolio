@@ -1,12 +1,5 @@
 const projects = [
     {
-      title: 'Procedural Dungeon Generator',
-      image: './assets/project-1.png',
-      hoverImage: './assets/gif-test.gif',
-      tags: ['C++', 'SDL2'],
-      link: 'ProceduralDungeonGenerator.html' // where to go when clicked
-    },
-    {
         title: 'Multiplayer Shooter',
         image: './assets/MultiplayerShooterCover.png',
         hoverImage: './assets/gif-test.gif',
@@ -14,10 +7,17 @@ const projects = [
         link: 'MultiplayerShooter.html' // where to go when clicked
       },
       {
-        title: 'Procedural Dungeon Generator',
-        image: './assets/project-1.png',
+        title: 'Tidal Treasure Clash',
+        image: './assets/TidalTreasureClashCover.png',
         hoverImage: './assets/gif-test.gif',
         tags: ['C++', 'SDL2'],
+        link: 'https://jaymalik.itch.io/tidal-treasure-clash' // where to go when clicked
+      },
+      {
+        title: 'Bomberman Blast',
+        image: './assets/project-1.png',
+        hoverImage: './assets/gif-test.gif',
+        tags: ['C++', 'Nvidia PhysX'],
         link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' // where to go when clicked
       },
       {
@@ -28,15 +28,15 @@ const projects = [
         link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
-        title: 'Procedural Dungeon Generator',
-        image: './assets/project-1.png',
+        title: 'Hardware & Software Rasterizer',
+        image: './assets/DualRasterizer_DirectX.png',
         hoverImage: './assets/gif-test.gif',
         tags: ['C++', 'SDL2'],
         link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
-        title: 'Procedural Dungeon Generator',
-        image: './assets/project-1.png',
+        title: 'Hardware Raytracer',
+        image: './assets/RayTracerCover.png',
         hoverImage: './assets/gif-test.gif',
         tags: ['C++', 'SDL2'],
         link: 'ProceduralDungeonGenerator.html' // where to go when clicked
