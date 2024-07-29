@@ -7,18 +7,18 @@ const projects = [
       link: 'ProceduralDungeonGenerator.html' // where to go when clicked
     },
     {
-        title: 'Procedural Dungeon Generator',
-        image: './assets/project-1.png',
+        title: 'Multiplayer Shooter',
+        image: './assets/MultiplayerShooterCover.png',
         hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'SDL2'],
-        link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' // where to go when clicked
+        tags: ['C++', 'UE5.3', 'Replication'],
+        link: 'MultiplayerShooter.html' // where to go when clicked
       },
       {
         title: 'Procedural Dungeon Generator',
         image: './assets/project-1.png',
         hoverImage: './assets/gif-test.gif',
         tags: ['C++', 'SDL2'],
-        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
+        link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' // where to go when clicked
       },
       {
         title: 'Procedural Dungeon Generator',
