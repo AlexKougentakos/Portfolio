@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Shooter Game</title>
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div id="projects" style="height: 100%;">
+    <p class="go_back_text">
+        <a href="index.html#projects">&lt; GO BACK</a>
+    </p>
+    <h1 class="title">Multiplayer Shooter Game</h1>
+</div>
+      <div class="video-container">
+        <video class="video" width="960" height="540" controls>
+          <source src="./assets/demo.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+
+      <div class="btn-container">
+        <button 
+            class="btn btn-color-2 btn-switch" 
+            onclick="window.open('./assets/resume-example.pdf')">
+          <span class="btn-content">
+            <img src="./assets/download.png" alt="Icon" class="btn-icon default-icon">
+            <img src="./assets/download-white.png" alt="Icon" class="btn-icon hover-icon">
+            Download Build
+          </span>
+        </button>
+        <button 
+            class="btn btn-color-1" 
+            onclick="window.open('https://github.com/AlexKougentakos/UE5-MultiplayerShooter', '_blank')">
+          <span class="btn-content">
+            <img src="./assets/github-white.png" alt="Icon" class="btn-icon">
+            Github Link
+          </span>
+        </button>
+      </div>
+      
+      <section>
+        <div class="section-content">
+            <p class="title2-header">What I</p>
+            <h1 class="title2">Learned</h1>
+
+            <p class="title3">Networking In Unreal Engine 5</p>
+            <div class="paragraph-container">
+                <div class="image-container image-left"></div>
+                <p class="paragraph-left">
+                    The main reason I started developing this game was to learn how to implement multiplayer functionality in Unreal Engine 5. While developing this game I learnt a lot about replication, the listen server model and server-client architecture. What I found very interesting and challenging was figuring out when I had to use replication, whether I should use RPCs or replicated variables and how to minimize network traffic. Though I was never planning on releasing this game, I did my best to try to abide to keeping the server authoritative and the client as dumb as possible.
+                </p>
+            </div>
+
+            <p class="title3">Client Side Prediction</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Another interesting concept I learned about was client side prediction. 
+                    This is a technique used to make the game feel more responsive to the player. 
+                    The idea is that the client predicts the outcome of the player's actions and then corrects itself if necessary when it receives the server's response. 
+                    Instances where this technique is applicable include anything that needs to be replicated but has to feel responsive for the player, without
+                    breaking the server's authority. Reloading a weapon is a good example of this, as you can update your HUD and correct it if necessary when the server responds.
+                </p>
+            </div>
+
+            <p class="title3">Server Side Rewind</p>
+            <div class="paragraph-container">
+                <p class="paragraph-right">
+                    Perhaps the most challenging, yet most interesting, concept I learned about was server side rewind. 
+                    This is a lag compensation technique used to make the game feel more responsive to the clients and also more fair. 
+                    I implemented this in the shooting mechanic of the game. 
+                    When a player shoots, if SSR is enabled for his weapon then the server will rewind the player's position to the time of the shot and then simulate the shot from its' perspective. 
+                    This way, the server can determine if the shot was a hit or a miss and then send the result back to the client.
+                </p>
+                <div class="image-container image-right"></div>
+            </div>
+
+            <p class="title3">Animation Blending</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Since I could only use animations that I got from the Unreal Engine Marketplace, 
+                    I had to make the most out of them. I improved my understanding of the animation state machine and how to blend animations together.
+                    I also learned how to replicate animations, using already replicated player, since the animation instance is not replicated by default.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-content">
+            <p class="title2-header">What I</p>
+            <h1 class="title2">Would Add</h1>
+
+            <p class="title3">Anti Cheat Detection</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Another interesting concept I would like to get into is anti cheat detection.
+                    I would start by making sure that all the important game logic is server authoritative, because right now the client has authority over some things
+                    that can be exploited by memory address manipulation. For example the fire delay for the weapons is client sided.
+                </p>
+            </div>
+
+            <p class="title3">Networking Improvements</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    I would like to add a number of improvements regarding the networking.
+                    For example a lobby system where instead of clicking join and being put into a random game,
+                    you would see a list of all available lobbies, their players your ping to them, as well as the game mode and map.
+
+                    <br/>
+                    <br/>
+
+                    A friend system would also be something interesting to research since it would require some sort of account system. Perhaps this could be done
+                    using the Steam API, which I have never used before.
+                </p>
+            </div>
+
+            <p class="title3">More Game Modes</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Since the purpose of this project was to learn about networking, I didn't spend much time on the actual game but rather on the networking aspect of it,
+                    while also pursuing any interests I had in Unreal Engine that I didn't have the chance to explore yet.
+                    If I had the chance to continue working on this project, I would implement various game modes, such as team deathmatch, capture the flag, king of the hill, push the payload etc.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
