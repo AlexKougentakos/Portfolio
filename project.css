@@ -221,7 +221,7 @@ p
 
 .image-container 
 {
-    flex: 0 0 250px;
+    flex: 0 0 350px;
     height: 250px;
     background-color: #ccc; /* Placeholder color */
     border-radius: 15px; /* Adds rounded corners */

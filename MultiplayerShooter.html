@@ -48,7 +48,7 @@
 
             <p class="title3">Networking In Unreal Engine 5</p>
             <div class="paragraph-container">
-                <div class="image-container image-left"></div>
+                <img src="./assets/NetworkingImage.png" alt="Image" class="image-container image-left">
                 <p class="paragraph-left">
                     The main reason I started developing this game was to learn how to implement multiplayer functionality in Unreal Engine 5. While developing this game I learnt a lot about replication, the listen server model and server-client architecture. What I found very interesting and challenging was figuring out when I had to use replication, whether I should use RPCs or replicated variables and how to minimize network traffic. Though I was never planning on releasing this game, I did my best to try to abide to keeping the server authoritative and the client as dumb as possible.
                 </p>
@@ -74,12 +74,13 @@
                     When a player shoots, if SSR is enabled for his weapon then the server will rewind the player's position to the time of the shot and then simulate the shot from its' perspective. 
                     This way, the server can determine if the shot was a hit or a miss and then send the result back to the client.
                 </p>
-                <div class="image-container image-right"></div>
+                <img src="./assets/SSR_Image.png" alt="Image" class="image-container image-right">
             </div>
 
             <p class="title3">Animation Blending</p>
             <div class="paragraph-container">
-                <p class="paragraph-center">
+                <img src="./assets/AnimGraph.png" alt="Image" class="image-container image-left">
+                <p class="paragraph-left">
                     Since I could only use animations that I got from the Unreal Engine Marketplace, 
                     I had to make the most out of them. I improved my understanding of the animation state machine and how to blend animations together.
                     I also learned how to replicate animations, using already replicated player, since the animation instance is not replicated by default.
