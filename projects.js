@@ -31,7 +31,7 @@ const projects = [
         title: 'Hardware & Software Rasterizer',
         image: './assets/DualRasterizer_DirectX.png',
         hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'SDL2'],
+        tags: ['C++', 'DirectX11'],
         link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
