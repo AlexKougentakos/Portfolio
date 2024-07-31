@@ -9,7 +9,7 @@ const projects = [
       {
         title: 'Tidal Treasure Clash',
         image: './assets/TidalTreasureClashCover.png',
-        hoverImage: './assets/gif-test.gif',
+        hoverImage: './assets/TidalTreasureClash.gif',
         tags: ['C++', 'UE5.2'],
         link: 'https://jaymalik.itch.io/tidal-treasure-clash' // where to go when clicked
       },
