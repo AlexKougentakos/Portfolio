@@ -340,87 +340,99 @@ section {
     position: relative;
 }
 
-.color-container {
-    border-color: rgb(163, 163, 163);
-    background: rgb(250, 250, 250);
-    margin: auto;
-    transition: background-color 0.3s ease;
-    /* Smooth transition for background color changes */
-    padding: 1rem;
-    /* Add padding to ensure content does not touch the borders */
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
 }
 
+.experience-details-container {
+    flex: 0 0 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.color-container {
+    border: 1px solid rgb(163, 163, 163);
+    background: rgb(250, 250, 250);
+    transition: background-color 0.3s ease;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 330px; /* Adjust as needed */
+}
+
+.color-container.hovered {
+    background-color: rgb(230, 230, 230);
+}
+
+.article-container {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1;
+}
 
 .project-img {
-    border-radius: 2rem;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     transition: transform 0.3s ease;
-    cursor: default;
+    transform-origin: center center;
 }
 
-.project-img:hover {
-    transform: scale(1.02);
-    /* Enlarges the image slightly on hover */
-    cursor: pointer;
-    /* Changes cursor to pointer on hover */
-    pointer-events: auto;
-    /* Ensures that the pointer events are always active */
-}
-
-.color-container:hover .project-img {
-    background-color: rgb(230, 230, 230);
-    /* Darker background when image is hovered */
+.article-container:hover .project-img {
+    transform: scale(1.05); /* The size scaling of the GIF not the hovered effect */
 }
 
 .project-title {
-    margin: 1rem 0;
-    /* Ensure margin around the title for better spacing */
+    margin-bottom: 1rem;
     color: black;
     word-wrap: break-word;
-    /* Ensure text wraps within the container */
+    font-size: 1.65rem;
+    text-align: center;
 }
 
 .tag-container {
     display: flex;
     justify-content: center;
-    /* Centers the tags */
     flex-wrap: wrap;
     gap: 5px;
-    margin-bottom: 1rem;
+    padding: 0 0.5rem;
 }
 
 .project-tag {
     background-color: rgb(190, 190, 190);
     padding: 5px 10px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 0.8rem;
+    white-space: nowrap;
 }
 
-.projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* Aligns items at the center of the container */
-    align-items: flex-start;
-    /* Aligns items at the top of the container */
-    gap: 0;
-    /* Ensure there is no gap between flex items */
+@media (max-width: 1200px) {
+    .experience-details-container {
+        flex: 0 0 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
 }
 
-
-.experience-details-container {
-    flex: 1 0 500px;
-    /* Allow growing but not shrinking below 300px */
-    max-width: 30%;
-    /* Maximum width of each project container */
-    margin: 0px 10px 0px 0;
-    /* Adjust the bottom margin to reduce vertical gap */
-    box-sizing: border-box;
-    /* Includes padding and border in width calculation */
+@media (max-width: 768px) {
+    .experience-details-container {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
-
-
 /* CONTACT */
 
 #contact {

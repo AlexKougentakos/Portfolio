@@ -58,13 +58,11 @@ const projects = [
     projects.forEach(project => {
       const projectClone = document.importNode(projectTemplate, true);
   
-      projectClone.querySelector('.project-img').src = project.image;
-      projectClone.querySelector('.project-img').setAttribute('data-hover', project.hoverImage);
+      const projectImg = projectClone.querySelector('.project-img');
+      const colorContainer = projectClone.querySelector('.color-container');
+      projectImg.src = project.image;
+      projectImg.setAttribute('data-hover', project.hoverImage);
       projectClone.querySelector('.project-title').textContent = project.title;
-      projectClone.querySelector('.popup-title').textContent = project.title;
-      projectClone.querySelector('.popup .popup-image').src = project.image;
-      projectClone.querySelector('.popup .reversed .popup-image').src = project.image;
-  
       const tagContainer = projectClone.querySelector('.tag-container');
       project.tags.forEach(tag => {
         const span = document.createElement('span');
@@ -73,8 +71,18 @@ const projects = [
         tagContainer.appendChild(span);
       });
   
-      // Modify this part to only add click event to the image
-      const projectImg = projectClone.querySelector('.project-img');
+      // Add hover effect to the image
+      projectImg.addEventListener('mouseenter', () => {
+        projectImg.src = project.hoverImage;
+        colorContainer.classList.add('hovered');
+      });
+  
+      projectImg.addEventListener('mouseleave', () => {
+        projectImg.src = project.image;
+        colorContainer.classList.remove('hovered');
+      });
+  
+      // Add click event to the image
       projectImg.style.cursor = 'pointer'; // Add pointer cursor to indicate clickable
       projectImg.onclick = (event) => {
         event.stopPropagation(); // Prevent event from bubbling up to parent elements
@@ -89,9 +97,4 @@ const projects = [
   
       projectsContainer.appendChild(projectClone);
     });
-  
-    // Re-add hover and click effects for newly added content
-    addHoverEffects();
-    addClickEffects();
   });
-  
