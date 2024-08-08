@@ -35,7 +35,7 @@ const projects = [
         link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
-        title: 'Hardware Raytracer',
+        title: 'Software Raytracer',
         image: './assets/RayTracerCover.png',
         hoverImage: './assets/gif-test.gif',
         tags: ['C++', 'SDL2'],
@@ -50,7 +50,7 @@ const projects = [
       },
     // Add more projects here
   ];
-  
+
   document.addEventListener('DOMContentLoaded', () => {
     const projectsContainer = document.getElementById('projectsContainer');
     const projectTemplate = document.getElementById('projectTemplate').content;
