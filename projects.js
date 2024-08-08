@@ -15,10 +15,10 @@ const projects = [
       },
       {
         title: 'Bomberman Blast',
-        image: './assets/project-1.png',
+        image: './assets/BombermanCover.png',
         hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'Nvidia PhysX'],
-        link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' // where to go when clicked
+        tags: ['C++', 'Nvidia PhysX', 'HLSL', 'ImGui'],
+        link: 'Bomberman.html' // where to go when clicked
       },
       {
         title: 'Procedural Dungeon Generator',

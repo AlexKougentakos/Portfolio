@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomberman Blast</title>
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div id="projects" style="height: 100%;">
+    <p class="go_back_text">
+        <a href="index.html#projects">&lt; GO BACK</a>
+    </p>
+    <h1 class="title">Bomberman Blast</h1>
+</div>
+      <div class="video-container">
+        <video class="video" width="960" height="540" controls>
+          <source src="./assets/demo.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+
+      <div class="btn-container">
+        <button 
+            class="btn btn-color-2 btn-switch" 
+            onclick="window.open('https://github.com/AlexKougentakos/UE5-MultiplayerShooter/releases/download/Release/Multiplayer-Shooter-Game-v1.0.0.zip')">
+          <span class="btn-content">
+            <img src="./assets/download.png" alt="Icon" class="btn-icon default-icon">
+            <img src="./assets/download-white.png" alt="Icon" class="btn-icon hover-icon">
+            Download Build
+          </span>
+        </button>
+        <button 
+            class="btn btn-color-1" 
+            onclick="window.open('https://github.com/AlexKougentakos/BombermanBlast', '_blank')">
+          <span class="btn-content">
+            <img src="./assets/github-white.png" alt="Icon" class="btn-icon">
+            Github Link
+          </span>
+        </button>
+      </div>
+      
+      <section>
+        <div class="section-content">
+            <p class="title2-header">What I</p>
+            <h1 class="title2">Learned</h1>
+
+            <p class="title3">Working with an In-House Game Engine</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    This project started as a a University assignment, where I had to remake the classic Bomberman game using, a non-UI, in-house game engine.
+                    This way my first time working outside of any "Big" game engine like Unity or Unreal Engine, without any documentation or tutorials to follow.
+                    So if I didn't know how the engine behaved I had to go through the source code and understand it myself, or if a feature didn't exist (like UI support) I had
+                    to implement it myself.
+                </p>
+            </div>
+
+            <p class="title3">HLSL Shader Programming</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Though not very complicated, I had to write a shader for this project. I opted to write a simple vignette shader that would darken the edges of the screen.
+                    This tought me the very fundementals of working with the HLSL language.
+                </p>
+            </div>
+
+            <p class="title3">Working with Nvidia PhysX</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Most of the core features of Nvidia PhysX were already wrapped in the engine, but I did have to edit the game engine a little as well as go through a lot of the
+                    PhysX documentation in order to get certain things working, such as collision channels and limiting the movement of the player so they could not escape the map.
+                </p>
+            </div>
+
+            <p class="title3">Proper Code Communication</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Though this was not the purpose of this project, I did my best in keeping the code clean and organized. I made sure to seperate all the different systems
+                    that I used and wrote them to be as re-usable as possible. For example, I wrote a simple implementation of the Observer pattern in order 
+                    to communicate between the different systems, such as the Game Loop Manager, the UI Manager and the players.
+                </p>
+            </div>
+
+            <p class="title3">Creating Debug Tools With ImGui</p>
+            <div class="paragraph-container">
+                <img src="./assets/ImGuiDebug.png" alt="Image" class="image-container image-left">
+                <p class="paragraph-left">
+                    The engine that I used had built in functionality for ImGui but not any tools. So I had to write my own debug tools in order to help me debug the game.
+                    I created some simple tools, like a character controller which allowed me to alter a character's stats, a free-flying camera and a map viewer.
+
+                    <br/>
+                    <br/>
+                    The map viewer was the most helpful, since I opted to create a grid component which was responsible for keeping track of all the game objects in the game.
+                    Therefore, I needed to be able to see what the grid looked like, and what every cell contained at any given time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-content">
+            <p class="title2-header">What I</p>
+            <h1 class="title2">Would Add</h1>
+
+            <p class="title3">AI Players</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Perhaps my favourite feature that I would like to work on is adding AI agents. I would probably use a a FSM or GOAP approach to make the AI agents
+                    and use the A* algorithm to navigate the map. When making the game, I did not account for this so I would also have to refactor a lot of the player class
+                    in order to share the proper functionality between the players and the AI agents.
+                </p>
+            </div>
+
+            <p class="title3">More UI & Game Loop</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Currently, the only UI you can interact with is the main menu. I would like to add a pause menu and a settings menu.
+                    I would also like to add a game settings menu after you start the game so you can select things such as the map you would like, the amount of players, 
+                    the pickups you would like enabled etc.
+
+                    <br/>
+                    <br/>
+
+                    Furthermore, you cannot go back to the main menu after you start a game. This was because of an engine limitation regarding the scenes which 
+                    was outside of my time frame to fix.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
