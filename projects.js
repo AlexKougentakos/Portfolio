@@ -35,6 +35,13 @@ const projects = [
         link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
+        title: 'Valorant Agent Tool',
+        image: './assets/ValorantAgentCover.png',
+        hoverImage: './assets/ValorantToolHover.gif',
+        tags: ['C#', 'WPF', 'API'],
+        link: 'https://github.com/AlexKougentakos/ValorantAgentTool' // where to go when clicked
+      },
+      {
         title: 'Hardware & Software Rasterizer',
         image: './assets/DualRasterizer_DirectX.png',
         hoverImage: './assets/RasterizerHover.gif',
