@@ -37,16 +37,16 @@ const projects = [
       {
         title: 'Hardware & Software Rasterizer',
         image: './assets/DualRasterizer_DirectX.png',
-        hoverImage: './assets/gif-test.gif',
+        hoverImage: './assets/RasterizerHover.gif',
         tags: ['C++', 'DirectX11'],
-        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
+        link: 'https://github.com/AlexKougentakos/Software-Hardware-Hybrid-Rasterizer' // where to go when clicked
       },
       {
         title: 'Software Raytracer',
         image: './assets/RayTracerCover.png',
-        hoverImage: './assets/gif-test.gif',
+        hoverImage: './assets/RayTracerHover.gif',
         tags: ['C++', 'SDL2'],
-        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
+        link: 'https://github.com/AlexKougentakos/RaytracerSoftware' // where to go when clicked
       }
     // Add more projects here
   ];
