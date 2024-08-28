@@ -24,8 +24,15 @@ const projects = [
         title: 'Card Game with Custom Engine',
         image: './assets/TichuCover.png',
         hoverImage: './assets/TichuHover.gif',
-        tags: ['C++', 'SDL2', 'Emscripten', 'WASM', 'Engine Development'],
+        tags: ['C++', 'SDL2', 'WASM', 'Engine Development'],
         link: './OdysseyTichu/Tichu.html' // where to go when clicked
+      },
+      {
+        title: 'Procedural Dungeon Generator',
+        image: './assets/project-1.png',
+        hoverImage: './assets/gif-test.gif',
+        tags: ['C++', 'SDL2'],
+        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
       },
       {
         title: 'Hardware & Software Rasterizer',
@@ -40,14 +47,7 @@ const projects = [
         hoverImage: './assets/gif-test.gif',
         tags: ['C++', 'SDL2'],
         link: 'ProceduralDungeonGenerator.html' // where to go when clicked
-      },
-      {
-        title: 'Procedural Dungeon Generator',
-        image: './assets/project-1.png',
-        hoverImage: './assets/gif-test.gif',
-        tags: ['C++', 'SDL2'],
-        link: 'ProceduralDungeonGenerator.html' // where to go when clicked
-      },
+      }
     // Add more projects here
   ];
 
