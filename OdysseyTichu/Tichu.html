@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Game with Custom Engine</title>
+    <link rel="stylesheet" href="../project.css">
+    <style>
+        /* Center the game canvas on larger screens */
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90hv;
+        }
+
+        /* Hide the game canvas on smaller screens */
+        .game-container {
+            display: none;
+        }
+
+        /* Show the game canvas on larger screens */
+        @media (min-width: 920px) {
+            .game-container {
+                display: flex;
+            }
+            .video-container {
+                display: none; /* Hide video on larger screens */
+            }
+        }
+
+        /* Ensure the body takes up the full height of the viewport */
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+  <div id="projects" style="height: 100%;">
+    <p class="go_back_text">
+        <a href="../index.html#projects">&lt; GO BACK</a>
+    </p>
+    <h1 class="title">Card Game with Custom Engine</h1>
+  </div>
+
+  <!-- Video for smaller screens -->
+  <div class="video-container">
+    <video class="video" width="100%" height="auto" controls>
+      <source src="../assets/TichuDemo.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Game for larger screens -->
+  <div class="game-container">
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="540" width="960"></canvas>
+  </div>
+
+  <script type="text/javascript">
+    var Module = {
+      preRun: [],
+      postRun: [],
+      canvas: (function() {
+        var canvas = document.getElementById('canvas');
+        return canvas;
+      })(),
+      onAbort: function() { console.error('Game aborted.'); }
+    };
+  </script>
+  <script src="game.js"></script>
+
+      <div class="btn-container">
+        <button 
+            class="btn btn-color-2 btn-switch" 
+            onclick="window.open('https://github.com/AlexKougentakos/Odyssey-Engine/releases/download/Release/OdysseyEngine-Tichu-v1.0.0.zip')">
+          <span class="btn-content">
+            <img src="../assets/download.png" alt="Icon" class="btn-icon default-icon">
+            <img src="../assets/download-white.png" alt="Icon" class="btn-icon hover-icon">
+            Download Build
+          </span>
+        </button>
+        <button 
+            class="btn btn-color-1" 
+            onclick="window.open('https://github.com/AlexKougentakos/Odyssey-Engine', '_blank')">
+          <span class="btn-content">
+            <img src="../assets/github-white.png" alt="Icon" class="btn-icon">
+            Github Link
+          </span>
+        </button>
+      </div>
+      
+      <section>
+        <div class="section-content">
+            <p class="title2-header">What I</p>
+            <h1 class="title2">Learned</h1>
+
+            <p class="title3">Developing an Engine/Framework</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    The Engine/Framework development part of this project was a part of one of my Programming courses at University. I kept working on the engine even after
+                    the course, and I learned a lot about how engines work, how to structure them and how to make them as re-usable as possible. I also learned a lot about
+                    "wrapping" certain aspects of the engine, in order to make it easier for the end user to use, and leave all the memory managment to the engine.
+                </p>
+            </div>
+
+            <p class="title3">Working with CMake</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    When I originally made this engine, it did not have any CMake support. So I had to go through the process of porting the engine to CMake.
+                    I mainly did that in order to be able to have support for Emscripten and be able to compile the engine to WebAssembly.
+                </p>
+            </div>
+
+            <p class="title3">Web Assembly</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    As mentioned before, I wanted to be able to compile projects made with my engine to web assembly. I had never done any cross platform 
+                    development, so this was a great learning experience for me. I learned a lot about how to structure the project and account for any differences
+                    in compilers and platforms.
+
+                    <br/>
+                    <br/>
+                    In case you did not notice, at the top of this page you will find a card game I made with the engine, compiled to WebAssembly.
+                    If you are using a smaller screen, the game was replaced by a video, since it couldn't be displayed properly.
+                    Though you might be confused if you don't know how the game is played.
+                    <br/>
+                    <br/>
+
+                    An example of this is my implementation of the Audio System. I had trouble with getting Jthreads to compile with Emscripten, so I decided
+                    to write a different sound manager for the Web and depending on the compilation flags, the engine would switch out the sound manager. This
+                    worked nicely, because I had already implemented a service provider pattern in the engine.
+                </p>
+            </div>
+
+            <p class="title3">Programming Patterns</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    As a part of this course, I had to implement a number of programming patterns and make use of them into the engine. 
+                    Before this I did not know what programming patterns were, so this was a nice addition to my knowledge.
+                    I implemented many patterns, some that are available to the user, such as the Observer pattern and the command pattern, 
+                    and some that are used internally, such as the Service Provider pattern for the sound system, the Factory pattern for the game objects 
+                    and the Singleton pattern for a few systems of the engine such as the ResourceManager.
+                    <br> Most of these patterns were studied from the book 
+                    <a href="https://gameprogrammingpatterns.com" target="_blank">"Game Programming Patterns"</a> by Robert Nystrom.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-content">
+            <p class="title2-header">What I</p>
+            <h1 class="title2">Would Add</h1>
+
+            <p class="title3">AI Players</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    While programming the game, I tried to keep the authority of the game logic on a seperate class that the Scene just communicates information with
+                    that it mainly gets from the Player Components. The reason for this is that I plan on adding AI agents to the game.
+                    <br/>
+                    In order to do that, I would probably use a subset of the Monte Carlo Tree Search algorithm, like the limited information set MCTS, since the 
+                    game offers imperfect information. I did not perfectly account for this however, so the Player Component would need some refactoring
+                    in order to blend the functionality between the players and the AI agents.
+                </p>
+            </div>
+
+            <p class="title3">More Polishing</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    The only other thing I would add to the game is more polishing, such as a main menu and a selection screen to choose the amount of points the
+                    game should last for. Other than that there is not much more to offer to the player for such a simplistic game. Other polishing features could 
+                    include perhaps being able to re-arange your cards in your hand, or the ability to change the card designs.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
