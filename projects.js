@@ -38,7 +38,7 @@ const projects = [
         title: 'Valorant Agent Tool',
         image: './assets/ValorantAgentCover.png',
         hoverImage: './assets/ValorantToolHover.gif',
-        tags: ['C#', 'WPF', 'API'],
+        tags: ['C#', 'WPF', 'API', 'XAML', 'MVVM'],
         link: 'https://github.com/AlexKougentakos/ValorantAgentTool' // where to go when clicked
       },
       {

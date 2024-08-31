@@ -110,28 +110,29 @@
             <div class="paragraph-container">
                 <p class="paragraph-center">
                     When I originally made this engine, it did not have any CMake support. So I had to go through the process of porting the engine to CMake.
-                    I mainly did that in order to be able to have support for Emscripten and be able to compile the engine to WebAssembly.
+                    This was a significant learning experience, as it allowed me to add support for Emscripten and compile the engine to WebAssembly.
                 </p>
             </div>
 
             <p class="title3">Web Assembly</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    As mentioned before, I wanted to be able to compile projects made with my engine to web assembly. I had never done any cross platform 
-                    development, so this was a great learning experience for me. I learned a lot about how to structure the project and account for any differences
-                    in compilers and platforms.
+                    One of my goals was to compile projects made with my engine to WebAssembly. This was my first foray
+                     into cross-platform development, so it proved to be a great learning experience on project structuring 
+                     and managing differences between compilers and platforms. 
 
                     <br/>
                     <br/>
                     In case you did not notice, at the top of this page you will find a card game I made with the engine, compiled to WebAssembly.
-                    If you are using a smaller screen, the game was replaced by a video, since it couldn't be displayed properly.
                     Though you might be confused if you don't know how the game is played.
+                    If you are using a smaller screen, the game was replaced by a video, since it couldn't be displayed properly.
                     <br/>
                     <br/>
 
-                    An example of this is my implementation of the Audio System. I had trouble with getting Jthreads to compile with Emscripten, so I decided
-                    to write a different sound manager for the Web and depending on the compilation flags, the engine would switch out the sound manager. This
-                    worked nicely, because I had already implemented a service provider pattern in the engine.
+                    A practical example of this cross-platform development is my implementation of the Audio System.
+                     I encountered challenges getting Jthreads to compile with Emscripten, so I wrote a different
+                      sound manager specifically for the web. The engine switches between sound managers based on
+                       compilation flags, thanks to the service provider pattern I had already integrated.
                 </p>
             </div>
 
@@ -158,12 +159,14 @@
             <p class="title3">AI Players</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    While programming the game, I tried to keep the authority of the game logic on a seperate class that the Scene just communicates information with
-                    that it mainly gets from the Player Components. The reason for this is that I plan on adding AI agents to the game.
+                    While programming the game, I ensured that the authority of the game logic resided in a separate class, 
+                    with the Scene merely communicating information primarily sourced from Player Components. 
+                    This setup was designed with the future addition of AI agents in mind
                     <br/>
-                    In order to do that, I would probably use a subset of the Monte Carlo Tree Search algorithm, like the limited information set MCTS, since the 
-                    game offers imperfect information. I did not perfectly account for this however, so the Player Component would need some refactoring
-                    in order to blend the functionality between the players and the AI agents.
+                    To implement AI, I would likely use a subset of the Monte Carlo Tree Search algorithm, 
+                    such as limited information set MCTS, given the imperfect information in the game. However,
+                     this wasn’t fully accounted for initially, so the Player Component would need refactoring to
+                      blend functionalities between human players and AI agents.
                 </p>
             </div>
 

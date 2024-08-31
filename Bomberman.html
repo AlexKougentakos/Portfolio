@@ -49,8 +49,9 @@
             <p class="title3">Working with an In-House Game Engine</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    This project started as a a University assignment, where I had to remake the classic Bomberman game using, a non-UI, in-house game engine.
-                    This way my first time working outside of any "Big" game engine like Unity or Unreal Engine, without any documentation or tutorials to follow.
+                    This project began as a university assignment where I had to recreate the classic Bomberman game using a
+                     custom, non-UI, in-house game engine. This was my first experience working outside of major engines
+                      like Unity or Unreal, without the luxury of extensive documentation or tutorials.
                     So if I didn't know how the engine behaved I had to go through the source code and understand it myself, or if a feature didn't exist (like UI support) I had
                     to implement it myself.
                 </p>
@@ -59,25 +60,30 @@
             <p class="title3">HLSL Shader Programming</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Though not very complicated, I had to write a shader for this project. I opted to write a simple vignette shader that would darken the edges of the screen.
-                    This tought me the very fundementals of working with the HLSL language.
+                    Although not overly complex, I had to write a shader for this project.
+                     I chose to create a simple vignette shader that darkened the screen edges. 
+                     This experience introduced me to the fundamentals of HLSL shader programming,
+                      providing a solid foundation for future graphics programming tasks.
                 </p>
             </div>
 
             <p class="title3">Working with Nvidia PhysX</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Most of the core features of Nvidia PhysX were already wrapped in the engine, but I did have to edit the game engine a little as well as go through a lot of the
-                    PhysX documentation in order to get certain things working, such as collision channels and limiting the movement of the player so they could not escape the map.
+                    While the core features of Nvidia PhysX were integrated into the engine, I still needed to make
+                     modifications to the engine and delve into PhysX documentation to get specific functionalities 
+                     working. For example, I had to configure collision channels and restrict the player’s movement 
+                     to prevent them from escaping the game map.
                 </p>
             </div>
 
             <p class="title3">Proper Code Structure</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Though this was not the purpose of this project, I did my best in keeping the code clean and organized. I made sure to seperate all the different systems
-                    that I used and wrote them to be as re-usable as possible. For example, I wrote a simple implementation of the Observer pattern in order 
-                    to communicate between the different systems, such as the Game Loop Manager, the UI Manager and the players.
+                    Although clean code wasn’t the main focus of this project, I made a point to keep my codebase
+                     organized and maintainable. I separated different systems and aimed for reusability.
+                      One example is my implementation of the Observer pattern, which enabled communication 
+                      between systems like the Game Loop Manager, UI Manager, and player controls.
                 </p>
             </div>
 
@@ -85,9 +91,9 @@
             <div class="paragraph-container">
                 <img src="./assets/ImGuiDebug.png" alt="Image" class="image-container image-left">
                 <p class="paragraph-left">
-                    The engine that I used had built in functionality for ImGui but not any tools. So I had to write my own debug tools in order to help me debug the game.
-                    I created some simple tools, like a character controller which allowed me to alter a character's stats, a free-flying camera and a map viewer.
-
+                    The engine provided built-in functionality for ImGui, but no pre-made tools. To aid in debugging,
+                     I developed my own tools, such as a character controller that allowed real-time stat adjustments, 
+                     a free-flying camera, and a map viewer
                     <br/>
                     <br/>
                     The map viewer was the most helpful, since I opted to create a grid component which was responsible for keeping track of all the game objects in the game.
@@ -105,24 +111,27 @@
             <p class="title3">AI Players</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Perhaps my favourite feature that I would like to work on is adding AI agents. I would probably use a a FSM or GOAP approach to make the AI agents
-                    and use the A* algorithm to navigate the map. When making the game, I did not account for this so I would also have to refactor a lot of the player class
-                    in order to share the proper functionality between the players and the AI agents.
+                    One feature I’m particularly interested in adding is AI-controlled players. I would likely use
+                     a Finite State Machine (FSM) or Goal-Oriented Action Planning (GOAP) approach to design the AI
+                      behavior, and employ the A* algorithm for pathfinding. Since the game wasn’t originally designed
+                       with AI in mind, I would need to refactor the player class to share necessary functionality 
+                       between human players and AI agents.
                 </p>
             </div>
 
             <p class="title3">More UI & Game Loop</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Currently, the only UI you can interact with is the main menu. I would like to add a pause menu and a settings menu.
-                    I would also like to add a game settings menu after you start the game so you can select things such as the map you would like, the amount of players, 
-                    the pickups you would like enabled etc.
+                    Currently, the only interactive UI is the main menu. I’d like to expand this by adding a game settings
+                     menu before starting a match. These additions would allow players to select options like map choice
+                     , number of players, and enabled pickups.
 
                     <br/>
                     <br/>
 
-                    This would also allow me to further improve the UI system I implemented, as the engine didn't have any support for it. I would like to wrap a lot of the
-                    features that you have to manually implement inside every UI element, such as the position and size of the elements.
+                    Enhancing the UI system would also give me an opportunity to refine the custom UI implementation I
+                     created, encapsulating features like element positioning and sizing, which currently need to be
+                    manually configured for each UI component.
                 </p>
             </div>
         </div>

@@ -50,7 +50,12 @@
             <div class="paragraph-container">
                 <img src="./assets/NetworkingImage.png" alt="Image" class="image-container image-left">
                 <p class="paragraph-left">
-                    The main reason I started developing this game was to learn how to implement multiplayer functionality in Unreal Engine 5. While developing this game I learnt a lot about replication, the listen server model and server-client architecture. What I found very interesting and challenging was figuring out when I had to use replication, whether I should use RPCs or replicated variables and how to minimize network traffic. Though I was never planning on releasing this game, I did my best to try to abide to keeping the server authoritative and the client as dumb as possible.
+                    The primary goal of developing this game was to deepen my understanding of multiplayer functionality in 
+                    Unreal Engine 5. Throughout the process, I gained valuable insights into replication, the listen server
+                     model, and server-client architecture. One of the most intriguing challenges was determining when to
+                      use replication, whether to rely on RPCs or replicated variables, and how to optimize network traffic. 
+                      Although I never intended to release this game, I aimed to maintain a server-authoritative architecture,
+                       keeping the client as simple as possible.
                 </p>
             </div>
 
@@ -58,21 +63,23 @@
             <div class="paragraph-container">
                 <p class="paragraph-center">
                     Another interesting concept I learned about was client side prediction. 
-                    This is a technique used to make the game feel more responsive to the player. 
-                    The idea is that the client predicts the outcome of the player's actions and then corrects itself if necessary when it receives the server's response. 
-                    Instances where this technique is applicable include anything that needs to be replicated but has to feel responsive for the player, without
-                    breaking the server's authority. Reloading a weapon is a good example of this, as you can update your HUD and correct it if necessary when the server responds.
+                    This technique enhances the game's responsiveness by allowing the client to predict the outcome of the
+                     player's actions, then adjusting if needed when the server responds. This approach is particularly
+                      effective for actions that must feel immediate to the player without compromising server authority.
+                       A practical example is weapon reloading, where the HUD updates instantly, correcting if necessary
+                        when the server confirms the action.
                 </p>
             </div>
 
             <p class="title3">Server Side Rewind</p>
             <div class="paragraph-container">
                 <p class="paragraph-right">
-                    Perhaps the most challenging, yet most interesting, concept I learned about was server side rewind. 
-                    This is a lag compensation technique used to make the game feel more responsive to the clients and also more fair. 
-                    I implemented this in the shooting mechanic of the game. 
-                    When a player shoots, if SSR is enabled for his weapon then the server will rewind the player's position to the time of the shot and then simulate the shot from its' perspective. 
-                    This way, the server can determine if the shot was a hit or a miss and then send the result back to the client.
+                    Perhaps the most challenging yet fascinating concept I explored was server-side rewind (SSR),
+                     a lag compensation technique that improves both responsiveness and fairness in the game.
+                      I implemented SSR in the shooting mechanics. When a player fires a shot, if SSR is enabled,
+                       the server rewinds the player's position to the moment of the shot and simulates the event 
+                       from its perspective. This allows the server to accurately determine whether the shot was a hit 
+                       or a miss before relaying the result back to the client.
                 </p>
                 <img src="./assets/SSR_Image.png" alt="Image" class="image-container image-right">
             </div>
@@ -82,8 +89,9 @@
                 <img src="./assets/AnimGraph.png" alt="Image" class="image-container image-left">
                 <p class="paragraph-left">
                     Since I could only use animations that I got from the Unreal Engine Marketplace, 
-                    I had to make the most out of them. I improved my understanding of the animation state machine and how to blend animations together.
-                    I also learned how to replicate animations, using already replicated player, since the animation instance is not replicated by default.
+                    I had to make the most out of them. This led to a deeper understanding of the animation state machine and how to blend animations together.
+                    I also learned how to replicate animations effectively, using the already replicated player
+                     model, since the animation instance itself isn’t replicated by default.
                 </p>
             </div>
         </div>
@@ -97,9 +105,10 @@
             <p class="title3">Anti Cheat Detection</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Another interesting concept I would like to get into is anti cheat detection.
-                    I would start by making sure that all the important game logic is server authoritative, because right now the client has authority over some things
-                    that can be exploited by memory address manipulation. For example the fire delay for the weapons is client sided.
+                    A fascinating area I’d like to explore further is anti-cheat detection. 
+                    My first step would be ensuring all critical game logic is server-authoritative, 
+                    as currently, some client-side authority could be exploited through memory address manipulation. 
+                    For instance, the fire delay for weapons is currently managed client-side, which could be vulnerable.
                 </p>
             </div>
 
@@ -107,23 +116,24 @@
             <div class="paragraph-container">
                 <p class="paragraph-center">
                     I would like to add a number of improvements regarding the networking.
-                    For example a lobby system where instead of clicking join and being put into a random game,
-                    you would see a list of all available lobbies, their players your ping to them, as well as the game mode and map.
+                    One idea is implementing a lobby system that allows players to browse available lobbies,
+                     view player counts, ping, game modes, and maps before joining,
+                    instead of being randomly assigned to a game
 
                     <br/>
                     <br/>
 
-                    A friend system would also be something interesting to research since it would require some sort of account system. Perhaps this could be done
-                    using the Steam API, which I have never used before.
+                    Another area of interest is developing a friend system, which would involve creating
+                    an account system, potentially integrating the Steam API—a tool I haven’t yet explored.
                 </p>
             </div>
 
             <p class="title3">More Game Modes</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Since the purpose of this project was to learn about networking, I didn't spend much time on the actual game but rather on the networking aspect of it,
-                    while also pursuing any interests I had in Unreal Engine that I didn't have the chance to explore yet.
-                    If I had the chance to continue working on this project, I would implement various game modes, such as team deathmatch, capture the flag, king of the hill, push the payload etc.
+                    Since the project's main focus was networking, I didn't dedicate much time to developing the actual gameplay.
+                     However, if I had the opportunity to continue, I would implement various game modes like team deathmatch,
+                      capture the flag, king of the hill, and push the payload to enhance the gaming experience.
                 </p>
             </div>
         </div>
