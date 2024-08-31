@@ -29,14 +29,14 @@ p
 }
 
 .go_back_text a {
-    color: #777; /* Lighter color */
-    text-decoration: none; /* Remove default underline */
-    transition: color 0.3s, text-decoration 0.3s; /* Smooth transition for hover effect */
+    color: #777;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
 }
 
 .go_back_text a:hover {
-    color: #444; /* Darker on hover for better contrast */
-    text-decoration: underline; /* Add underline on hover */
+    color: #444;
+    text-decoration: underline;
 }
 
 .title {
@@ -48,7 +48,7 @@ p
 
 .video-container {
     width: 100%;
-    max-width: 800px; /* Adjust this value as needed */
+    max-width: 800px;
     margin: 2rem auto 0;
 }
 .video {
@@ -58,7 +58,7 @@ p
     display: block;
 }
 
-  /* BUTTONS */
+/* BUTTONS */
 
 .btn-container
 {
@@ -86,10 +86,10 @@ p
 }
   
 .btn-icon {
-    height: 1.75em; /* Ensures the icon scales with the text size */
+    height: 1.75em;
     width: auto;
     margin-right: 8px;
-    transition: opacity 0.1s ease; /* Smooth transition for the hover effect */
+    transition: opacity 0.1s ease;
 }
 
 .default-icon 
@@ -97,13 +97,11 @@ p
     opacity: 1;
 }
 
-
 .btn-switch .hover-icon {
     opacity: 0;
     position: absolute;
     left: 0;
 }
-
 
 .btn-color-1, .btn-color-2
 {   
@@ -117,7 +115,6 @@ p
 .btn:hover .hover-icon {
     opacity: 1;
 }
-
 
 .btn-color-1:hover, .btn-color-2:hover
 {   
@@ -180,8 +177,8 @@ p
 .paragraph {
     margin-bottom: 1rem;
     text-align: center;
-    line-height: 1.6; /* Improves readability /
-    max-width: 800px; / Limits the width of the paragraph */
+    line-height: 1.6;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -223,9 +220,9 @@ p
 {
     flex: 0 0 350px;
     height: 250px;
-    background-color: #ccc; /* Placeholder color */
-    border-radius: 15px; /* Adds rounded corners */
-    overflow: hidden; /* Ensures the image doesn't overflow the rounded corners */
+    background-color: #ccc;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .image-left {
@@ -237,3 +234,26 @@ p
     margin-left: 1rem;
 }
 
+/* MOBILE STYLING */
+
+@media screen and (max-width: 768px) {
+
+    .paragraph-container {
+        flex-direction: column;
+        align-items: center; /* Center the images and paragraphs */
+    }
+
+    .image-left, .image-right {
+        order: 0;
+        margin: 0 0 1rem 0; /* Maintain margin below the image */
+        width: auto; /* Keep the fixed width */
+        height: auto; /* Keep the auto-adjusted height */
+        max-width: 100%; /* Prevent overflow of the image's width */
+        max-height: 250px; /* Limit the maximum height to a reasonable value */
+    }
+
+    .paragraph-left, .paragraph-right {
+        padding: 0;
+        text-align: center; /* Center the paragraph text */
+    }
+}
