@@ -15,8 +15,8 @@ const projects = [
       },
       {
         title: 'Bomberman Blast',
-        image: './assets/BombermanCover.png',
-        hoverImage: './assets/gif-test.gif',
+        image: './assets/BombermanCover.jpg',
+        hoverImage: './assets/BombermanHover.gif',
         tags: ['C++', 'Nvidia PhysX', 'HLSL', 'ImGui'],
         link: 'Bomberman.html' // where to go when clicked
       },
