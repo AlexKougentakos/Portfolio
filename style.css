@@ -363,10 +363,14 @@ section {
     display: flex;
     flex-direction: column;
     height: 330px; /* Adjust as needed */
+    position: relative; /* For absolute positioning inside */
+    overflow: hidden; /* Prevents overflow from child elements */
 }
 
 .color-container.hovered {
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(200, 200, 200); /* Darker background */
+    /* Alternatively, use a semi-transparent overlay for more depth */
+    /* background-color: rgba(0, 0, 0, 0.1); */
 }
 
 .article-container {
@@ -384,28 +388,34 @@ section {
     z-index: 1;
 }
 
-.project-img {
+.project-img, .project-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-    transform-origin: center center;
-}
-
-/* Style for the project video */
-.project-video {
+    transition: opacity 0.3s ease, transform 0.3s ease;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none; /* Hidden by default */
-    pointer-events: none; /* Allows clicks to pass through to the img */
+    transform-origin: center center;
+    pointer-events: none; /* Prevents capturing mouse events */
 }
 
-.article-container:hover .project-img {
-    transform: scale(1.05); /* The size scaling of the GIF not the hovered effect */
+.project-video {
+    opacity: 0;
+}
+
+.color-container.hovered .project-img {
+    opacity: 0;
+}
+
+.color-container.hovered .project-video {
+    opacity: 1;
+}
+
+
+.article-container:hover .project-img,
+.article-container:hover .project-video {
+    transform: scale(1.05); /* Smooth scaling on hover */
 }
 
 .project-title {
@@ -430,7 +440,6 @@ section {
     border-radius: 5px;
     font-size: 0.8rem;
     white-space: nowrap;
-    color: white
 }
 
 @media (max-width: 1200px) {
@@ -446,6 +455,7 @@ section {
         max-width: 100%;
     }
 }
+
 /* CONTACT */
 
 #contact {

@@ -9,14 +9,14 @@ const projects = [
   {
     title: 'Tidal Treasure Clash',
     image: './assets/TidalTreasureClashCover.png',
-    hoverImage: './assets/TidalTreasureClash.gif',
+    hoverImage: './assets/TidalTreasureClashHover.webm',
     tags: ['C++', 'UE5.2'],
     link: 'https://jaymalik.itch.io/tidal-treasure-clash' // where to go when clicked
   },
   {
     title: 'Bomberman Blast',
     image: './assets/BombermanCover.jpg',
-    hoverImage: './assets/BombermanHover.gif',
+    hoverImage: './assets/BombermanCover.webm',
     tags: ['C++', 'Nvidia PhysX', 'HLSL', 'ImGui'],
     link: 'Bomberman.html' // where to go when clicked
   },
@@ -58,71 +58,62 @@ const projects = [
   // Add more projects here
 ];
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const projectsContainer = document.getElementById('projectsContainer');
-    const projectTemplate = document.getElementById('projectTemplate').content;
+document.addEventListener('DOMContentLoaded', () => {
+  const projectsContainer = document.getElementById('projectsContainer');
+  const projectTemplate = document.getElementById('projectTemplate').content;
 
-    projects.forEach(project => {
-        const projectClone = document.importNode(projectTemplate, true);
+  projects.forEach(project => {
+    const projectClone = document.importNode(projectTemplate, true);
 
-        const projectImg = projectClone.querySelector('.project-img');
-        const projectVideo = projectClone.querySelector('.project-video');
-        const colorContainer = projectClone.querySelector('.color-container');
-        const articleContainer = projectClone.querySelector('.article-container');
+    const projectImg = projectClone.querySelector('.project-img');
+    const projectVideo = projectClone.querySelector('.project-video');
+    const colorContainer = projectClone.querySelector('.color-container');
 
-        // Set image source
-        projectImg.src = project.image;
-        projectImg.alt = `${project.title} Cover Image`;
+    // Set image and video sources
+    projectImg.src = project.image;
+    projectVideo.src = project.hoverImage;
 
-        // Set video source
-        projectVideo.src = project.hoverImage;
-        projectVideo.alt = `${project.title} Hover Video`;
+    // Set alt attribute for accessibility
+    projectImg.alt = `${project.title} Cover Image`;
+    projectVideo.alt = `${project.title} Hover Video`;
 
-        // Set project title
-        projectClone.querySelector('.project-title').textContent = project.title;
+    // Populate project title
+    projectClone.querySelector('.project-title').textContent = project.title;
 
-        // Insert tags
-        const tagContainer = projectClone.querySelector('.tag-container');
-        project.tags.forEach(tag => {
-            const span = document.createElement('span');
-            span.className = 'project-tag';
-            span.textContent = tag;
-            tagContainer.appendChild(span);
-        });
-
-        // **Hover effects: Show video on hover over the image only**
-        projectImg.addEventListener('mouseenter', () => {
-            projectImg.style.opacity = '0';
-            projectVideo.style.display = 'block';
-            projectVideo.play();
-            // Optionally, add 'hovered' class to colorContainer if needed for additional styling
-            colorContainer.classList.add('hovered');
-        });
-
-        projectImg.addEventListener('mouseleave', () => {
-            projectImg.style.opacity = '1';
-            projectVideo.style.display = 'none';
-            projectVideo.pause();
-            projectVideo.currentTime = 0; // Reset video to start
-            colorContainer.classList.remove('hovered');
-        });
-
-        // **Click event to navigate to project link**
-        // Attach the click event to the articleContainer to make the entire image and video clickable
-        articleContainer.style.cursor = 'pointer'; // Indicate clickable
-
-        // Combine both image and video elements for clickability
-        articleContainer.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent event from bubbling up to parent elements
-            if (project.link.endsWith('.html')) {
-                // Open in the same window
-                window.location.href = project.link;
-            } else {
-                // Open in a new window
-                window.open(project.link, '_blank');
-            }
-        });
-
-        projectsContainer.appendChild(projectClone);
+    // Populate project tags
+    const tagContainer = projectClone.querySelector('.tag-container');
+    project.tags.forEach(tag => {
+      const span = document.createElement('span');
+      span.className = 'project-tag';
+      span.textContent = tag;
+      tagContainer.appendChild(span);
     });
+
+    // Handle hover events
+    colorContainer.addEventListener('mouseenter', () => {
+      colorContainer.classList.add('hovered');
+      projectVideo.play();
+    });
+
+    colorContainer.addEventListener('mouseleave', () => {
+      colorContainer.classList.remove('hovered');
+      projectVideo.pause();
+      projectVideo.currentTime = 0;
+    });
+
+    // Handle click events
+    colorContainer.style.cursor = 'pointer'; // Indicate clickable
+    colorContainer.onclick = (event) => {
+      event.stopPropagation(); // Prevent event from bubbling up to parent elements
+      if (project.link.endsWith('.html')) {
+        // Open in the same window
+        window.location.href = project.link;
+      } else {
+        // Open in a new window
+        window.open(project.link, '_blank');
+      }
+    };
+
+    projectsContainer.appendChild(projectClone);
+  });
 });
