@@ -392,6 +392,18 @@ section {
     transform-origin: center center;
 }
 
+/* Style for the project video */
+.project-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none; /* Hidden by default */
+    pointer-events: none; /* Allows clicks to pass through to the img */
+}
+
 .article-container:hover .project-img {
     transform: scale(1.05); /* The size scaling of the GIF not the hovered effect */
 }
@@ -418,6 +430,7 @@ section {
     border-radius: 5px;
     font-size: 0.8rem;
     white-space: nowrap;
+    color: white
 }
 
 @media (max-width: 1200px) {
