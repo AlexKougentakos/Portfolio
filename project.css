@@ -10,6 +10,8 @@
 body 
 {
     font-family: 'Poppins', 'sans-serif';
+    background-color: #141619;
+    color: white;
 }
 
 html
@@ -19,11 +21,12 @@ html
 
 p
 {
-    color: rgb(85, 85, 85);
+    color: rgb(200, 200, 200);
 }
 
 /* TITLE */
 .go_back_text {
+    margin-top: 2rem;
     text-align: center;
     font-size: 1.5rem;
 }
@@ -35,7 +38,7 @@ p
 }
 
 .go_back_text a:hover {
-    color: #444;
+    color: #ff0c34;
     text-decoration: underline;
 }
 
@@ -50,12 +53,13 @@ p
     width: 100%;
     max-width: 800px;
     margin: 2rem auto 0;
+    border-radius: .5rem;
 }
 .video {
     width: 100%;
-    height: auto;
-    border-radius: 15px;
+    height: auto;    
     display: block;
+    border-radius: .5rem;
 }
 
 /* BUTTONS */
@@ -76,19 +80,26 @@ p
     width: 14rem;
     height: 3.5rem;
     border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: .89rem; /* Increased font size */
 }
 
 .btn-content 
 {
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: center;
+    width: 100%;
 }
   
 .btn-icon {
-    height: 1.75em;
+    height: 2em; /* Increased icon size */
     width: auto;
-    margin-right: 8px;
+    position: absolute;
+    left: 1rem;
     transition: opacity 0.1s ease;
 }
 
@@ -105,41 +116,32 @@ p
 
 .btn-color-1, .btn-color-2
 {   
-    border: rgb(53, 53, 53) 0.1rem solid;
-}
-
-.btn:hover .default-icon {
-    opacity: 0;
-}
-
-.btn:hover .hover-icon {
-    opacity: 1;
+    border: none;
+    background-color: #ff0c34;
+    color: white;
+    transition: all 0.3s ease;
 }
 
 .btn-color-1:hover, .btn-color-2:hover
 {   
     cursor: pointer;
+    transform: scale(1.05);
 }
 
 .btn-color-1, .btn-color-2:hover
 {   
-    background: rgb(53, 53, 53);
+    background-color: #ff0c34;
     color: white;
 }
 
 .btn-color-1:hover
 {
-    background-color: rgb(0, 0, 0);
+    background-color: #ff0c34;
 }
 
 .btn-color-2
 {
-    background: none;   
-}
-
-.btn-color-2:hover
-{
-    border: rgb(255, 255, 255) 0.1rem solid;
+    color: white;
 }
 
 .btn-container
@@ -151,16 +153,19 @@ p
 
 .title2-header
 {
-    margin-top: 5rem;
-    margin-bottom: -5px;
+    margin-top: 4rem;
+    margin-bottom: -15px;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    color: rgb(200, 200, 200);
 }
 
 .title2
 {
     font-size: 3rem;
     text-align: center;
+    color: white;
+    margin-bottom: 2.5rem;
 }
 
 .title3
@@ -170,6 +175,7 @@ p
     text-align: center;
     font-weight: bold;
     font-size: 1.4em;
+    color: #2c8dee;
 }
 
 /* PARAGRAPHS */
@@ -181,6 +187,7 @@ p
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    color: rgb(200, 200, 200);
 }
 
 .section-content {
@@ -192,18 +199,19 @@ p
 {
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .paragraph-left, .paragraph-right, .paragraph-center
 {
     flex: 1;
     line-height: 1.6;
+    color: rgb(200, 200, 200);
 }
 
 .paragraph-center 
 {
-    text-align: center;
+    text-align: left;
 }
 
 .paragraph-left 
@@ -220,7 +228,7 @@ p
 {
     flex: 0 0 350px;
     height: 250px;
-    background-color: #ccc;
+    background-color: #333;
     border-radius: 15px;
     overflow: hidden;
 }

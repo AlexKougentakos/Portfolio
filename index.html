@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Alexandros Kougentakos - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
 </head>
 <body>
     <nav id="desktop-nav">
         <div class="logo"><span id="logo-animation"></span></div>
         <div>
             <ul class="nav-links">
-              <li><a href="#projects">Projects</a></li>
+              <li><a href="#projects" id="projects-link" class="breathing">
+                  <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span>
+              </a></li>
                  <li><a href="#about">About</a></li>
-                 <!-- Uncomment later <li><a href="#Experiece">About</a></li>-->
             </ul>
         </div>
     </nav>
@@ -26,102 +28,162 @@
                 <span></span>
                 <span></span>
                 <span></span>
+                <div class="notification-dot"></div>
             </div>
             <div class="menu-links">
-              <!-- Uncomment later <li><a href="#Experiece" onclick="toggleMenu()">About</a></li>-->
-              <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+              <li><a href="#projects" id="projects-link-mobile" class="breathing" onclick="toggleMenu()">
+                  <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span>
+              </a></li>
               <li><a href="#about" onclick="toggleMenu()">About</a></li>
             </div>
         </div>
     </nav>
 
     <section id="profile">
-        <div class="section__pic-container">
+        <div class="section__pic-container" onclick="scrollToAbout()">
             <img src="./assets/profile-pic.png" alt="Alexandros Kougentakos profile picture">
         </div>
-
         <div class ="section__text">
-            <p class="section__text__p1">Hello I'm </p>
-            <h1 class="title">Alexandros</h1>
-            <p class="section__text__p2">Game Developer</p>    
-
-            <div class="btn-container">
-                <!-- <button 
-                    class="btn btn-color-2" 
-                    onclick="window.open('./assets/akougentakosCV.pdf')">Download CV
-                </button> -->
-                <!-- <button 
-                    class="btn btn-color-1" 
-                    onclick="location.href='#contact'">Contact Me
-                </button> -->
+            <p class="section__text__p1_profile" style="margin-bottom: -.95rem; color: #ff1234">Hey there! I'm </p>
+            <h1 class="title">Alexandros,</h1>
+            <p class="section__text__p2" style="color: #0a66c2">Game Developer</p>
+            <div class="education-container">
+                <p>
+                  BSc. Game Development @ <a href="https://www.therookies.co/schools/howest-university-of-applied-sciences-digital-arts-and-entertainment" style="text-decoration: underline;">Howest DAE, Belgium</a><img src="./assets/education.png" alt="Education icon" class="icon" />
+                </p>
             </div>
-              <img id="socials-container">
-                <img 
-                  src="./assets/linkedin.png" 
-                  alt="My LinkedIn profile" 
-                  class="icon" 
-                  onclick="window.open('https://www.linkedin.com/in/alexandros-kougentakos', '_blank')"
-                />
-              
-              <img 
-                  src="./assets/github.png" 
-                  alt="My GitHub profile" 
-                  class="icon" 
-                  onclick="window.open('https://github.com/AlexKougentakos', '_blank')"
-                />
-
-                <img 
-                src="./assets/email.png" 
-                alt="My email address" 
-                class="icon" 
-                onclick="window.location.href='mailto:alexkougedakos@gmail.com'"
-              />
-              
+            
+            <div id="socials-container">
+                <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon" onclick="window.open('https://www.linkedin.com/in/alexandros-kougentakos', '_blank')" />
+                <img src="./assets/github.png" alt="My GitHub profile" class="icon" onclick="window.open('https://github.com/AlexKougentakos', '_blank')" />
+                <img src="./assets/email.png" alt="My email address" class="icon" onclick="window.location.href='mailto:alexkougedakos@gmail.com'" />
             </div>
         </div>
-
     </section>
 
     <section id="projects" style="height: 100%;">
-      <p class="section__text__p1">Browse My Favourite</p>
-      <h1 class="title">Projects</h1>
-      <div class="projects-container" id="projectsContainer"></div>
-    </section>
-  
-    <template id="projectTemplate">
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <!-- Image Element -->
-              <img
-                src=""
-                alt="Project Image"
-                class="project-img default-img"
-              />
-              <!-- Video Element -->
-              <video
-                src=""
-                class="project-video"
-                loop
-                muted
-                playsinline
-                preload="metadata"
-              ></video>
-            </div>
-            <h2 class="experience-sub-title project-title"></h2>
-            <div class="tag-container">
-              <!-- Tags will be inserted here -->
-            </div>
+      <p class="section__text__p1">▼ Browse My Favourite ▼</p>
+      <h1 class="title" style="margin-bottom: 2rem; margin-top: -.95rem;">Projects</h1>
+      <div class="projects-container">
+        
+        <!-- Multiplayer Shooter -->
+        <div class="details-container color-container" data-link="MultiplayerShooter.html">
+          <div class="article-container">
+            <img src="./assets/MultiplayerShooterCover.png" alt="Multiplayer Shooter Cover Image" class="project-img">
+            <video src="./assets/MultiplayerShooterDemo.webm#t=42" class="project-video" loop muted playsinline preload="metadata"></video>
+            <h2 class="experience-sub-title project-title">Multiplayer Shooter</h2>
+          </div>
+          <div class="tag-container">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">Unreal Engine 5</span>
+            <span class="project-tag">Replication</span>
+            <span class="project-tag">Steam Networking</span>
+          </div>
+        </div>
+
+        <!-- Tidal Treasure Clash -->
+        <div class="details-container color-container" data-link="https://jaymalik.itch.io/tidal-treasure-clash">
+          <div class="article-container">
+            <img src="./assets/TidalTreasureClashCover.png" alt="Tidal Treasure Clash Cover Image" class="project-img">
+            <video src="./assets/TidalTreasureClashHover.webm" class="project-video" loop muted playsinline preload="metadata"></video>
+            <h2 class="experience-sub-title project-title">Tidal Treasure Clash</h2>
+          </div>
+          <div class="tag-container">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">Unreal Engine 5</span>
+          </div>
+        </div>
+
+        <!-- Bomberman Blast -->
+        <div class="details-container color-container" data-link="Bomberman.html">
+          <div class="article-container">
+            <img src="./assets/BombermanCover.jpg" alt="Bomberman Blast Cover Image" class="project-img">
+            <video src="./assets/BombermanCover.webm#t=5" class="project-video" loop muted playsinline preload="metadata"></video>
+            <h2 class="experience-sub-title project-title">Bomberman Blast (Remake)</h2>
+          </div>
+          <div class="tag-container">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">DirectX 11</span>
+            <span class="project-tag">Nvidia PhysX</span>
+            <span class="project-tag">HLSL</span>
+            <span class="project-tag">ImGui</span>
+          </div>
+        </div>
+
+        <!-- Card Game with Custom Engine -->
+        <div class="details-container color-container" data-link="./OdysseyTichu/Tichu.html">
+          <div class="article-container">
+            <img src="./assets/TichuCover.png" alt="Card Game Cover Image" class="project-img">
+            <video src="./assets/TichuDemo.webm#t=18" class="project-video" loop muted playsinline preload="metadata"></video>
+            <h2 class="experience-sub-title project-title">Card Game with Custom Engine</h2>
+          </div>
+          <div class="tag-container">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">SDL2</span>
+            <span class="project-tag">WebAssembly</span>
+            <span class="project-tag">Engine Development</span>
+          </div>
+        </div>
+
+        <!-- Procedural Dungeon Generator -->
+        <div class="details-container color-container" data-link="ProceduralDungeonGenerator.html">
+          <div class="article-container">
+            <img src="./assets/project-1.png" alt="Procedural Dungeon Generator Cover Image" class="project-img">
+            <video src="./assets/Demo.webm" class="project-video" loop muted playsinline preload="metadata"></video>
+            <h2 class="experience-sub-title project-title">Procedural Dungeon Generator</h2>
+          </div>
+          <div class="tag-container">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">SDL2</span>
+          </div>
+        </div>
+
+        <!-- Valorant Agent Tool -->
+        <div class="details-container color-container" data-link="https://github.com/AlexKougentakos/ValorantAgentTool">
+          <div class="article-container">
+            <img src="./assets/ValorantAgentCover.png" alt="Valorant Agent Tool Cover Image" class="project-img">
+            <video src="./assets/ValorantHover.webm" class="project-video" loop muted playsinline preload="metadata"></video>
+            <h2 class="experience-sub-title project-title">Valorant Agent Tool</h2>
+          </div>
+          <div class="tag-container">
+            <span class="project-tag">C#</span>
+            <span class="project-tag">XAML</span>
+            <span class="project-tag">Valorant-API</span>
+            <span class="project-tag">Model–view–viewmodel</span>
+          </div>
+        </div>
+
+        <!-- Hardware & Software Rasterizer -->
+        <div class="details-container color-container" data-link="https://github.com/AlexKougentakos/Software-Hardware-Hybrid-Rasterizer">
+          <div class="article-container">
+            <img src="./assets/DualRasterizer_DirectX.png" alt="Hardware/Software Rasterizer Cover Image" class="project-img">
+            <video src="./assets/RasterizerHover.webm" class="project-video" loop muted playsinline preload="metadata"></video>
+            <h2 class="experience-sub-title project-title">Hardware/Software Rasterizer</h2>
+          </div>
+          <div class="tag-container">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">DirectX11</span>
+          </div>
+        </div>
+
+        <!-- Software Raytracer -->
+        <div class="details-container color-container" data-link="https://github.com/AlexKougentakos/RaytracerSoftware">
+          <div class="article-container">
+            <img src="./assets/RayTracerCover.png" alt="Software Raytracer Cover Image" class="project-img">
+            <video src="./assets/RayTracer.webm" class="project-video" loop muted playsinline preload="metadata"></video>
+            <h2 class="experience-sub-title project-title">Software Raytracer</h2>
+          </div>
+          <div class="tag-container">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">SDL2</span>
           </div>
         </div>
       </div>
-    </template>
-    
+    </section>
     
     <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
+      <p class="section__text__p1">▼ Get To Know More ▼</p>
+      <h1 class="title" style="margin-bottom: 2rem; margin-top: -.95rem">About Me</h1>
       <div class="section-container">
         <div class="section__pic-container">
           <img
@@ -132,35 +194,18 @@
         </div>
         <div class="about-details-container">
           <div class="about-containers">
-            <!-- <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>2+ years <br />Frontend Development</p>
-            </div> UNCOMMENT WHEN NEEDED-->
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Sc. in Game Development at Howest, BE</p>
-            </div>
+            <!-- Remove the education section from here -->
           </div>
           <div class="text-container">
             <p>
-              Hey there! I'm Alexandros, a game developer currently based in Belgium but always keen to move! <br />
+              Hey there! <b style="color: white;">I'm Alexandros, a <img src="./assets/dutch_flag.png" alt="Dutch flag" class="flag-icon"/> / <img src="./assets/greek_flag.png" alt="Greek flag" class="flag-icon"/> Game Developer currently based in <img src="./assets/belgium_flag.png" alt="Belgian flag" class="flag-icon"/></b>, but always keen to move for my next job!<br />
               <br />
-              I fell in love with games during my childhood and the more I played them, the more I wondered
-              how they where created. This curiosity led me to study game development at Howest, where I learned
-              the ins and outs of game development and had the opportunity to work on some amazing projects. <br />
-              <br />
-              I specialize in gameplay programming and AI in games, but I also enjoy other aspects of game 
-              programming such as engine deveopment.
+              I specialize in <b style="color: white;">Gameplay & A.I Programming</b>, but I also enjoy more technical aspects of game 
+              development such as <b style="color: white;">Engine Development.</b>
+              <br /><br />
+              I fell in love with games during my childhood, the more I played them, the more I wondered
+              how they worked. This curiosity led me to pursue an education in Game Development, where I learned
+              the ins and outs of making games and had the opportunity to work with some amazing people.
             </p>
           </div>
         </div>
@@ -168,9 +213,8 @@
     </section>
 
       <footer>
-        <p>Copyright &#169; 2024 Alexandros Kougentakos. All Rights Reserved.</p>
+        <p style="font-size: .8rem; margin-bottom: 2rem; opacity: .75">Copyright &#169; 2024 Alexandros Kougentakos. All Rights Reserved.</p>
       </footer>
     <script src="script.js"></script>
-    <script src="projects.js"></script>
 </body>
 </html>

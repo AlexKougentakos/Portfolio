@@ -2,7 +2,7 @@ const projects = [
   {
     title: 'Multiplayer Shooter',
     image: './assets/MultiplayerShooterCover.png',
-    hoverImage: './assets/MultiplayerShooterDemo.webm', // Updated to webm
+    hoverImage: './assets/MultiplayerShooterHover.webm', // Updated to webm
     tags: ['C++', 'UE5.3', 'Replication'],
     link: 'MultiplayerShooter.html' // where to go when clicked
   },
