@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function typeLogo(logoSpan) {
         const logoText = [
-            "Alexandros,",
-            "Kougentakos.",
+            "Alexandros",
+            "Kougentakos",
             "✓ C++",
             "✓ Unreal Engine 5",
             "✓ Replication",
@@ -30,17 +30,13 @@ document.addEventListener("DOMContentLoaded", function() {
             "✓ DirectX 11",
             "✓ Vulkan",
             "✓ Nvidia PhysX",
-            "✓ HLSL",
             "✓ ImGui",
             "✓ SDL2",
             "✓ WebAssembly",
             "✓ Engine Development",
-            "✓ Gameplay Programming",
             "✓ A.I Programming",
             "✓ C#",
             "✓ XAML",
-            "✓ Valorant-API",
-            "✓ Model–view–viewmodel"
         ];
         let currentText = "";
         let letterIndex = 0;
