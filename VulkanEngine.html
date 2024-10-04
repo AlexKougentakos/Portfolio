@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iliad - Vulkan Game Engine</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+</head>
+<body>
+  <div id="projects" style="height: 100%;">
+    <p class="go_back_text">
+        <a href="index.html#projects">< Back to Portfolio</a>
+    </p>
+    <h1 class="title">Iliad - Vulkan Game Engine (WIP)</h1>
+</div>
+    <div class="video-container" style="border: 2px solid; border-color: #293341; margin-bottom: 2.5rem;">
+        <video class="video" width="960" height="540" controls autoplay muted loop>
+          <source src="./assets/VulkanEngineCover.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+
+      <div class="btn-container">
+        <!-- <button 
+            class="btn btn-color-2 btn-switch" 
+            onclick="window.open('https://github.com/AlexKougentakos/UE5-MultiplayerShooter/releases/download/Release/Multiplayer-Shooter-Game-v1.0.0.zip')">
+          <span class="btn-content">
+            <img src="./assets/download-white.png" alt="Icon" class="btn-icon default-icon">
+            Download Build
+          </span>
+        </button> -->
+        <button 
+            class="btn btn-color-1" 
+            onclick="window.open('https://github.com/AlexKougentakos/IliadEngine-Vulkan', '_blank')">
+          <span class="btn-content">
+            <img src="./assets/github.png" alt="Icon" class="btn-icon">
+            Github Link
+          </span>
+        </button>
+      </div>
+      
+      <section>
+        <div class="section-content">
+            <p class="title2-header">What I have</p>
+            <h1 class="title2">Learned</h1>
+
+            <p class="title3">Engine Architecture and Design Patterns</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Developing the Vulkan engine from scratch deepened my understanding of engine architecture. I implemented an Entity-Component-System 
+                    (ECS) design, which promotes flexibility and scalability by allowing game objects to be composed of reusable components. 
+                    This approach enhances maintainability and facilitates the addition of new features without significant restructuring.
+                </p>
+            </div>
+
+            <p class="title3">Vulkan API</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Working directly with the Vulkan API provided me with in-depth knowledge of low-level graphics programming. I deepend my understanding
+                    of the graphics pipeline. I gained hands-on experience with pipeline creation, memory management, descriptor sets, and 
+                    synchronization primitives.
+                </p>
+            </div>
+
+            <p class="title3">CMake Automations</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Managing the build process with CMake was a crucial aspect of the project. I gained experience in writing complex CMake scripts, 
+                    including custom configurations that automate the organization of project files. By creating a script that dynamically 
+                    generates Visual Studio filters based on folder structures, I reduced IDE clutter and improved navigation efficiency.
+
+                    <br/>
+                    <br/>
+
+                    Using CMake I also connected a custom shader compiler .bat file that automatically compiles all the shader files during the build time.
+
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-content">
+            <p class="title2-header">What I would</p>
+            <h1 class="title2">Like to Add</h1>
+
+            <p class="title3">PBR Support</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    I already have support for basic textures, so the next step would be to add support for Physical Based Rendering, which includes not only the
+                    albedo but also normal, roughness, metalic and ambient occlusion maps.
+                </p>
+            </div>
+
+            <p class="title3">ImGui Implementation</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Even though I wanted to keep this as a non-UI based engine, I do want to add basic ImGui support so that you can more easily debug
+                    issues during run time and display important information. But I don't plan on making an entire scene hierarchy and viewport for the engine.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
