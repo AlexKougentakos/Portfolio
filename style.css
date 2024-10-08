@@ -276,6 +276,31 @@ section {
     }
 }
 
+/* CV Button Styling */
+.btn-cv {
+    background-color: #ff1234; /* Same red as the text above */
+    color: white;
+    border: none;
+    border-radius: 2rem; /* Rounded corners */
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    display: inline-block;
+    transition: transform 300ms ease, background-color 300ms ease;
+    cursor: pointer;
+}
+
+.btn-cv:hover {
+    transform: scale(1.05); /* Slightly larger on hover */
+    background-color: #ff1234; /* Maintain the same background color */
+    color: white; /* Maintain white text color */
+    text-decoration: none; /* Ensure no underline */
+}
+
+
+
 .section__text__p2 {
     font-size: 1.75rem;
     margin-top: -1rem;
