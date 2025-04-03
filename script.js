@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const logoText = [
             "Alexandros",
             "Kougentakos",
-            "✓ C++",
+/*             "✓ C++",
             "✓ Unreal Engine 5",
             "✓ Replication",
             "✓ Steam Networking",
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "✓ Engine Development",
             "✓ A.I Programming",
             "✓ C#",
-            "✓ XAML",
+            "✓ XAML", */
         ];
         let currentText = "";
         let letterIndex = 0;

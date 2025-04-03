@@ -748,3 +748,146 @@ footer p {
 .rgb-glow span:nth-child(5n) {
     animation-delay: 0.4s;
 }
+
+/* EXPERIENCE SECTION */
+
+#experience {
+    position: relative;
+    margin-top: 10vh; /* Add some space above the experience section */
+    padding-bottom: 10vh; /* Add space for the arrow */
+    height: fit-content; /* Adjust height based on content */
+}
+
+.experience-details-container {
+    margin-top: 2rem;
+}
+
+/* Re-use about-containers for layout */
+#experience .about-containers {
+    display: flex;
+    flex-direction: column; /* Stack experience vertically */
+    align-items: center; /* Center cards horizontally */
+    gap: 2rem;
+}
+
+.experience-card {
+    background: #1a1a1a; /* Darker background for cards */
+    padding: 1.5rem;
+    text-align: left;
+    width: 80%; /* Control card width */
+    max-width: 700px; /* Max width for larger screens */
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Needed for potential absolute positioning inside */
+    /* Apply the same clip-path as project images */
+    clip-path: polygon(
+        27.5px 0,
+        100% 0,
+        100% calc(100% - 55px),
+        calc(100% - 55px) 100%,
+        0 100%,
+        0 27.5px
+    );
+    /* Remove regular border as it won't follow clip-path */
+    border: none;
+}
+
+/* Add pseudo-element for border that follows clip-path */
+.experience-card::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: rgb(100, 100, 100); /* Border color */
+    z-index: -1;
+    clip-path: polygon(
+        27.5px 0,
+        100% 0,
+        100% calc(100% - 61px),
+        calc(100% - 61px) 100%,
+        0 100%,
+        0 27.5px
+    );
+    transition: background-color 0.3s ease;
+}
+
+.experience-card::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: #1a1a1a; /* Same as card background */
+    z-index: -1;
+    clip-path: polygon(
+        calc(27.5px - 2px) 0,
+        100% 0,
+        100% calc(100% - 55px - 1px),
+        calc(100% - 55px - 1px) 100%,
+        0 100%,
+        0 calc(27.5px - 2px)
+    );
+}
+
+.experience-card:hover {
+    transform: translateY(-5px); /* Lift card slightly on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+/* Update border color on hover */
+.experience-card:hover::before {
+    background: rgb(150, 150, 150); /* Lighter border on hover */
+}
+
+.experience-card .article-container {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    gap: 0.8rem; /* Space between elements */
+    padding-top: 0; /* Override default article padding */
+    clip-path: none; /* Remove clip-path from projects */
+}
+
+.experience-icon {
+    position: absolute; /* Position icon */
+    /* Adjust position to be safely inside the card */
+    top: -1rem;
+    right: -1.25rem;
+    height: 7.5rem; /* Adjust size as needed */
+    opacity: 0.7;
+}
+
+.experience-card h3 {
+    color: white; /* White title */
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.experience-sub-title {
+    color: rgb(200, 200, 200);
+    font-weight: 600;
+    margin-bottom: 0.5rem; /* Space below company/date */
+}
+
+.experience-card p {
+    color: rgb(180, 180, 180); /* Slightly lighter paragraph text */
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Arrow icon specific to experience section */
+#experience .arrow {
+    position: absolute;
+    bottom: 2rem; /* Position arrow at the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Center the arrow */
+    height: 2.5rem; /* Adjust size if needed */
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+#experience .arrow:hover {
+    opacity: 1; /* Make arrow fully visible on hover */
+}
