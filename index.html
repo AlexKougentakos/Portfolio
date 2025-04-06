@@ -73,57 +73,21 @@
 
     <section id="experience">
       <p class="section__text__p1">▼ My Professional Journey ▼</p>
-      <h1 class="title" style="margin-top: -.95rem;">Experience</h1>
+      <h1 class="title" style=" margin-top: -.95rem;">Experience</h1>
       <div class="experience-details-container">
-        <div class="timeline-container">
-          <!-- Timeline line -->
-          <div class="timeline-line"></div>
-          
-          <!-- Right side entry -->
-          <div class="timeline-item timeline-right">
-            <div class="details-container experience-card">
-              <div class="article-container">
-                <img
-                  src="./assets/Triumph.png"
-                  alt="Experience icon"
-                  class="icon experience-icon"
-                />
-                <h3>Gameplay Programmer</h3>
-                <p class="experience-sub-title">Internship<br />February 2025 - June 2025</p>
-                <p>Contributed to Age Of Wonders 4 DLC using Triumph's proprietery engine.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Left side entry -->
-          <div class="timeline-item timeline-left">
-            <div class="details-container experience-card">
-              <div class="article-container">
-                <img
-                  src="./assets/Triumph.png"
-                  alt="Experience icon"
-                  class="icon experience-icon"
-                />
-                <h3>Gameplay Programmer</h3>
-                <p class="experience-sub-title">Internship<br />February 2025 - June 2025</p>
-                <p>Contributed to Age Of Wonders 4 DLC using Triumph's proprietery engine.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right side entry -->
-          <div class="timeline-item timeline-right">
-            <div class="details-container experience-card">
-              <div class="article-container">
-                <img
-                  src="./assets/Triumph.png"
-                  alt="Experience icon"
-                  class="icon experience-icon"
-                />
-                <h3>Gameplay Programmer</h3>
-                <p class="experience-sub-title">Internship<br />February 2025 - June 2025</p>
-                <p>Contributed to Age Of Wonders 4 DLC using Triumph's proprietery engine.</p>
-              </div>
+        <div class="about-containers">
+          <!-- Internship Entry -->
+          <div class="details-container experience-card">
+            <div class="article-container">
+               <img
+                src="./assets/Triumph.png"
+                alt="Experience icon"
+                class="icon experience-icon"
+              />
+              <h3>Gameplay Programmer</h3>
+              <p class="experience-sub-title">Internship<br /> February 2025 - June 2025</p>
+              <p>Contributed to Age Of Wonders 4 DLC using Triumph's proprietery engine.
+              </p>
             </div>
           </div>
         </div>
@@ -133,10 +97,41 @@
     <section id="projects" style="height: 100%; margin-top: -3rem;">
       <p class="section__text__p1">▼ Browse My Favourite ▼</p>
       <h1 class="title" style="margin-bottom: 2rem; margin-top: -.95rem;">Projects</h1>
+      
+      <!-- Filter Section -->
+      <div class="project-filters">
+        <select id="filter-language" class="filter-select">
+          <option value="all">All Languages</option>
+          <!-- Options will be populated by JS -->
+        </select>
+        <select id="filter-engine-library" class="filter-select">
+          <option value="all">All Engines/Libraries</option>
+          <!-- Options will be populated by JS -->
+        </select>
+        <select id="filter-type" class="filter-select">
+          <option value="all">All Types</option>
+          <option value="Personal">Personal</option>
+          <option value="School">School</option>
+          <!-- Add more types if needed -->
+        </select>
+        <div id="filter-tags-multiselect" class="multiselect-container">
+            <button class="multiselect-button">All Tags</button>
+            <div class="multiselect-options">
+                <!-- Checkboxes will be populated by JS -->
+            </div>
+        </div>
+        
+      </div>
+
       <div class="projects-container">
         
         <!-- Multiplayer Shooter -->
-        <div class="details-container color-container" data-link="MultiplayerShooter.html">
+        <div class="details-container color-container project-item" 
+             data-link="MultiplayerShooter.html" 
+             data-language="C++" 
+             data-engine-library="Unreal Engine 5" 
+             data-tags="Replication" 
+             data-type="Personal">
           <div class="article-container">
             <img src="./assets/MultiplayerShooterCover.png" alt="Multiplayer Shooter Cover Image" class="project-img">
             <video src="./assets/MultiplayerShooterDemo.webm#t=42" class="project-video" loop muted playsinline preload="metadata"></video>
@@ -151,7 +146,12 @@
         </div>
 
         <!-- Tidal Treasure Clash -->
-        <div class="details-container color-container" data-link="https://jaymalik.itch.io/tidal-treasure-clash">
+        <div class="details-container color-container project-item" 
+             data-link="https://jaymalik.itch.io/tidal-treasure-clash"
+             data-language="C++"
+             data-engine-library="Unreal Engine 5"
+             data-tags=""
+             data-type="School">
           <div class="article-container">
             <img src="./assets/TidalTreasureClashCover.png" alt="Tidal Treasure Clash Cover Image" class="project-img">
             <video src="./assets/TidalTreasureClashHover.webm" class="project-video" loop muted playsinline preload="metadata"></video>
@@ -164,7 +164,12 @@
         </div>
 
         <!-- Iliad Vulkan Engine -->
-        <div class="details-container color-container" data-link="VulkanEngine.html">
+        <div class="details-container color-container project-item" 
+             data-link="VulkanEngine.html"
+             data-language="C++"
+             data-engine-library="Vulkan"
+             data-tags="GLSL,CMake,Engine Development"
+             data-type="Personal">
           <div class="article-container">
             <img src="./assets/VulkanEngineCover.png" alt="Bomberman Blast Cover Image" class="project-img">
             <video src="./assets/VulkanEngineCover.webm" class="project-video" loop muted playsinline preload="metadata"></video>
@@ -179,7 +184,12 @@
         </div>
 
         <!-- Bomberman Blast -->
-        <div class="details-container color-container" data-link="Bomberman.html">
+        <div class="details-container color-container project-item" 
+             data-link="Bomberman.html"
+             data-language="C++"
+             data-engine-library="DirectX 11"
+             data-tags="Nvidia PhysX,HLSL,ImGui"
+             data-type="Personal">
           <div class="article-container">
             <img src="./assets/BombermanCover.jpg" alt="Bomberman Blast Cover Image" class="project-img">
             <video src="./assets/BombermanCover.webm#t=5" class="project-video" loop muted playsinline preload="metadata"></video>
@@ -195,7 +205,12 @@
         </div>
 
         <!-- Card Game with Custom Engine -->
-        <div class="details-container color-container" data-link="./OdysseyTichu/Tichu.html">
+        <div class="details-container color-container project-item" 
+             data-link="./OdysseyTichu/Tichu.html"
+             data-language="C++"
+             data-engine-library="SDL2"
+             data-tags="Engine Development, CMake"
+             data-type="Personal">
           <div class="article-container">
             <img src="./assets/TichuCover.png" alt="Card Game Cover Image" class="project-img">
             <video src="./assets/TichuDemo.webm#t=18" class="project-video" loop muted playsinline preload="metadata"></video>
@@ -205,12 +220,18 @@
             <span class="project-tag">C++</span>
             <span class="project-tag">SDL2</span>
             <span class="project-tag">WebAssembly</span>
+            <span class="project-tag">CMake</span>
             <span class="project-tag">Engine Development</span>
           </div>
         </div>
 
         <!-- Procedural Dungeon Generator -->
-        <div class="details-container color-container" data-link="ProceduralDungeonGenerator.html">
+        <div class="details-container color-container project-item" 
+             data-link="ProceduralDungeonGenerator.html"
+             data-language="C++"
+             data-engine-library="SDL2"
+             data-tags=""
+             data-type="School">
           <div class="article-container">
             <img src="./assets/project-1.png" alt="Procedural Dungeon Generator Cover Image" class="project-img">
             <video src="./assets/Demo.webm" class="project-video" loop muted playsinline preload="metadata"></video>
@@ -223,7 +244,12 @@
         </div>
 
         <!-- Valorant Agent Tool -->
-        <div class="details-container color-container" data-link="https://github.com/AlexKougentakos/ValorantAgentTool">
+        <div class="details-container color-container project-item" 
+             data-link="https://github.com/AlexKougentakos/ValorantAgentTool"
+             data-language="C#"
+             data-engine-library="XAML"
+             data-tags=""
+             data-type="School">
           <div class="article-container">
             <img src="./assets/ValorantAgentCover.png" alt="Valorant Agent Tool Cover Image" class="project-img">
             <video src="./assets/ValorantHover.webm" class="project-video" loop muted playsinline preload="metadata"></video>
@@ -238,7 +264,12 @@
         </div>
 
         <!-- Hardware & Software Rasterizer -->
-        <div class="details-container color-container" data-link="https://github.com/AlexKougentakos/Software-Hardware-Hybrid-Rasterizer">
+        <div class="details-container color-container project-item" 
+             data-link="https://github.com/AlexKougentakos/Software-Hardware-Hybrid-Rasterizer"
+             data-language="C++"
+             data-engine-library="DirectX11"
+             data-tags=""
+             data-type="School">
           <div class="article-container">
             <img src="./assets/DualRasterizer_DirectX.png" alt="Hardware/Software Rasterizer Cover Image" class="project-img">
             <video src="./assets/RasterizerHover.webm" class="project-video" loop muted playsinline preload="metadata"></video>
@@ -251,7 +282,12 @@
         </div>
 
         <!-- Software Raytracer -->
-        <div class="details-container color-container" data-link="https://github.com/AlexKougentakos/RaytracerSoftware">
+        <div class="details-container color-container project-item" 
+             data-link="https://github.com/AlexKougentakos/RaytracerSoftware"
+             data-language="C++"
+             data-engine-library="SDL2"
+             data-tags=""
+             data-type="School">
           <div class="article-container">
             <img src="./assets/RayTracerCover.png" alt="Software Raytracer Cover Image" class="project-img">
             <video src="./assets/RayTracer.webm" class="project-video" loop muted playsinline preload="metadata"></video>

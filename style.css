@@ -462,16 +462,197 @@ section {
 #projects {
     position: relative;
     margin-top: 4rem;
+    padding-top: 4vh; /* Adjusted from 5rem to match profile */
+    /* height: fit-content; Ensure it adapts to filtered content */
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content; /* Use min-height instead of height */
+    padding-bottom: 5rem; /* Add some padding at the bottom */
 }
+
+/* --- Project Filter Styles --- */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem; /* Increased margin */
+    flex-wrap: wrap; /* Allow filters to wrap on smaller screens */
+    align-items: stretch; /* Make items stretch to the same height */
+}
+
+.filter-select {
+    padding: 0.5rem 1rem;
+    background-color: #2a2d31; /* Dark background */
+    color: white;
+    border: 1px solid #555; /* Subtle border */
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    appearance: none; /* Remove default appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1.2em;
+    padding-right: 2.5rem; /* Space for the arrow */
+    min-width: 150px; /* Ensure dropdowns have some base width */
+    border-radius: 0; /* Sharp edges */
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Ensure padding/border are included in height */
+}
+
+.filter-select:hover {
+    border-color: #ff0c34; /* Highlight on hover */
+}
+
+.filter-select option {
+    background-color: #2a2d31;
+    color: white;
+    padding: 10px; /* Seems to have limited effect */
+}
+/* --- End Project Filter Styles --- */
+
+/* --- Multi-select Tag Filter Styles --- */
+.multiselect-container {
+    position: relative;
+    display: flex; /* Changed from inline-block to participate in flex alignment */
+    font-family: 'Poppins', sans-serif;
+    min-width: 150px; /* Match other filters */
+}
+
+.multiselect-button {
+    padding: 0.5rem 1rem;
+    background-color: #2a2d31; 
+    color: white;
+    border: 1px solid #555; 
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0; /* Sharp edges */
+    transition: border-color 0.3s ease;
+    position: relative; /* For arrow */
+    padding-right: 2.5rem; /* Space for arrow */
+}
+
+.multiselect-button::after {
+    content: '';
+    position: absolute;
+    right: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white; /* Arrow down */
+    pointer-events: none;
+}
+
+.multiselect-button:hover {
+    border-color: #ff0c34; 
+}
+
+.multiselect-options {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position below the container/button */
+    left: 0; /* Align with the left edge */
+    background-color: #2a2d31;
+    border: 1px solid #555;
+    /* border-top: none; Removed as the border should apply all around now */
+    z-index: 10; /* Ensure it's above other content */
+    min-width: 100%; /* Ensure it's at least as wide as the button */
+    width: max-content; /* Allow width to expand based on content */
+    max-height: 200px; /* Limit height and allow scrolling */
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-radius: 0; /* Sharp edges */
+}
+
+.multiselect-options.show {
+    display: block;
+}
+
+.multiselect-options label {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.multiselect-options label:hover {
+    background-color: #3a3d41;
+}
+
+.multiselect-options input[type="checkbox"] {
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    /* Optional: Style checkboxes */
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #444;
+    width: 1em;
+    height: 1em;
+    border: 1px solid #666;
+    cursor: pointer;
+    position: relative; /* For checkmark */
+     border-radius: 0; /* Sharp edges */
+}
+
+.multiselect-options input[type="checkbox"]:checked {
+    background-color: #ff0c34;
+    border-color: #ff0c34;
+}
+
+/* Custom checkmark */
+.multiselect-options input[type="checkbox"]:checked::after {
+    content: '\2713'; /* Checkmark character */
+    font-size: 0.8em;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+}
+/* --- End Multi-select Tag Filter Styles --- */
 
 .projects-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-    gap: 30px;
-    max-width: 1180px;
-    margin: 0 auto;
+    justify-content: center; /* Center items */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Style for individual project items */
+.details-container.color-container.project-item {
+    /* Base styles are already defined */
+    flex: 0 1 calc(50% - 1rem); /* Two items per row, accounting for gap */
+    max-width: calc(50% - 1rem);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease; /* Add opacity transition */
+    opacity: 1; /* Start visible */
+    /* Ensure display is correct for flex layout */
+    display: flex; /* Or block if it's not directly inside the flex container needing flex item properties */
+    flex-direction: column; /* Keep original direction */
+}
+
+/* Ensure hover effect transition is smooth */
+.details-container.color-container:hover {
+    transform: translateY(-5px); /* Keep existing hover effect */
+}
+
+/* Styles applied when filtering */
+.filtering-active .project-item {
+    /* Potentially add styles during the transition, e.g., pointer-events: none; */
 }
 
 .details-container.color-container {
