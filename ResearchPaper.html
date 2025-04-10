@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMCTS Research Paper - Tichu AI</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+</head>
+<body>
+  <div id="projects" style="height: 100%;">
+    <p class="go_back_text">
+        <a href="index.html#projects">< Back to Portfolio</a>
+    </p>
+    <h1 class="title">Research: DMCTS Viability in Tichu</h1>
+</div>
+    <!-- Replace with actual video/image -->
+    <div class="video-container" style="border: 2px solid; border-color: #293341; margin-bottom: 2.5rem;">
+        <video class="video" width="960" height="540" controls autoplay muted loop>
+          <source src="./assets/placeholder_video2.webm" type="video/webm"> <!-- Placeholder -->
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+
+      <div class="btn-container">
+        <button
+            class="btn btn-color-2 btn-switch"
+            onclick="window.open('./assets/DMCTS_Research_Paper.pdf', '_blank')"> <!-- Placeholder PDF link -->
+          <span class="btn-content">
+            <img src="./assets/download-white.png" alt="Icon" class="btn-icon default-icon">
+            Read Paper (PDF)
+          </span>
+        </button>
+        <button
+            class="btn btn-color-1"
+            onclick="window.open('./OdysseyTichu/Tichu.html', '_self')">
+          <span class="btn-content">
+            <img src="./assets/TichuCover.png" alt="Icon" class="btn-icon"> <!-- Using Tichu game cover -->
+            Related Project
+          </span>
+        </button>
+      </div>
+
+      <section>
+        <div class="section-content">
+            <p class="title2-header">What I have</p>
+            <h1 class="title2">Learned</h1>
+
+            <p class="title3">DMCTS for Imperfect Information Games</p>
+            <div class="paragraph-container">
+                <!-- Replace with relevant image -->
+                <img src="./assets/placeholder_image3.png" alt="Image" class="image-container image-left"> <!-- Placeholder -->
+                <p class="paragraph-left">
+                    This research focused on evaluating Determinized Monte Carlo Tree Search (DMCTS) for complex, team-based, imperfect information games like Tichu.
+                    I gained a deep understanding of MCTS principles and the determinization technique used to handle hidden information.
+                    Benchmarking against cheating MCTS and random agents provided insights into its strengths and weaknesses in this specific domain, contributing to the growing field of AI for such games.
+                </p>
+            </div>
+
+            <p class="title3">Parameter Tuning and Performance Analysis</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    A key part of the study involved analyzing DMCTS performance. I learned that simply increasing iterations yields better results than only increasing determinizations, and that sufficient iterations are needed to support more determinizations.
+                    An interesting discovery was the linear decrease in computation time per move as the game progressed (due to the shrinking card pool), suggesting potential for dynamic parameter adjustments.
+                </p>
+            </div>
+
+             <p class="title3">Importance of Human Evaluation</p>
+            <div class="paragraph-container">
+                 <p class="paragraph-right">
+                    While algorithmic benchmarks are crucial, this study highlighted the necessity of human evaluation. Experienced players tested the AI, revealing weaknesses and performance aspects not apparent from simulations alone.
+                    This emphasized that seemingly strong on-paper performance doesn't always translate directly to effective play against human opponents, providing valuable perspective on AI evaluation methodologies.
+                 </p>
+                <!-- Replace with relevant image -->
+                <img src="./assets/placeholder_image4.png" alt="Image" class="image-container image-right"> <!-- Placeholder -->
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-content">
+            <p class="title2-header">What I would</p>
+            <h1 class="title2">Like to Add / Explore</h1>
+
+            <p class="title3">Implementing Excluded Tichu Mechanics</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    To create a more complete Tichu AI, I would implement the mechanics excluded from the initial research scope due to complexity.
+                    This includes handling Tichu/Grand Tichu declarations (potentially with a separate heuristic), incorporating Mahjong wishes, and tackling the challenge of asynchronous bomb plays, which would require significant algorithmic adjustments.
+                </p>
+            </div>
+
+            <p class="title3">Dynamic Parameter Adjustment</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Building on the finding that computation time decreases linearly, I'd like to implement a system for dynamic iteration/determinization adjustments during gameplay.
+                    This could potentially increase the playing performance of the AI by allocating more iterations/determinizations later in the game when the decision space is smaller.
+                    It was very clear that more iterations showed better results.
+                </p>
+            </div>
+
+            <p class="title3">Comparative Algorithm Analysis</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    Further research could involve comparing DMCTS performance in Tichu against other algorithms suitable for imperfect information games.
+                    This could provide a broader context for its effectiveness and potentially identify hybrid approaches or alternative methods that might perform better in specific aspects of the game.
+                    Refining the reward function and conducting larger-scale human studies would also be valuable additions.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 

@@ -636,8 +636,8 @@ section {
 /* Style for individual project items */
 .details-container.color-container.project-item {
     /* Base styles are already defined */
-    flex: 0 1 calc(50% - 1rem); /* Two items per row, accounting for gap */
-    max-width: calc(50% - 1rem);
+    flex: 0 1 calc(38% - 1rem); /* Two items per row, accounting for gap */
+    max-width: calc(38% - 1rem);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease; /* Add opacity transition */
     opacity: 1; /* Start visible */
     /* Ensure display is correct for flex layout */
