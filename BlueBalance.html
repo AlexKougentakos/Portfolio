@@ -41,7 +41,7 @@
     <p class="go_back_text">
         <a href="index.html#projects">< Back to Portfolio</a>
     </p>
-    <h1 class="title">Blue Balance - AI NPC Integration</h1>
+    <h1 class="title">Blue Balance - LLM Powered NPCs</h1>
 </div>
       <!-- Media Gallery -->
       <div class="media-gallery" style="margin-bottom: 2.5rem;">
@@ -82,7 +82,7 @@
             GDWC Page
           </span>
         </button>
-        <p style="font-size: 0.8rem; margin-left: 1rem; opacity: 0.7;">*Build available upon request via email due to project constraints.</p>
+        <p style="font-size: 0.8rem; margin-left: 1rem; opacity: 0.7;">*Build available upon request due to project constraints.</p>
       </div>
 
       <section>
@@ -90,37 +90,51 @@
             <p class="title2-header">What I have</p>
             <h1 class="title2">Learned</h1>
 
-            <p class="title3">Integrating LLMs in Unreal Engine 5</p>
-            <div class="paragraph-container">
-                <!-- Replace with relevant image -->
-                <img src="./assets/placeholder_image.png" alt="Image" class="image-container image-left"> <!-- Placeholder -->
-                <p class="paragraph-left">
-                    This project served as a practical exploration into integrating Large Language Models (LLMs) into a game environment using Unreal Engine 5.
-                    We utilized the Convai framework to bring dynamic, conversational AI characters to life. A key challenge was managing the interaction
-                    flow between the player, the game state, and the LLM to ensure coherent and contextually relevant dialogue while maintaining performance.
-                    I gained experience in designing systems that handle asynchronous API calls to the LLM and translating natural language responses into in-game actions or information display.
-                </p>
-            </div>
 
             <p class="title3">Designing Educational Gameplay Loops</p>
             <div class="paragraph-container">
-                <p class="paragraph-center">
+                <img src="./assets/Sorting.jpg" alt="Image" class="image-container image-left">
+                <p class="paragraph-left">
                     Blue Balance aimed to educate players about local fish and the fishing industry in an engaging way. This required designing gameplay loops
-                    centered around interacting with AI fishermen, learning from them, and applying that knowledge (e.g., sorting fish). I focused on balancing the educational
-                    content delivery with fun, interactive mechanics, ensuring the learning process felt natural and embedded within the game's narrative and tasks.
-                    The goal was to create a platform for conversation and information dissemination without sacrificing player engagement.
+                    centered around interacting with AI fishermen, learning from them, and applying that knowledge (e.g., sorting fish). While game design was
+                    not my primary focus, I also contributed to the overall design of the game and the interactions between the player and the AI.
+
+                    <br>
+                    <br>
+
+                    The most challenging part of this project was balancing the educational content delivery with fun, interactive mechanics, 
+                    while also keeping the focus around the LLM interaction with the NPCs.
                 </p>
             </div>
 
-             <p class="title3">AI Character Behavior and Narrative Integration</p>
+            <p class="title3">Integrating LLMs in Unreal Engine 5</p>
             <div class="paragraph-container">
-                 <p class="paragraph-right">
-                    Beyond the LLM integration for dialogue, crafting believable AI characters involved developing their backstories, motivations, and daily routines aboard the ship.
-                    The project emphasized not just *what* the characters said (handled by the LLM), but *how* they behaved and integrated into the game world.
-                    This involved scripting specific interactions, managing character states, and ensuring their dialogue contributed to both the educational goals and the overarching narrative of getting to know the crew over three days.
+                <p class="paragraph-center">
+                    This project served as a practical exploration into integrating Large Language Models (LLMs) into a game environment using Unreal Engine 5.
+                    We utilized the Convai framework to bring dynamic, conversational AI characters to life. We tried to use the techonology that was available and push it
+                    to create an fun, educational and immersive experience.
                 </p>
-                 <!-- Replace with relevant image -->
-                <img src="./assets/placeholder_image2.png" alt="Image" class="image-container image-right"> <!-- Placeholder -->
+            </div>
+
+             <p class="title3">Working with external APIs & their limitations</p>
+            <div class="paragraph-container">
+                 <p class="paragraph-center">
+                  The Convai API was a great tool for creating a demo of the current state of the technology. However, it was not without its limitations.
+                  A lot of the time, the API would not return a response or it would take a long time to do so. At best, this would result in a delayed
+                  response, and at worst, the NPC would be stuck and you couldn't interact with them.
+
+                  <br>
+                  <br>
+                  
+                  The other challenge was the lack of control over the API. A lot of the functionality was hidden away inside of pre-compiled libraries that
+                  we couldn't access. This made it difficult to customize certain behaviours to our needs.
+
+                  <br>
+                  <br>
+                  The biggest example of this was the fact that altering the knowledge of a character would affect the knowledge of all characters,
+                  accross all game sessions. This essentially made it so that you couldn't have two people playing the game at the same time even on
+                  different machines.
+                </p>
             </div>
         </div>
     </section>
@@ -130,12 +144,18 @@
             <p class="title2-header">What I would</p>
             <h1 class="title2">Like to Add</h1>
 
-            <p class="title3">More Dynamic AI Interactions</p>
+            <p class="title3">Replacing Convai with a custom API</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    While the Convai integration provided a solid foundation, I'd like to explore more dynamic AI interactions. This could involve giving the AI
-                    more awareness of the game state (e.g., time of day, weather, current player task) to influence their conversations, or allowing player
-                    dialogue choices to have more tangible long-term effects on relationships with the crew or the progression of the narrative.
+                    While Convai provided a solid foundation, it left a lot to be desired. I would like to explore more dynamic AI interactions.
+                    Perhaps even creating my own wrapper around an existing API such as OpenAI to have more control over the API and the responses.
+
+                    <br>
+                    <br>
+
+                    Another very interesting thing could be to have a small quantized model that is run locally for more minor things. For example, the
+                    notes you make in your book are re-written by ChatGPT. This is not a huge task which needs the compute of a large model, so running
+                    it locally would be more than sufficient and also cheaper. The real challenge would be to intergrate this inside Unreal Engine.
                 </p>
             </div>
 
@@ -145,15 +165,21 @@
                     The core loop involves sorting fish and talking to fishermen. Expanding on this with additional mini-games related to fishing or ship maintenance
                     could enhance engagement. For example, adding a simple navigation task or allowing the player to assist with different types of fishing gear,
                     each tied back to educational information provided by the AI crew.
+
+                    <br>
+                    <br>
+
+                    We already tried to add something similar to this with the "Story Items" and it was well received. So, adding some more of these
+                    with a little more engaging mechanics would be great.
                 </p>
             </div>
 
-            <p class="title3">Refined Educational Content Delivery</p>
+            <p class="title3">More AI Interactions</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Further refining how the educational content is presented is another area for improvement. This could involve enhancing the in-game notebook with
-                    more interactive elements, visual aids, or even short quizzes based on conversations with the fishermen to reinforce learning in a fun way.
-                    Integrating feedback mechanisms to gauge player understanding could also tailor the information flow.
+                    This was originally a part of the plan, but due to time constraints we were not able to implement it. It would bring a lot
+                    of depth to the game if the AI characters were moving around the ship and interacting with the environment and with the 
+                    player by themselves. This would really tie nicely with some additional gameplay mechanics.
                 </p>
             </div>
         </div>
