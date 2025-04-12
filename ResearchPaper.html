@@ -147,6 +147,58 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             background-color: white;
         }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .pdf-container {
+                width: 95%;
+                height: 95%;
+            }
+            
+            .pdf-thumbnails {
+                display: none; /* Hide thumbnails on mobile */
+            }
+            
+            .pdf-content {
+                padding: 10px;
+            }
+            
+            .pdf-page {
+                margin-bottom: 15px;
+                touch-action: pan-y pinch-zoom; /* Enable touch-based panning and zooming */
+            }
+            
+            .pdf-title {
+                font-size: 1rem;
+            }
+            
+            /* Button responsive styles for mobile */
+            .btn {
+                padding: 0.75rem;
+                width: 11rem;
+                height: 3rem;
+                font-size: 0.75rem;
+            }
+            
+            .btn-icon {
+                height: 1.5em;
+                left: 0.75rem;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .btn {
+                width: 80%;
+                max-width: 12rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -182,6 +234,14 @@
           <span class="btn-content">
             <img src="./assets/related.png" alt="Icon" class="btn-icon"> <!-- Using Tichu game cover -->
             Related Project
+          </span>
+        </button>
+        <button
+            class="btn btn-color-1"
+            onclick="window.open('https://github.com/AlexKougentakos/Odyssey-Engine/tree/MCTS', '_blank')">
+          <span class="btn-content">
+            <img src="./assets/github.png" alt="Icon" class="btn-icon"> <!-- Using Tichu game cover -->
+            Github Link
           </span>
         </button>
       </div>
@@ -407,6 +467,17 @@
           // Load PDF if not already loaded
           if (!pdfDoc) {
             loadPDF('./assets/ResearchPaper.pdf');
+          } else {
+            // Check if we need to reload the PDF due to screen size change
+            const isMobileNow = window.innerWidth <= 768;
+            const wasMobileBefore = !document.querySelector('.pdf-thumbnails');
+            
+            // If screen size category changed, reload PDF to apply correct layout
+            if (isMobileNow !== wasMobileBefore) {
+              pdfViewerContainer.innerHTML = '';
+              pdfPages = [];
+              loadPDF('./assets/ResearchPaper.pdf');
+            }
           }
         });
         
@@ -442,66 +513,93 @@
             const loadingTask = pdfjsLib.getDocument(url);
             pdfDoc = await loadingTask.promise;
             
-            // Create containers for thumbnails and content
+            // Check if mobile view (< 768px)
+            const isMobile = window.innerWidth <= 768;
+            
+            // Create containers
             pdfViewerContainer.innerHTML = '';
-            const thumbnailsContainer = document.createElement('div');
-            thumbnailsContainer.className = 'pdf-thumbnails';
             
-            const contentContainer = document.createElement('div');
-            contentContainer.className = 'pdf-content';
-            
-            pdfViewerContainer.appendChild(thumbnailsContainer);
-            pdfViewerContainer.appendChild(contentContainer);
-            
-            // Generate thumbnails and pages
-            for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-              // Get the page
-              const page = await pdfDoc.getPage(pageNum);
-              pdfPages.push(page);
+            if (isMobile) {
+              // Mobile view - no thumbnails, just content
+              const contentContainer = document.createElement('div');
+              contentContainer.className = 'pdf-content';
+              pdfViewerContainer.appendChild(contentContainer);
               
-              // Create thumbnail container
-              const thumbnailContainer = document.createElement('div');
-              thumbnailContainer.className = 'pdf-thumbnail';
-              thumbnailContainer.dataset.pageNum = pageNum;
-              if (pageNum === 1) thumbnailContainer.classList.add('active');
-              
-              // Create thumbnail canvas
-              const thumbnailCanvas = document.createElement('canvas');
-              const thumbnailContext = thumbnailCanvas.getContext('2d');
-              
-              // Set thumbnail dimensions
-              const devicePixelRatio = window.devicePixelRatio || 1;
-              const scale = 0.5 * devicePixelRatio;
-              const viewport = page.getViewport({ scale });
-
-              thumbnailCanvas.width = viewport.width;
-              thumbnailCanvas.height = viewport.height;
-              
-              // Render thumbnail
-              await page.render({
-                canvasContext: thumbnailContext,
-                viewport: viewport
-              }).promise;
-              
-              thumbnailContainer.appendChild(thumbnailCanvas);
-              thumbnailsContainer.appendChild(thumbnailContainer);
-              
-              // Handle click to navigate to page
-              thumbnailContainer.addEventListener('click', () => {
-                document.querySelectorAll('.pdf-thumbnail').forEach(thumb => {
-                  thumb.classList.remove('active');
-                });
-                thumbnailContainer.classList.add('active');
+              // Generate and render pages for mobile
+              for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+                const page = await pdfDoc.getPage(pageNum);
+                pdfPages.push(page);
                 
-                // Scroll to the page
-                const pageElement = document.querySelector(`.pdf-page[data-page-num="${pageNum}"]`);
-                if (pageElement) {
-                  pageElement.scrollIntoView({ behavior: 'smooth' });
-                }
-              });
+                // Calculate appropriate scale for mobile
+                const renderScale = calculateMobileScale(page);
+                
+                // Render page
+                await renderPage(page, contentContainer, pageNum, renderScale);
+              }
               
-              // Render the full page in the content container
-              await renderPage(page, contentContainer, pageNum);
+              // Add mobile touch support
+              addMobileTouchSupport(pdfViewerContainer);
+            } else {
+              // Desktop view - original implementation with thumbnails
+              const thumbnailsContainer = document.createElement('div');
+              thumbnailsContainer.className = 'pdf-thumbnails';
+              
+              const contentContainer = document.createElement('div');
+              contentContainer.className = 'pdf-content';
+              
+              pdfViewerContainer.appendChild(thumbnailsContainer);
+              pdfViewerContainer.appendChild(contentContainer);
+              
+              // Generate thumbnails and pages for desktop
+              for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+                // Get the page
+                const page = await pdfDoc.getPage(pageNum);
+                pdfPages.push(page);
+                
+                // Create thumbnail container
+                const thumbnailContainer = document.createElement('div');
+                thumbnailContainer.className = 'pdf-thumbnail';
+                thumbnailContainer.dataset.pageNum = pageNum;
+                if (pageNum === 1) thumbnailContainer.classList.add('active');
+                
+                // Create thumbnail canvas
+                const thumbnailCanvas = document.createElement('canvas');
+                const thumbnailContext = thumbnailCanvas.getContext('2d');
+                
+                // Set thumbnail dimensions with device pixel ratio consideration
+                const devicePixelRatio = window.devicePixelRatio || 1;
+                const scale = 0.5 * devicePixelRatio;
+                const viewport = page.getViewport({ scale });
+ 
+                thumbnailCanvas.width = viewport.width;
+                thumbnailCanvas.height = viewport.height;
+                
+                // Render thumbnail
+                await page.render({
+                  canvasContext: thumbnailContext,
+                  viewport: viewport
+                }).promise;
+                
+                thumbnailContainer.appendChild(thumbnailCanvas);
+                thumbnailsContainer.appendChild(thumbnailContainer);
+                
+                // Handle click to navigate to page
+                thumbnailContainer.addEventListener('click', () => {
+                  document.querySelectorAll('.pdf-thumbnail').forEach(thumb => {
+                    thumb.classList.remove('active');
+                  });
+                  thumbnailContainer.classList.add('active');
+                  
+                  // Scroll to the page
+                  const pageElement = document.querySelector(`.pdf-page[data-page-num="${pageNum}"]`);
+                  if (pageElement) {
+                    pageElement.scrollIntoView({ behavior: 'smooth' });
+                  }
+                });
+                
+                // Render the full page in the content container with fixed desktop scale
+                await renderPage(page, contentContainer, pageNum, 1.5);
+              }
             }
           } catch (error) {
             console.error('Error loading PDF:', error);
@@ -509,8 +607,60 @@
           }
         }
         
+        // Calculate appropriate scale for mobile devices
+        function calculateMobileScale(page) {
+          const viewportWidth = window.innerWidth;
+          const pageWidth = page.getViewport({ scale: 1 }).width;
+          
+          // Calculate scale to fit page width with some margin
+          return (viewportWidth * 0.9) / pageWidth;
+        }
+        
+        // Add mobile touch support for panning and zooming
+        function addMobileTouchSupport(container) {
+          // This relies on the browser's native touch-action CSS property
+          // We've already set touch-action: pan-y pinch-zoom in CSS
+          
+          // Add a class to enable mobile view styles if needed
+          container.classList.add('mobile-view');
+          
+          // Listen for orientation changes to adjust page scale
+          window.addEventListener('resize', handleOrientationChange);
+        }
+        
+        // Handle orientation changes on mobile
+        function handleOrientationChange() {
+          // Only proceed if we're in mobile view
+          if (window.innerWidth > 768) return;
+          
+          // Only re-render if significant size change (like orientation)
+          const newWidth = window.innerWidth;
+          if (Math.abs(newWidth - lastWindowWidth) > 100) {
+            lastWindowWidth = newWidth;
+            
+            // Only if PDF is loaded and modal is active
+            if (pdfDoc && document.getElementById('pdf-modal').classList.contains('active')) {
+              // Clear container
+              const contentContainer = document.querySelector('.pdf-content');
+              if (contentContainer) {
+                contentContainer.innerHTML = '';
+                
+                // Re-render pages with new scale
+                pdfPages.forEach(async (page, index) => {
+                  const pageNum = index + 1;
+                  const renderScale = calculateMobileScale(page);
+                  await renderPage(page, contentContainer, pageNum, renderScale);
+                });
+              }
+            }
+          }
+        }
+        
+        // Track window width changes
+        let lastWindowWidth = window.innerWidth;
+        
         // Render a single PDF page
-        async function renderPage(page, container, pageNum) {
+        async function renderPage(page, container, pageNum, scale = 1.5) {
           // Create page container
           const pageContainer = document.createElement('div');
           pageContainer.className = 'pdf-page';
@@ -520,8 +670,8 @@
           const canvas = document.createElement('canvas');
           const context = canvas.getContext('2d');
           
-          // Set dimensions (with a reasonable scale)
-          const viewport = page.getViewport({ scale: 1.5 });
+          // Set dimensions with provided scale
+          const viewport = page.getViewport({ scale: scale });
           canvas.width = viewport.width;
           canvas.height = viewport.height;
           
