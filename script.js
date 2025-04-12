@@ -167,6 +167,172 @@ document.addEventListener("DOMContentLoaded", function() {
             gDidEnterProjects = true;
         }
     });
+
+    // --- Project Filtering Logic ---
+    const projects = document.querySelectorAll('.project-item');
+    const languageFilter = document.getElementById('filter-language');
+    const engineLibraryFilter = document.getElementById('filter-engine-library');
+    const typeFilter = document.getElementById('filter-type'); 
+    // Tag Filter elements
+    const tagsMultiselectContainer = document.getElementById('filter-tags-multiselect');
+    const tagsButton = tagsMultiselectContainer ? tagsMultiselectContainer.querySelector('.multiselect-button') : null;
+    const tagsOptionsDiv = tagsMultiselectContainer ? tagsMultiselectContainer.querySelector('.multiselect-options') : null;
+    let selectedTags = []; // Keep track of selected tags
+
+    const projectsContainer = document.querySelector('.projects-container'); 
+
+    // Ensure filters exist before proceeding
+    if (languageFilter && engineLibraryFilter && typeFilter && tagsMultiselectContainer && tagsButton && tagsOptionsDiv && projects.length > 0) {
+        
+        populateFilters();
+
+        languageFilter.addEventListener('change', filterProjects);
+        engineLibraryFilter.addEventListener('change', filterProjects);
+        typeFilter.addEventListener('change', filterProjects);
+        // Add listeners for the multi-select tag filter
+        tagsButton.addEventListener('click', toggleTagsDropdown);
+        document.addEventListener('click', closeDropdownOnClickOutside); 
+        // Add event listener to options div for checkbox changes
+        tagsOptionsDiv.addEventListener('change', handleTagCheckboxChange);
+
+    } else {
+        console.warn("Project filtering elements not found. Filtering disabled.");
+        if (!tagsMultiselectContainer) console.warn("Could not find tagsMultiselectContainer");
+        if (!tagsButton) console.warn("Could not find tagsButton");
+        if (!tagsOptionsDiv) console.warn("Could not find tagsOptionsDiv");
+    }
+
+
+    function populateFilters() {
+        const languages = new Set();
+        const enginesLibraries = new Set();
+        const tags = new Set();
+
+        projects.forEach(project => {
+            const lang = project.dataset.language;
+            const engLib = project.dataset.engineLibrary;
+            // Split tags by comma and trim whitespace
+            const projectTags = project.dataset.tags ? project.dataset.tags.split(',').map(tag => tag.trim()).filter(tag => tag !== '') : []; 
+            
+            if (lang) languages.add(lang);
+            if (engLib) enginesLibraries.add(engLib);
+            projectTags.forEach(tag => tags.add(tag));
+        });
+
+        // Populate Language Dropdown
+        languages.forEach(lang => {
+            const option = document.createElement('option');
+            option.value = lang;
+            option.textContent = lang;
+            languageFilter.appendChild(option);
+        });
+
+        // Populate Engine/Library Dropdown
+        enginesLibraries.forEach(engLib => {
+            const option = document.createElement('option');
+            option.value = engLib;
+            option.textContent = engLib;
+            engineLibraryFilter.appendChild(option);
+        });
+
+        // Populate Tags Multiselect Checkboxes
+        tagsOptionsDiv.innerHTML = ''; // Clear previous options if any
+        tags.forEach(tag => {
+            const label = document.createElement('label');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = tag;
+            // checkbox.id = `tag-${tag.replace(/\s+/g, '-')}`; // Optional: create unique IDs
+            
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(` ${tag}`)); // Add space before text
+            tagsOptionsDiv.appendChild(label);
+        });
+    }
+    
+    function toggleTagsDropdown() {
+        tagsOptionsDiv.classList.toggle('show');
+    }
+    
+    function closeDropdownOnClickOutside(event) {
+        if (!tagsMultiselectContainer.contains(event.target)) {
+            tagsOptionsDiv.classList.remove('show');
+        }
+    }
+
+    function handleTagCheckboxChange() {
+        selectedTags = [];
+        const checkboxes = tagsOptionsDiv.querySelectorAll('input[type="checkbox"]:checked');
+        checkboxes.forEach(checkbox => {
+            selectedTags.push(checkbox.value);
+        });
+        
+        // Update button text
+        if (selectedTags.length === 0) {
+            tagsButton.textContent = 'All Tags';
+        } else if (selectedTags.length === 1) {
+            tagsButton.textContent = selectedTags[0];
+        } else {
+            tagsButton.textContent = `${selectedTags.length} Tags Selected`;
+        }
+
+        filterProjects(); // Re-filter projects when tags change
+    }
+
+    function filterProjects() {
+        const selectedLanguage = languageFilter.value;
+        const selectedEngineLibrary = engineLibraryFilter.value;
+        const selectedType = typeFilter.value;
+        
+        projectsContainer.classList.add('filtering-active');
+
+        projects.forEach(project => {
+            const projectLang = project.dataset.language;
+            const projectEngLib = project.dataset.engineLibrary;
+            // Split tags by comma and trim whitespace
+            const projectTags = project.dataset.tags ? project.dataset.tags.split(',').map(tag => tag.trim()).filter(tag => tag !== '') : [];
+            const projectType = project.dataset.type;
+
+            const languageMatch = selectedLanguage === 'all' || projectLang === selectedLanguage;
+            const engineLibraryMatch = selectedEngineLibrary === 'all' || projectEngLib === selectedEngineLibrary;
+            const tagMatch = selectedTags.length === 0 || selectedTags.every(tag => projectTags.includes(tag));
+            const typeMatch = selectedType === 'all' || projectType === selectedType;
+
+            const shouldShow = languageMatch && engineLibraryMatch && tagMatch && typeMatch;
+            
+            // Apply animation/visibility change using opacity and display
+            if (shouldShow) {
+                // If it was hidden, make it visible first (display block), then fade in
+                 if (project.style.display === 'none') {
+                    project.style.opacity = '0'; // Start transparent
+                    project.style.display = 'block'; // Or flex/grid depending on your layout needs
+                     // Force reflow/repaint before adding opacity transition
+                    void project.offsetWidth; 
+                    project.style.opacity = '1'; 
+                } else {
+                    // If already visible, ensure opacity is 1 (in case it was fading out)
+                    project.style.opacity = '1';
+                    project.style.display = 'block'; // Ensure correct display type
+                }
+            } else {
+                // If it should be hidden, fade out first, then hide
+                project.style.opacity = '0';
+                 // Use setTimeout to set display: none after the transition completes
+                 // Make sure the timeout duration matches the CSS transition duration
+                setTimeout(() => {
+                    // Only set display none if opacity is still 0 (might have been shown again quickly)
+                    if (project.style.opacity === '0') { 
+                       project.style.display = 'none';
+                    }
+                }, 300); // Corresponds to 0.3s transition in CSS
+            }
+        });
+         // Optional: Remove the class after a short delay to allow transitions
+         setTimeout(() => {
+            projectsContainer.classList.remove('filtering-active');
+         }, 350); // Slightly longer than the transition
+    }
+     // --- End Project Filtering Logic ---
 });
 
 function addHoverEffects() {

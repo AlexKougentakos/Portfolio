@@ -41,7 +41,7 @@
 <body>
   <div id="projects" style="height: 100%;">
     <p class="go_back_text">
-        <a href="../index.html#projects">&lt; GO BACK</a>
+        <a href="../index.html#projects" id="back-link">&lt; Back to Portfolio</a>
     </p>
     <h1 class="title">Card Game with Custom Engine</h1>
   </div>
@@ -60,6 +60,18 @@
   </div>
 
   <script type="text/javascript">
+    // Check if the page was accessed from the ResearchPaper
+    window.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromResearch = urlParams.get('from') === 'research';
+      
+      const backLink = document.getElementById('back-link');
+      if (fromResearch) {
+        backLink.textContent = '< GO BACK';
+        backLink.href = '../ResearchPaper.html';
+      }
+    });
+    
     var Module = {
       preRun: [],
       postRun: [],
@@ -164,7 +176,7 @@
                     <br/>
                     To implement AI, I would likely use a subset of the Monte Carlo Tree Search algorithm, 
                     such as limited information set MCTS, given the imperfect information in the game. However,
-                     this wasn’t fully accounted for initially, so the Player Component would need refactoring to
+                     this wasn't fully accounted for initially, so the Player Component would need refactoring to
                       blend functionalities between human players and AI agents.
                 </p>
             </div>

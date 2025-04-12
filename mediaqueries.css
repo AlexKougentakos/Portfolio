@@ -141,6 +141,35 @@
       max-height: none; /* Remove max-height for mobile */
       text-align: center; /* Center the text */
   }
+
+  .project-filters {
+    gap: 0.5rem; /* Reduce gap on smaller screens */
+    justify-content: space-around; /* Space out filters */
+  }
+
+  .filter-select,
+  .multiselect-container {
+    flex-basis: calc(50% - 0.5rem); 
+    min-width: auto; 
+  }
+
+  .filter-select,
+  .multiselect-button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    padding-right: 2rem; /* Adjust padding for arrow */
+    background-size: 1em;
+    background-position: right 0.5rem center;
+  }
+
+  .multiselect-button::after {
+      right: 0.5rem;
+  }
+
+  .details-container.color-container.project-item {
+    flex-basis: 100%; /* Full width on mobile */
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -179,5 +208,22 @@
     }
     #about .section__pic-container {
         max-width: 300px; /* Adjust this value as needed for smaller screens */
+    }
+
+    .project-filters {
+      flex-direction: column; /* Stack filters vertically */
+      align-items: center; /* Center stacked filters */
+      gap: 0.75rem;
+    }
+
+    .filter-select,
+    .multiselect-container {
+      flex-basis: auto; 
+      width: 80%; 
+      max-width: 300px; 
+    }
+
+    #projects {
+      margin: 0 2rem; /* Reduce margin */
     }
 }

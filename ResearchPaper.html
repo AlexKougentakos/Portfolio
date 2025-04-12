@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMCTS Research Paper - Tichu AI</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <!-- PDF.js libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Set PDF.js worker path
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <style>
+        /* PDF Modal Styles */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .pdf-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .pdf-container {
+            width: 85%;
+            height: 90%;
+            background-color: #1e2a3a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pdf-header {
+            padding: 15px 20px;
+            background-color: #293341;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3a4c64;
+        }
+        
+        .pdf-title {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .pdf-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        
+        .pdf-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .pdf-viewer {
+            flex: 1;
+            width: 100%;
+            height: calc(100% - 60px);
+            border: none;
+            background-color: #1e2a3a;
+        }
+        
+        /* Custom PDF Viewer Container */
+        #pdf-js-viewer {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: #1e2a3a;
+            display: flex;
+        }
+        
+        /* PDF.js custom styling */
+        .pdf-thumbnails {
+            width: 9%;
+            background-color: #1e2a3a;
+            overflow-y: auto;
+            padding: 10px;
+            border-right: 1px solid #3a4c64;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .pdf-thumbnail {
+            margin-bottom: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .pdf-thumbnail.active {
+            border-color: #ff3366;
+        }
+        
+        .pdf-thumbnail img,
+        .pdf-thumbnail canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pdf-content {
+            flex: 1;
+            height: 100%;
+            overflow: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #283547;
+        }
+        
+        .pdf-page {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: white;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .pdf-container {
+                width: 95%;
+                height: 95%;
+            }
+            
+            .pdf-thumbnails {
+                display: none; /* Hide thumbnails on mobile */
+            }
+            
+            .pdf-content {
+                padding: 10px;
+            }
+            
+            .pdf-page {
+                margin-bottom: 15px;
+                touch-action: pan-y pinch-zoom; /* Enable touch-based panning and zooming */
+            }
+            
+            .pdf-title {
+                font-size: 1rem;
+            }
+            
+            /* Button responsive styles for mobile */
+            .btn {
+                padding: 0.75rem;
+                width: 11rem;
+                height: 3rem;
+                font-size: 0.75rem;
+            }
+            
+            .btn-icon {
+                height: 1.5em;
+                left: 0.75rem;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .btn {
+                width: 80%;
+                max-width: 12rem;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div id="projects" style="height: 100%;">
+    <p class="go_back_text">
+        <a href="index.html#projects">< Back to Portfolio</a>
+    </p>
+    <h1 class="title">Research: DMCTS Viability in Tichu</h1>
+</div>
+    <!-- Replace with actual video/image -->
+    <div class="media-gallery" style="margin-bottom: 2.5rem;">
+        <div class="main-media-display" style="border: 2px solid #293341;">
+            <video class="video" width="960" height="540" controls autoplay muted loop data-type="video">
+                <source src="./assets/TichuAIDemo.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+
+      <div class="btn-container">
+        <button
+            class="btn btn-color-2 btn-switch"
+            id="open-pdf-btn">
+          <span class="btn-content">
+            <img src="./assets/download-white.png" alt="Icon" class="btn-icon default-icon">
+            Read Paper (PDF)
+          </span>
+        </button>
+        <button
+            class="btn btn-color-1"
+            onclick="window.open('./OdysseyTichu/Tichu.html?from=research', '_self')">
+          <span class="btn-content">
+            <img src="./assets/related.png" alt="Icon" class="btn-icon"> <!-- Using Tichu game cover -->
+            Related Project
+          </span>
+        </button>
+        <button
+            class="btn btn-color-1"
+            onclick="window.open('https://github.com/AlexKougentakos/Odyssey-Engine/tree/MCTS', '_blank')">
+          <span class="btn-content">
+            <img src="./assets/github.png" alt="Icon" class="btn-icon"> <!-- Using Tichu game cover -->
+            Github Link
+          </span>
+        </button>
+      </div>
+
+      <!-- PDF Modal -->
+      <div id="pdf-modal" class="pdf-modal">
+        <div class="pdf-container">
+            <div class="pdf-header">
+                <h3 class="pdf-title">DMCTS Research Paper</h3>
+                <button class="pdf-close" id="close-pdf-btn">&times;</button>
+            </div>
+            <div class="pdf-viewer">
+                <div id="pdf-js-viewer"></div>
+            </div>
+        </div>
+      </div>
+      
+      <section>
+        <div class="section-content">
+            <p class="title2-header">What I have</p>
+            <h1 class="title2">Learned</h1>
+
+            <p class="title3">DMCTS for Imperfect Information Games</p>
+            <div class="paragraph-container">
+                <!-- Replace with relevant image -->
+                <img src="./assets/MCTS.png" alt="Image" class="image-container image-left"> <!-- Placeholder -->
+                <p class="paragraph-left">
+                    After having a lot of fun with the Tichu game, and managing to create a working replica of the game in my own engine,
+                    it seemed like the perfect time to try and implement AI agents into the game.
+                    <br>
+                    <br>
+                    I wanted to see if DMCTS could be a viable solution for the challenge that is playing Tichu. Tichu is a complicated game,
+                    with a lot of hidden information and a lot of different mechanics that make it a great candidate for DMCTS.
+                </p>
+            </div>
+
+            <p class="title3">Multithreading</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    I haven't used multithreading in any of my previous big projects, and this seemed like a perfect opportunity to try it out.
+                    MCTS is a very easily parallelizable algorithm, since if follows SIMD (Single Instruction, Multiple Data) principles.
+                    <br>
+                    <br>
+                    I implemented basic multithreading by using the <code>std::thread</code> library to parallelize the tree search and evaluation processes.
+                </p>
+            </div>
+
+             <p class="title3">AI Debugging</p>
+            <div class="paragraph-container">
+                 <p class="paragraph-center">
+                    I thought I would spend the majority of my time on implementing the DMCTS algorithm, but I was wrong.
+                    I spent a lot of time debugging the AI, and trying to figure out why it was playing so badly.
+                    <br>
+                    <br>
+                    A lot of it was mistakes I made with the implementation, but a lot of it was also due to the nature of the game, and that 
+                    it didn't follow the traditional game tree structure that MCTS is designed for. Especially the fact that the game is a team game,
+                    and the point system needed to account for the fact that not only your cards are important, but the cards of your teamates are just as important.
+                    <br>
+                    <br>
+                    I learned a lot about the importance of careful debugging when working with AI systems and algorithms like this one,
+                    and making sure to have a solid idea of what the algorithm is actually doing rather than what you think it is doing.
+                    Spending more time creating debugging tools and logging would have been very beneficial for this project.
+                 </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-content">
+            <p class="title2-header">What I would</p>
+            <h1 class="title2">Like to Add</h1>
+
+            <p class="title3">Implementing Excluded Tichu Mechanics</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    To create a more complete Tichu AI, I would implement the mechanics excluded from the initial research scope due to complexity.
+                    This includes handling Tichu/Grand Tichu declarations (potentially with a separate heuristic), incorporating Mahjong wishes, and tackling the challenge of asynchronous bomb plays, which would require significant algorithmic adjustments.
+                </p>
+            </div>
+
+            <p class="title3">CUDA Implementation</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    It was very clear that increasing the number of iterations yielded better results. However, I was unable to fully test this
+                    as it would take too long to run a sufficient number of simulations with a high number of iterations.
+                    <br>
+                    <br>
+                    Parallelizing the simulation process with CUDA would allow for a lot more iterations which would probably yield even better
+                    results for both the MCTS and DMCTS algorithms.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+      // Function to generate video thumbnails
+      async function generateVideoThumbnail(thumbnailDiv) {
+        const videoSrc = thumbnailDiv.dataset.src;
+        if (!videoSrc) return;
+
+        thumbnailDiv.classList.add('loading'); // Show loading indicator
+
+        try {
+          const video = document.createElement('video');
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+
+          video.src = videoSrc;
+          video.muted = true;
+          video.playsInline = true;
+          video.preload = 'metadata';
+
+          await new Promise((resolve, reject) => {
+            video.onloadedmetadata = () => {
+              video.currentTime = 0.1; // Seek slightly into the video
+            };
+            video.onseeked = async () => {
+              // Set canvas dimensions
+              canvas.width = video.videoWidth;
+              canvas.height = video.videoHeight;
+              // Draw the video frame to the canvas
+              context.drawImage(video, 0, 0, canvas.width, canvas.height);
+              // Set canvas content as background image
+              thumbnailDiv.style.backgroundImage = `url(${canvas.toDataURL('image/jpeg')})`;
+              resolve();
+            };
+            video.onerror = (e) => {
+                console.error('Error loading video for thumbnail:', videoSrc, e);
+                reject(e);
+            }
+            // Start loading the video
+            video.load(); 
+          });
+
+        } catch (error) {
+          console.error("Error generating thumbnail for", videoSrc, error);
+          // Optionally set a fallback background
+          thumbnailDiv.style.backgroundColor = '#555'; // Indicate error
+        } finally {
+          thumbnailDiv.classList.remove('loading'); // Hide loading indicator
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const mainMediaDisplay = document.querySelector('.main-media-display');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+
+        // Generate thumbnails for video types
+        thumbnails.forEach(thumbnail => {
+          if (thumbnail.dataset.type === 'video') {
+            generateVideoThumbnail(thumbnail);
+          }
+        });
+
+        // Existing click handler logic
+        thumbnails.forEach(thumbnail => {
+          thumbnail.addEventListener('click', () => {
+            const activeThumbnail = document.querySelector('.thumbnail.active');
+            if (thumbnail === activeThumbnail) return;
+
+            activeThumbnail?.classList.remove('active');
+            thumbnail.classList.add('active');
+
+            const src = thumbnail.dataset.src;
+            const type = thumbnail.dataset.type;
+            const currentMediaElement = mainMediaDisplay.querySelector('video, img');
+
+            let newMediaElement;
+            if (type === 'video') {
+              newMediaElement = document.createElement('video');
+              newMediaElement.src = src;
+              newMediaElement.controls = true;
+              newMediaElement.autoplay = true;
+              newMediaElement.muted = thumbnail === thumbnails[0];
+              newMediaElement.loop = thumbnail === thumbnails[0];
+              newMediaElement.dataset.type = 'video';
+            } else if (type === 'image') {
+              newMediaElement = document.createElement('img');
+              newMediaElement.src = src;
+              newMediaElement.alt = 'Project Media';
+              newMediaElement.dataset.type = 'image';
+            }
+
+            if (newMediaElement) {
+              newMediaElement.style.opacity = '0';
+              mainMediaDisplay.appendChild(newMediaElement);
+
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    if (currentMediaElement) {
+                        currentMediaElement.style.opacity = '0';
+                        setTimeout(() => {
+                          currentMediaElement.remove();
+                        }, 300);
+                    }
+                    newMediaElement.style.opacity = '1';
+                });
+              });
+            }
+          });
+        });
+      });
+    </script>
+
+    <script>
+      // PDF Modal functionality
+      document.addEventListener('DOMContentLoaded', () => {
+        const pdfModal = document.getElementById('pdf-modal');
+        const openPdfBtn = document.getElementById('open-pdf-btn');
+        const closePdfBtn = document.getElementById('close-pdf-btn');
+        const pdfViewerContainer = document.getElementById('pdf-js-viewer');
+        
+        let pdfDoc = null;
+        let pdfPages = [];
+        let currentPageNum = 1;
+        let isRendering = false;
+        
+        // Open modal and load PDF
+        openPdfBtn.addEventListener('click', () => {
+          pdfModal.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+          
+          // Load PDF if not already loaded
+          if (!pdfDoc) {
+            loadPDF('./assets/ResearchPaper.pdf');
+          } else {
+            // Check if we need to reload the PDF due to screen size change
+            const isMobileNow = window.innerWidth <= 768;
+            const wasMobileBefore = !document.querySelector('.pdf-thumbnails');
+            
+            // If screen size category changed, reload PDF to apply correct layout
+            if (isMobileNow !== wasMobileBefore) {
+              pdfViewerContainer.innerHTML = '';
+              pdfPages = [];
+              loadPDF('./assets/ResearchPaper.pdf');
+            }
+          }
+        });
+        
+        // Close modal
+        closePdfBtn.addEventListener('click', () => {
+          pdfModal.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+        
+        // Close modal when clicking outside the content
+        pdfModal.addEventListener('click', (e) => {
+          if (e.target === pdfModal) {
+            pdfModal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
+            pdfModal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+        
+        // Load and render PDF with thumbnails sidebar
+        async function loadPDF(url) {
+          try {
+            // Show loading indicator if needed
+            pdfViewerContainer.innerHTML = '<div style="color: white; text-align: center; padding: 20px;">Loading PDF...</div>';
+            
+            // Load PDF document
+            const loadingTask = pdfjsLib.getDocument(url);
+            pdfDoc = await loadingTask.promise;
+            
+            // Check if mobile view (< 768px)
+            const isMobile = window.innerWidth <= 768;
+            
+            // Create containers
+            pdfViewerContainer.innerHTML = '';
+            
+            if (isMobile) {
+              // Mobile view - no thumbnails, just content
+              const contentContainer = document.createElement('div');
+              contentContainer.className = 'pdf-content';
+              pdfViewerContainer.appendChild(contentContainer);
+              
+              // Generate and render pages for mobile
+              for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+                const page = await pdfDoc.getPage(pageNum);
+                pdfPages.push(page);
+                
+                // Calculate appropriate scale for mobile
+                const renderScale = calculateMobileScale(page);
+                
+                // Render page
+                await renderPage(page, contentContainer, pageNum, renderScale);
+              }
+              
+              // Add mobile touch support
+              addMobileTouchSupport(pdfViewerContainer);
+            } else {
+              // Desktop view - original implementation with thumbnails
+              const thumbnailsContainer = document.createElement('div');
+              thumbnailsContainer.className = 'pdf-thumbnails';
+              
+              const contentContainer = document.createElement('div');
+              contentContainer.className = 'pdf-content';
+              
+              pdfViewerContainer.appendChild(thumbnailsContainer);
+              pdfViewerContainer.appendChild(contentContainer);
+              
+              // Generate thumbnails and pages for desktop
+              for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+                // Get the page
+                const page = await pdfDoc.getPage(pageNum);
+                pdfPages.push(page);
+                
+                // Create thumbnail container
+                const thumbnailContainer = document.createElement('div');
+                thumbnailContainer.className = 'pdf-thumbnail';
+                thumbnailContainer.dataset.pageNum = pageNum;
+                if (pageNum === 1) thumbnailContainer.classList.add('active');
+                
+                // Create thumbnail canvas
+                const thumbnailCanvas = document.createElement('canvas');
+                const thumbnailContext = thumbnailCanvas.getContext('2d');
+                
+                // Set thumbnail dimensions with device pixel ratio consideration
+                const devicePixelRatio = window.devicePixelRatio || 1;
+                const scale = 0.5 * devicePixelRatio;
+                const viewport = page.getViewport({ scale });
+ 
+                thumbnailCanvas.width = viewport.width;
+                thumbnailCanvas.height = viewport.height;
+                
+                // Render thumbnail
+                await page.render({
+                  canvasContext: thumbnailContext,
+                  viewport: viewport
+                }).promise;
+                
+                thumbnailContainer.appendChild(thumbnailCanvas);
+                thumbnailsContainer.appendChild(thumbnailContainer);
+                
+                // Handle click to navigate to page
+                thumbnailContainer.addEventListener('click', () => {
+                  document.querySelectorAll('.pdf-thumbnail').forEach(thumb => {
+                    thumb.classList.remove('active');
+                  });
+                  thumbnailContainer.classList.add('active');
+                  
+                  // Scroll to the page
+                  const pageElement = document.querySelector(`.pdf-page[data-page-num="${pageNum}"]`);
+                  if (pageElement) {
+                    pageElement.scrollIntoView({ behavior: 'smooth' });
+                  }
+                });
+                
+                // Render the full page in the content container with fixed desktop scale
+                await renderPage(page, contentContainer, pageNum, 1.5);
+              }
+            }
+          } catch (error) {
+            console.error('Error loading PDF:', error);
+            pdfViewerContainer.innerHTML = '<div style="color: white; text-align: center; padding: 20px;">Error loading PDF. Please try again.</div>';
+          }
+        }
+        
+        // Calculate appropriate scale for mobile devices
+        function calculateMobileScale(page) {
+          const viewportWidth = window.innerWidth;
+          const pageWidth = page.getViewport({ scale: 1 }).width;
+          
+          // Calculate scale to fit page width with some margin
+          return (viewportWidth * 0.9) / pageWidth;
+        }
+        
+        // Add mobile touch support for panning and zooming
+        function addMobileTouchSupport(container) {
+          // This relies on the browser's native touch-action CSS property
+          // We've already set touch-action: pan-y pinch-zoom in CSS
+          
+          // Add a class to enable mobile view styles if needed
+          container.classList.add('mobile-view');
+          
+          // Listen for orientation changes to adjust page scale
+          window.addEventListener('resize', handleOrientationChange);
+        }
+        
+        // Handle orientation changes on mobile
+        function handleOrientationChange() {
+          // Only proceed if we're in mobile view
+          if (window.innerWidth > 768) return;
+          
+          // Only re-render if significant size change (like orientation)
+          const newWidth = window.innerWidth;
+          if (Math.abs(newWidth - lastWindowWidth) > 100) {
+            lastWindowWidth = newWidth;
+            
+            // Only if PDF is loaded and modal is active
+            if (pdfDoc && document.getElementById('pdf-modal').classList.contains('active')) {
+              // Clear container
+              const contentContainer = document.querySelector('.pdf-content');
+              if (contentContainer) {
+                contentContainer.innerHTML = '';
+                
+                // Re-render pages with new scale
+                pdfPages.forEach(async (page, index) => {
+                  const pageNum = index + 1;
+                  const renderScale = calculateMobileScale(page);
+                  await renderPage(page, contentContainer, pageNum, renderScale);
+                });
+              }
+            }
+          }
+        }
+        
+        // Track window width changes
+        let lastWindowWidth = window.innerWidth;
+        
+        // Render a single PDF page
+        async function renderPage(page, container, pageNum, scale = 1.5) {
+          // Create page container
+          const pageContainer = document.createElement('div');
+          pageContainer.className = 'pdf-page';
+          pageContainer.dataset.pageNum = pageNum;
+          
+          // Create canvas for the page
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          
+          // Set dimensions with provided scale
+          const viewport = page.getViewport({ scale: scale });
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          
+          // Render page
+          await page.render({
+            canvasContext: context,
+            viewport: viewport
+          }).promise;
+          
+          pageContainer.appendChild(canvas);
+          container.appendChild(pageContainer);
+        }
+      });
+    </script>
+</body>
+</html> 

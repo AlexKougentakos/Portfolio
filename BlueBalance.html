@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Balance - AI NPC Integration</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <style>
+        .video-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .video-indicator:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-left: 12px solid white;
+            border-bottom: 8px solid transparent;
+            margin-left: 3px; /* Slight offset for visual balance */
+        }
+        
+        .thumbnail {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+  <div id="projects" style="height: 100%;">
+    <p class="go_back_text">
+        <a href="index.html#projects">< Back to Portfolio</a>
+    </p>
+    <h1 class="title">Blue Balance - LLM Powered NPCs</h1>
+</div>
+      <!-- Media Gallery -->
+      <div class="media-gallery" style="margin-bottom: 2.5rem;">
+          <div class="main-media-display" style="border: 2px solid #293341;">
+              <video class="video" width="960" height="540" controls autoplay muted loop data-type="video">
+                  <source src="./assets/BlueBalanceVideo.webm" type="video/webm">
+                  Your browser does not support the video tag.
+              </video>
+          </div>
+          <div class="thumbnail-container">
+              <div class="thumbnail active" data-src="./assets/BlueBalanceVideo.webm" data-type="video">
+                  <span class="video-indicator"></span>
+              </div>
+              <div class="thumbnail" data-src="./assets/BlueBalanceMedia-1.jpg" data-type="image">
+                  <img src="./assets/BlueBalanceMedia-1.jpg" alt="Thumbnail 3" width="100" height="56">
+              </div>
+              <div class="thumbnail" data-src="./assets/BlueBalanceMedia-2.jpg" data-type="image">
+                  <img src="./assets/BlueBalanceMedia-2.jpg" alt="Thumbnail 4" width="100" height="56">
+              </div>
+              <div class="thumbnail" data-src="./assets/BlueBalanceMedia-3.jpg" data-type="image">
+                  <img src="./assets/BlueBalanceMedia-3.jpg" alt="Thumbnail 5" width="100" height="56">
+              </div>
+              <div class="thumbnail" data-src="./assets/BlueBalanceMedia-4.jpg" data-type="image">
+                  <img src="./assets/BlueBalanceMedia-4.jpg" alt="Thumbnail 6" width="100" height="56">
+              </div>
+              <div class="thumbnail" data-src="./assets/BlueBalanceMedia-5.jpg" data-type="image">
+                  <img src="./assets/BlueBalanceMedia-5.jpg" alt="Thumbnail 7" width="100" height="56">
+              </div>
+          </div>
+      </div>
+
+      <div class="btn-container" style="display: flex; justify-content: center; align-items: center;">
+        <button
+            class="btn btn-color-2 btn-switch"
+            onclick="window.open('https://thegdwc.com/pages/game.php?game_guid=f8efbf30-7f8d-4a35-846c-5b5edca945fb', '_blank')">
+          <span class="btn-content">
+            <img src="./assets/GDWC.png" alt="Icon" class="btn-icon default-icon"> <!-- Placeholder icon -->
+            GDWC Page
+          </span>
+        </button>
+        <p style="font-size: 0.8rem; margin-left: 1rem; opacity: 0.7;">*Build available upon request due to project constraints.</p>
+      </div>
+
+      <section>
+        <div class="section-content">
+            <p class="title2-header">What I have</p>
+            <h1 class="title2">Learned</h1>
+
+
+            <p class="title3">Designing Educational Gameplay Loops</p>
+            <div class="paragraph-container">
+                <img src="./assets/Sorting.jpg" alt="Image" class="image-container image-left">
+                <p class="paragraph-left">
+                    Blue Balance aimed to educate players about local fish and the fishing industry in an engaging way. This required designing gameplay loops
+                    centered around interacting with AI fishermen, learning from them, and applying that knowledge (e.g., sorting fish). While game design was
+                    not my primary focus, I also contributed to the overall design of the game and the interactions between the player and the AI.
+
+                    <br>
+                    <br>
+
+                    The most challenging part of this project was balancing the educational content delivery with fun, interactive mechanics, 
+                    while also keeping the focus around the LLM interaction with the NPCs.
+                </p>
+            </div>
+
+            <p class="title3">Integrating LLMs in Unreal Engine 5</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    This project served as a practical exploration into integrating Large Language Models (LLMs) into a game environment using Unreal Engine 5.
+                    We utilized the Convai framework to bring dynamic, conversational AI characters to life. We tried to use the techonology that was available and push it
+                    to create an fun, educational and immersive experience.
+                </p>
+            </div>
+
+             <p class="title3">Working with external APIs & their limitations</p>
+            <div class="paragraph-container">
+                 <p class="paragraph-center">
+                  The Convai API was a great tool for creating a demo of the current state of the technology. However, it was not without its limitations.
+                  A lot of the time, the API would not return a response or it would take a long time to do so. At best, this would result in a delayed
+                  response, and at worst, the NPC would be stuck and you couldn't interact with them.
+
+                  <br>
+                  <br>
+                  
+                  The other challenge was the lack of control over the API. A lot of the functionality was hidden away inside of pre-compiled libraries that
+                  we couldn't access. This made it difficult to customize certain behaviours to our needs.
+
+                  <br>
+                  <br>
+                  The biggest example of this was the fact that altering the knowledge of a character would affect the knowledge of all characters,
+                  accross all game sessions. This essentially made it so that you couldn't have two people playing the game at the same time even on
+                  different machines.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-content">
+            <p class="title2-header">What I would</p>
+            <h1 class="title2">Like to Add</h1>
+
+            <p class="title3">Replacing Convai with a custom API</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    While Convai provided a solid foundation, it left a lot to be desired. I would like to explore more dynamic AI interactions.
+                    Perhaps even creating my own wrapper around an existing API such as OpenAI to have more control over the API and the responses.
+
+                    <br>
+                    <br>
+
+                    Another very interesting thing could be to have a small quantized model that is run locally for more minor things. For example, the
+                    notes you make in your book are re-written by ChatGPT. This is not a huge task which needs the compute of a large model, so running
+                    it locally would be more than sufficient and also cheaper. The real challenge would be to intergrate this inside Unreal Engine.
+                </p>
+            </div>
+
+            <p class="title3">Expanded Gameplay Mechanics</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    The core loop involves sorting fish and talking to fishermen. Expanding on this with additional mini-games related to fishing or ship maintenance
+                    could enhance engagement. For example, adding a simple navigation task or allowing the player to assist with different types of fishing gear,
+                    each tied back to educational information provided by the AI crew.
+
+                    <br>
+                    <br>
+
+                    We already tried to add something similar to this with the "Story Items" and it was well received. So, adding some more of these
+                    with a little more engaging mechanics would be great.
+                </p>
+            </div>
+
+            <p class="title3">More AI Interactions</p>
+            <div class="paragraph-container">
+                <p class="paragraph-center">
+                    This was originally a part of the plan, but due to time constraints we were not able to implement it. It would bring a lot
+                    of depth to the game if the AI characters were moving around the ship and interacting with the environment and with the 
+                    player by themselves. This would really tie nicely with some additional gameplay mechanics.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+      // Function to generate video thumbnails
+      async function generateVideoThumbnail(thumbnailDiv) {
+        const videoSrc = thumbnailDiv.dataset.src;
+        if (!videoSrc) return;
+
+        thumbnailDiv.classList.add('loading'); // Show loading indicator
+
+        try {
+          const video = document.createElement('video');
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+
+          video.src = videoSrc;
+          video.muted = true;
+          video.playsInline = true;
+          video.preload = 'metadata';
+
+          await new Promise((resolve, reject) => {
+            video.onloadedmetadata = () => {
+              video.currentTime = 0.1; // Seek slightly into the video
+            };
+            video.onseeked = async () => {
+              // Set canvas dimensions
+              canvas.width = video.videoWidth;
+              canvas.height = video.videoHeight;
+              // Draw the video frame to the canvas
+              context.drawImage(video, 0, 0, canvas.width, canvas.height);
+              // Set canvas content as background image
+              thumbnailDiv.style.backgroundImage = `url(${canvas.toDataURL('image/jpeg')})`;
+              resolve();
+            };
+            video.onerror = (e) => {
+                console.error('Error loading video for thumbnail:', videoSrc, e);
+                reject(e);
+            }
+            // Start loading the video
+            video.load(); 
+          });
+
+        } catch (error) {
+          console.error("Error generating thumbnail for", videoSrc, error);
+          // Optionally set a fallback background
+          thumbnailDiv.style.backgroundColor = '#555'; // Indicate error
+        } finally {
+          thumbnailDiv.classList.remove('loading'); // Hide loading indicator
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const mainMediaDisplay = document.querySelector('.main-media-display');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+
+        // Generate thumbnails for video types and add video indicators
+        thumbnails.forEach(thumbnail => {
+          if (thumbnail.dataset.type === 'video') {
+            generateVideoThumbnail(thumbnail);
+            
+            // Add video indicator if not already present
+            if (!thumbnail.querySelector('.video-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'video-indicator';
+              thumbnail.appendChild(indicator);
+            }
+          }
+        });
+
+        // Existing click handler logic
+        thumbnails.forEach(thumbnail => {
+          thumbnail.addEventListener('click', () => {
+            const activeThumbnail = document.querySelector('.thumbnail.active');
+            if (thumbnail === activeThumbnail) return;
+
+            activeThumbnail?.classList.remove('active');
+            thumbnail.classList.add('active');
+
+            const src = thumbnail.dataset.src;
+            const type = thumbnail.dataset.type;
+            const currentMediaElement = mainMediaDisplay.querySelector('video, img');
+
+            let newMediaElement;
+            if (type === 'video') {
+              newMediaElement = document.createElement('video');
+              newMediaElement.src = src;
+              newMediaElement.controls = true;
+              newMediaElement.autoplay = true;
+              newMediaElement.muted = thumbnail === thumbnails[0];
+              newMediaElement.loop = thumbnail === thumbnails[0];
+              newMediaElement.dataset.type = 'video';
+            } else if (type === 'image') {
+              newMediaElement = document.createElement('img');
+              newMediaElement.src = src;
+              newMediaElement.alt = 'Project Media';
+              newMediaElement.dataset.type = 'image';
+            }
+
+            if (newMediaElement) {
+              newMediaElement.style.opacity = '0';
+              mainMediaDisplay.appendChild(newMediaElement);
+
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    if (currentMediaElement) {
+                        currentMediaElement.style.opacity = '0';
+                        setTimeout(() => {
+                          currentMediaElement.remove();
+                        }, 300);
+                    }
+                    newMediaElement.style.opacity = '1';
+                });
+              });
+            }
+          });
+        });
+      });
+    </script>
+</body>
+</html> 
