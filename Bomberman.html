@@ -3,24 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bomberman Blast</title>
+    <title>Bomberman Blast (Remake)</title>
     <link rel="stylesheet" href="project.css">
     <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <style>
+        /* Any page-specific styles */
+    </style>
 </head>
 <body>
-  <div id="projects" style="height: 100%;">
+  <header>
     <p class="go_back_text">
         <a href="index.html#projects">< Back to Portfolio</a>
     </p>
-    <h1 class="title">Bomberman Blast</h1>
-</div>
-    <div class="video-container" style="border: 2px solid; border-color: #293341; margin-bottom: 2.5rem;">
-        <video class="video" width="960" height="540" controls autoplay muted>
-          <source src="./assets/BombermanDemo.webm" type="video/webm">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <h1 class="title">Bomberman Blast (Remake)</h1>
+  </header>
 
+  <main>
+      <!-- Media Gallery -->
+      <div class="media-gallery" style="margin-top: 2rem;">
+          <div class="main-media-display" style="border: 2px solid #293341;">
+              <video class="video" width="960" height="540" controls autoplay muted loop data-type="video">
+                  <source src="./assets/BombermanCover.webm" type="video/webm">
+                  Your browser does not support the video tag.
+              </video>
+          </div>
+          <div class="video-container" style="border: 2px solid; border-color: #293341; margin-bottom: 2.5rem;">
+              <video class="video" width="960" height="540" controls autoplay muted>
+                <source src="./assets/BombermanDemo.webm" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+          </div>
+      </div>
 
       <div class="btn-container">
         <button 
@@ -72,7 +85,7 @@
                 <p class="paragraph-center">
                     While the core features of Nvidia PhysX were integrated into the engine, I still needed to make
                      modifications to the engine and delve into PhysX documentation to get specific functionalities 
-                     working. For example, I had to configure collision channels and restrict the player’s movement 
+                     working. For example, I had to configure collision channels and restrict the player's movement 
                      to prevent them from escaping the game map.
                 </p>
             </div>
@@ -80,7 +93,7 @@
             <p class="title3">Proper Code Structure</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Although clean code wasn’t the main focus of this project, I made a point to keep my codebase
+                    Although clean code wasn't the main focus of this project, I made a point to keep my codebase
                      organized and maintainable. I separated different systems and aimed for reusability.
                       One example is my implementation of the Observer pattern, which enabled communication 
                       between systems like the Game Loop Manager, UI Manager, and player controls.
@@ -111,9 +124,9 @@
             <p class="title3">AI Players</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    One feature I’m particularly interested in adding is AI-controlled players. I would likely use
+                    One feature I'm particularly interested in adding is AI-controlled players. I would likely use
                      a Finite State Machine (FSM) or Goal-Oriented Action Planning (GOAP) approach to design the AI
-                      behavior, and employ the A* algorithm for pathfinding. Since the game wasn’t originally designed
+                      behavior, and employ the A* algorithm for pathfinding. Since the game wasn't originally designed
                        with AI in mind, I would need to refactor the player class to share necessary functionality 
                        between human players and AI agents.
                 </p>
@@ -122,7 +135,7 @@
             <p class="title3">More UI & Game Loop</p>
             <div class="paragraph-container">
                 <p class="paragraph-center">
-                    Currently, the only interactive UI is the main menu. I’d like to expand this by adding a game settings
+                    Currently, the only interactive UI is the main menu. I'd like to expand this by adding a game settings
                      menu before starting a match. These additions would allow players to select options like map choice
                      , number of players, and enabled pickups.
 
@@ -136,5 +149,6 @@
             </div>
         </div>
     </section>
+  </main>
 </body>
 </html>

@@ -70,14 +70,16 @@
     </style>
 </head>
 <body>
-  <div id="projects" style="height: 100%;">
+  <header>
     <p class="go_back_text">
         <a href="index.html#projects">< Back to Portfolio</a>
     </p>
     <h1 class="title">Multiplayer Shooter Game</h1>
-</div>
+  </header>
+
+  <main>
       <!-- Media Gallery -->
-      <div class="media-gallery" style="margin-bottom: 2.5rem;">
+      <div class="media-gallery" style="margin-top: 2rem;">
           <div class="main-media-display" style="border: 2px solid #293341;">
               <video class="video" width="960" height="540" controls autoplay muted loop data-type="video">
                   <source src="./assets/MultiplayerShooterDemo.webm" type="video/webm">
@@ -249,91 +251,102 @@
               thumbnailDiv.style.backgroundImage = `url(${canvas.toDataURL('image/jpeg')})`;
               resolve();
             };
-            video.onerror = (e) => {
-                console.error('Error loading video for thumbnail:', videoSrc, e);
-                reject(e);
-            }
-            // Start loading the video
-            video.load(); 
+            video.onerror = reject;
           });
-
         } catch (error) {
-          console.error("Error generating thumbnail for", videoSrc, error);
-          // Optionally set a fallback background
-          thumbnailDiv.style.backgroundColor = '#555'; // Indicate error
+          console.error('Error generating thumbnail:', error);
         } finally {
           thumbnailDiv.classList.remove('loading'); // Hide loading indicator
         }
       }
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const mainMediaDisplay = document.querySelector('.main-media-display');
-        const thumbnails = document.querySelectorAll('.thumbnail');
+      // Initialize thumbnails on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        const thumbnails = document.querySelectorAll('.thumbnail[data-src][data-type="video"]');
+        thumbnails.forEach(generateVideoThumbnail);
 
-        // Generate thumbnails for video types and add video indicators
-        thumbnails.forEach(thumbnail => {
-          if (thumbnail.dataset.type === 'video') {
-            generateVideoThumbnail(thumbnail);
-            
-            // Add video indicator if not already present
-            if (!thumbnail.querySelector('.video-indicator')) {
-              const indicator = document.createElement('span');
-              indicator.className = 'video-indicator';
-              thumbnail.appendChild(indicator);
-            }
-          }
-        });
+        // Add click event to thumbnails
+        document.querySelectorAll('.thumbnail').forEach(function(thumb) {
+          thumb.addEventListener('click', function() {
+            const src = this.dataset.src;
+            const type = this.dataset.type;
+            const mainDisplay = document.querySelector('.main-media-display');
+            const currentMedia = mainDisplay.querySelector('video, img');
 
-        // Click handler for thumbnails
-        thumbnails.forEach(thumbnail => {
-          thumbnail.addEventListener('click', () => {
-            const activeThumbnail = document.querySelector('.thumbnail.active');
-            if (thumbnail === activeThumbnail) return;
+            // Mark this thumbnail as active
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
 
-            activeThumbnail?.classList.remove('active');
-            thumbnail.classList.add('active');
-
-            const src = thumbnail.dataset.src;
-            const type = thumbnail.dataset.type;
-            const currentMediaElement = mainMediaDisplay.querySelector('video, img');
-
-            let newMediaElement;
+            // Create new media element
             if (type === 'video') {
-              newMediaElement = document.createElement('video');
-              newMediaElement.src = src;
-              newMediaElement.controls = true;
-              newMediaElement.autoplay = true;
-              newMediaElement.muted = true;
-              newMediaElement.loop = true;
-              newMediaElement.dataset.type = 'video';
-              newMediaElement.width = 960;
-              newMediaElement.height = 540;
+              const video = document.createElement('video');
+              video.className = 'video';
+              video.width = 960;
+              video.height = 540;
+              video.controls = true;
+              video.autoplay = true;
+              video.muted = true;
+              video.loop = true;
+              video.dataset.type = 'video';
+
+              const source = document.createElement('source');
+              source.src = src;
+              source.type = 'video/webm';
+              video.appendChild(source);
+
+              const fallback = document.createTextNode('Your browser does not support the video tag.');
+              video.appendChild(fallback);
+
+              // Set opacity to 0 for transition
+              video.style.opacity = 0;
+              
+              // Replace current media with transition
+              if (currentMedia) {
+                currentMedia.classList.add('media-fade-out');
+                setTimeout(() => {
+                  mainDisplay.replaceChild(video, currentMedia);
+                  // Fade in the new video
+                  setTimeout(() => {
+                    video.style.opacity = 1;
+                  }, 50);
+                }, 300);
+              } else {
+                mainDisplay.appendChild(video);
+                setTimeout(() => {
+                  video.style.opacity = 1;
+                }, 50);
+              }
             } else if (type === 'image') {
-              newMediaElement = document.createElement('img');
-              newMediaElement.src = src;
-              newMediaElement.alt = 'Project Media';
-              newMediaElement.dataset.type = 'image';
-            }
-
-            if (newMediaElement) {
-              newMediaElement.style.opacity = '0';
-              mainMediaDisplay.appendChild(newMediaElement);
-
-              requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    if (currentMediaElement) {
-                        currentMediaElement.style.opacity = '0';
-                        setTimeout(() => {
-                          currentMediaElement.remove();
-                        }, 300);
-                    }
-                    newMediaElement.style.opacity = '1';
-                });
-              });
+              const img = document.createElement('img');
+              img.src = src;
+              img.alt = this.querySelector('img').alt;
+              img.width = 960;
+              img.dataset.type = 'image';
+              
+              // Set opacity to 0 for transition
+              img.style.opacity = 0;
+              
+              // Replace current media with transition
+              if (currentMedia) {
+                currentMedia.classList.add('media-fade-out');
+                setTimeout(() => {
+                  mainDisplay.replaceChild(img, currentMedia);
+                  // Fade in the new image
+                  setTimeout(() => {
+                    img.style.opacity = 1;
+                  }, 50);
+                }, 300);
+              } else {
+                mainDisplay.appendChild(img);
+                setTimeout(() => {
+                  img.style.opacity = 1;
+                }, 50);
+              }
             }
           });
         });
       });
     </script>
+  </main>
 </body>
 </html>

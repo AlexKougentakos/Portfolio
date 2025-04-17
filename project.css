@@ -45,6 +45,16 @@ p
 .title {
     font-size: 3rem;
     text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* HEADER AND MAIN CONTENT */
+header {
+    margin-bottom: 1rem;
+}
+
+main {
+    display: block;
 }
 
 /* VIDEO */

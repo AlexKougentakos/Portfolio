@@ -39,157 +39,159 @@
     </style>
 </head>
 <body>
-  <div id="projects" style="height: 100%;">
+  <header>
     <p class="go_back_text">
         <a href="../index.html#projects" id="back-link">&lt; Back to Portfolio</a>
     </p>
     <h1 class="title">Card Game with Custom Engine</h1>
-  </div>
+  </header>
 
-  <!-- Video for smaller screens -->
-  <div class="video-container">
-    <video class="video" width="100%" height="auto" controls autoplay muted>
-      <source src="../assets/TichuDemo.webm" type="video/webm">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  <main>
+    <!-- Video for smaller screens -->
+    <div class="video-container">
+      <video class="video" width="100%" height="auto" controls autoplay muted>
+        <source src="../assets/TichuDemo.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    </div>
 
-  <!-- Game for larger screens -->
-  <div class="game-container">
-      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="540" width="960"></canvas>
-  </div>
+    <!-- Game for larger screens -->
+    <div class="game-container">
+        <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="540" width="960"></canvas>
+    </div>
 
-  <script type="text/javascript">
-    // Check if the page was accessed from the ResearchPaper
-    window.addEventListener('DOMContentLoaded', function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const fromResearch = urlParams.get('from') === 'research';
+    <script type="text/javascript">
+      // Check if the page was accessed from the ResearchPaper
+      window.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromResearch = urlParams.get('from') === 'research';
+        
+        const backLink = document.getElementById('back-link');
+        if (fromResearch) {
+          backLink.textContent = '< GO BACK';
+          backLink.href = '../ResearchPaper.html';
+        }
+      });
       
-      const backLink = document.getElementById('back-link');
-      if (fromResearch) {
-        backLink.textContent = '< GO BACK';
-        backLink.href = '../ResearchPaper.html';
-      }
-    });
+      var Module = {
+        preRun: [],
+        postRun: [],
+        canvas: (function() {
+          var canvas = document.getElementById('canvas');
+          return canvas;
+        })(),
+        onAbort: function() { console.error('Game aborted.'); }
+      };
+    </script>
+    <script src="game.js"></script>
+
+    <div class="btn-container">
+      <button 
+          class="btn btn-color-2 btn-switch" 
+          onclick="window.open('https://github.com/AlexKougentakos/Odyssey-Engine/releases/download/Release/OdysseyEngine-Tichu-v1.0.0.zip')">
+        <span class="btn-content">
+          <img src="../assets/download-white.png" alt="Icon" class="btn-icon default-icon">
+          Download Build
+        </span>
+      </button>
+      <button 
+          class="btn btn-color-1" 
+          onclick="window.open('https://github.com/AlexKougentakos/Odyssey-Engine', '_blank')">
+        <span class="btn-content">
+          <img src="../assets/github.png" alt="Icon" class="btn-icon">
+          Github Link
+        </span>
+      </button>
+    </div>
     
-    var Module = {
-      preRun: [],
-      postRun: [],
-      canvas: (function() {
-        var canvas = document.getElementById('canvas');
-        return canvas;
-      })(),
-      onAbort: function() { console.error('Game aborted.'); }
-    };
-  </script>
-  <script src="game.js"></script>
-
-      <div class="btn-container">
-        <button 
-            class="btn btn-color-2 btn-switch" 
-            onclick="window.open('https://github.com/AlexKougentakos/Odyssey-Engine/releases/download/Release/OdysseyEngine-Tichu-v1.0.0.zip')">
-          <span class="btn-content">
-            <img src="../assets/download-white.png" alt="Icon" class="btn-icon default-icon">
-            Download Build
-          </span>
-        </button>
-        <button 
-            class="btn btn-color-1" 
-            onclick="window.open('https://github.com/AlexKougentakos/Odyssey-Engine', '_blank')">
-          <span class="btn-content">
-            <img src="../assets/github.png" alt="Icon" class="btn-icon">
-            Github Link
-          </span>
-        </button>
-      </div>
-      
-      <section>
-        <div class="section-content">
-            <p class="title2-header">What I</p>
-            <h1 class="title2">Learned</h1>
-
-            <p class="title3">Developing an Engine/Framework</p>
-            <div class="paragraph-container">
-                <p class="paragraph-center">
-                    The Engine/Framework development part of this project was a part of one of my Programming courses at University. I kept working on the engine even after
-                    the course, and I learned a lot about how engines work, how to structure them and how to make them as re-usable as possible. I also learned a lot about
-                    "wrapping" certain aspects of the engine, in order to make it easier for the end user to use, and leave all the memory managment to the engine.
-                </p>
-            </div>
-
-            <p class="title3">Working with CMake</p>
-            <div class="paragraph-container">
-                <p class="paragraph-center">
-                    When I originally made this engine, it did not have any CMake support. So I had to go through the process of porting the engine to CMake.
-                    This was a significant learning experience, as it allowed me to add support for Emscripten and compile the engine to WebAssembly.
-                </p>
-            </div>
-
-            <p class="title3">Web Assembly</p>
-            <div class="paragraph-container">
-                <p class="paragraph-center">
-                    One of my goals was to compile projects made with my engine to WebAssembly. This was my first foray
-                     into cross-platform development, so it proved to be a great learning experience on project structuring 
-                     and managing differences between compilers and platforms. 
-
-                    <br/>
-                    <br/>
-                    In case you did not notice, at the top of this page you will find a card game I made with the engine, compiled to WebAssembly.
-                    Though you might be confused if you don't know how the game is played.
-                    If you are using a smaller screen, the game was replaced by a video, since it couldn't be displayed properly.
-                    <br/>
-                    <br/>
-
-                    A practical example of this cross-platform development is my implementation of the Audio System.
-                     I encountered challenges getting Jthreads to compile with Emscripten, so I wrote a different
-                      sound manager specifically for the web. The engine switches between sound managers based on
-                       compilation flags, thanks to the service provider pattern I had already integrated.
-                </p>
-            </div>
-
-            <p class="title3">Programming Patterns</p>
-            <div class="paragraph-container">
-                <p class="paragraph-center">
-                    As a part of this course, I had to implement a number of programming patterns and make use of them into the engine. 
-                    Before this I did not know what programming patterns were, so this was a nice addition to my knowledge.
-                    I implemented many patterns, some that are available to the user, such as the Observer pattern and the command pattern, 
-                    and some that are used internally, such as the Service Provider pattern for the sound system, the Factory pattern for the game objects 
-                    and the Singleton pattern for a few systems of the engine such as the ResourceManager.
-                    <br> Most of these patterns were studied from the book 
-                    <a href="https://gameprogrammingpatterns.com" target="_blank">"Game Programming Patterns"</a> by Robert Nystrom.
-                </p>
-            </div>
-        </div>
-    </section>
-
     <section>
-        <div class="section-content">
-            <p class="title2-header">What I</p>
-            <h1 class="title2">Would Add</h1>
+      <div class="section-content">
+          <p class="title2-header">What I</p>
+          <h1 class="title2">Learned</h1>
 
-            <p class="title3">AI Players</p>
-            <div class="paragraph-container">
-                <p class="paragraph-center">
-                    While programming the game, I ensured that the authority of the game logic resided in a separate class, 
-                    with the Scene merely communicating information primarily sourced from Player Components. 
-                    This setup was designed with the future addition of AI agents in mind
-                    <br/>
-                    To implement AI, I would likely use a subset of the Monte Carlo Tree Search algorithm, 
-                    such as limited information set MCTS, given the imperfect information in the game. However,
-                     this wasn't fully accounted for initially, so the Player Component would need refactoring to
-                      blend functionalities between human players and AI agents.
-                </p>
-            </div>
+          <p class="title3">Developing an Engine/Framework</p>
+          <div class="paragraph-container">
+              <p class="paragraph-center">
+                  The Engine/Framework development part of this project was a part of one of my Programming courses at University. I kept working on the engine even after
+                  the course, and I learned a lot about how engines work, how to structure them and how to make them as re-usable as possible. I also learned a lot about
+                  "wrapping" certain aspects of the engine, in order to make it easier for the end user to use, and leave all the memory managment to the engine.
+              </p>
+          </div>
 
-            <p class="title3">More Polishing</p>
-            <div class="paragraph-container">
-                <p class="paragraph-center">
-                    The only other thing I would add to the game is more polishing, such as a main menu and a selection screen to choose the amount of points the
-                    game should last for. Other than that there is not much more to offer to the player for such a simplistic game. Other polishing features could 
-                    include perhaps being able to re-arange your cards in your hand, or the ability to change the card designs.
-                </p>
-            </div>
-        </div>
-    </section>
+          <p class="title3">Working with CMake</p>
+          <div class="paragraph-container">
+              <p class="paragraph-center">
+                  When I originally made this engine, it did not have any CMake support. So I had to go through the process of porting the engine to CMake.
+                  This was a significant learning experience, as it allowed me to add support for Emscripten and compile the engine to WebAssembly.
+              </p>
+          </div>
+
+          <p class="title3">Web Assembly</p>
+          <div class="paragraph-container">
+              <p class="paragraph-center">
+                  One of my goals was to compile projects made with my engine to WebAssembly. This was my first foray
+                   into cross-platform development, so it proved to be a great learning experience on project structuring 
+                   and managing differences between compilers and platforms. 
+
+                  <br/>
+                  <br/>
+                  In case you did not notice, at the top of this page you will find a card game I made with the engine, compiled to WebAssembly.
+                  Though you might be confused if you don't know how the game is played.
+                  If you are using a smaller screen, the game was replaced by a video, since it couldn't be displayed properly.
+                  <br/>
+                  <br/>
+
+                  A practical example of this cross-platform development is my implementation of the Audio System.
+                   I encountered challenges getting Jthreads to compile with Emscripten, so I wrote a different
+                    sound manager specifically for the web. The engine switches between sound managers based on
+                     compilation flags, thanks to the service provider pattern I had already integrated.
+              </p>
+          </div>
+
+          <p class="title3">Programming Patterns</p>
+          <div class="paragraph-container">
+              <p class="paragraph-center">
+                  As a part of this course, I had to implement a number of programming patterns and make use of them into the engine. 
+                  Before this I did not know what programming patterns were, so this was a nice addition to my knowledge.
+                  I implemented many patterns, some that are available to the user, such as the Observer pattern and the command pattern, 
+                  and some that are used internally, such as the Service Provider pattern for the sound system, the Factory pattern for the game objects 
+                  and the Singleton pattern for a few systems of the engine such as the ResourceManager.
+                  <br> Most of these patterns were studied from the book 
+                  <a href="https://gameprogrammingpatterns.com" target="_blank">"Game Programming Patterns"</a> by Robert Nystrom.
+              </p>
+          </div>
+      </div>
+  </section>
+
+  <section>
+      <div class="section-content">
+          <p class="title2-header">What I</p>
+          <h1 class="title2">Would Add</h1>
+
+          <p class="title3">AI Players</p>
+          <div class="paragraph-container">
+              <p class="paragraph-center">
+                  While programming the game, I ensured that the authority of the game logic resided in a separate class, 
+                  with the Scene merely communicating information primarily sourced from Player Components. 
+                  This setup was designed with the future addition of AI agents in mind
+                  <br/>
+                  To implement AI, I would likely use a subset of the Monte Carlo Tree Search algorithm, 
+                  such as limited information set MCTS, given the imperfect information in the game. However,
+                   this wasn't fully accounted for initially, so the Player Component would need refactoring to
+                    blend functionalities between human players and AI agents.
+              </p>
+          </div>
+
+          <p class="title3">More Polishing</p>
+          <div class="paragraph-container">
+              <p class="paragraph-center">
+                  The only other thing I would add to the game is more polishing, such as a main menu and a selection screen to choose the amount of points the
+                  game should last for. Other than that there is not much more to offer to the player for such a simplistic game. Other polishing features could 
+                  include perhaps being able to re-arange your cards in your hand, or the ability to change the card designs.
+              </p>
+          </div>
+      </div>
+  </section>
+  </main>
 </body>
 </html>
